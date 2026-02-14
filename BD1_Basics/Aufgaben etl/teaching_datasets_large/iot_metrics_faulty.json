@@ -1,0 +1,1364 @@
+[
+{
+"deviceId": "SEN-1000",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1001",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1002",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1003",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1004",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1006",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1007",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1008",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1009",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1010",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1013",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1014",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1015",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1016",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1017",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1018",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1019",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1022",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1023",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1025",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1026",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1027",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1028",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1029",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1030",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1031",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1032",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1033",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1034",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1035",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1036",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1037",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1039",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1041",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1043",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1044",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1046",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1048",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1049",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1050",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1051",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1052",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1053",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1054",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1055",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1057",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1058",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1059",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1061",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1063",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1064",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1065",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1067",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1068",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1069",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1070",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1071",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1072",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1074",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1075",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1076",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1077",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1079",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1080",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1082",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1086",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1087",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1088",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1089",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1090",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1091",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1092",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1093",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1094",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1095",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1097",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1098",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1099",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1100",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1101",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1102",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1103",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1104",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1105",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1106",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1107",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1109",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1110",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1111",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1112",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1116",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1119",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1122",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1124",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1125",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1126",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1128",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1129",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1130",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1132",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1133",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1134",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1135",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1137",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1139",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1141",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1142",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1144",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1145",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1148",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1150",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1152",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1153",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1155",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1156",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1158",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1160",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1161",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1162",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1165",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1166",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1167",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1168",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1169",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1170",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1171",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1172",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1173",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1175",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1178",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1179",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1180",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1181",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1182",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1183",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1184",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1185",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1186",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1187",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"deviceId": "SEN-1188",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"deviceId": "SEN-1189",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1190",
+"type": "humidity",
+"value": 120,
+"unit": "%",
+"battery": 10,
+"status": "warning"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1192",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1194",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+},
+{
+"device": "UNKNOWN",
+"value": "NaN",
+"ts": "invalid"
+},
+{
+"deviceId": "SEN-1196",
+"ts": "2025-09-14T06:00:00Z"
+},
+{
+"deviceId": "SEN-1197",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1198",
+"type": "temp",
+"value": "27.x",
+"unit": "C",
+"battery": "low",
+"status": "ok",
+"ts": "2025-99-99T00:00:00Z"
+},
+{
+"deviceId": "SEN-1199",
+"type": "pressure",
+"value": -5,
+"unit": "hPa",
+"battery": 50,
+"status": "ok",
+"ts": "2025-09-14T00:00:00Z"
+}
+]
