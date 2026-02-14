@@ -6,7 +6,7 @@
 
 </br>
 
-- [**Präsentation der Projektarbeit](./../GE4_Exams/E-Practical-Work.md)**
+- **[Präsentation der Projektarbeit](./../GE4_Exams/E-Practical-Work.md)**
   - Projektabgabe
     - Abgabe
     - GitHub Link (OneNote, Prüfungsarbeiten)
