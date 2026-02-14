@@ -10,18 +10,12 @@
 
 ## Allgemein
 
-- [Kursübersicht u. Vorstellung](./G1_General/README.md)
-- [Voraussetzungen / Softwareinstallationen](./G2_Requirements/README.md)
-- [Prüfungen u. Projektarbeit](./G3_Exams/README.md)
-
-## PowerShell
-
-- [PowerShell Einführung](./PS1_Intro/README.md)
-- [PowerShell Sprachelemente](./PS2_Basic/README.md)
-
-## Bash
-
----
+- [Kursübersicht u. Vorstellung](./GE2_Intro/README.md)
+- [Voraussetzungen / Softwareinstallationen](./GE3_Requirements/README.md)
+- Prüfungen
+  - [PowerShell Theorie](./GE4_Exams/E-PowerShell-Theory.md)
+  - [PowerShell Techniken](./GE4_Exams/E-PowerShell-Techniques.md)
+  - [Projektarbeit](./GE4_Exams/E-Practical-Work.md)
 
 ## Kompetenz
 
@@ -50,3 +44,8 @@ Funktionen und Abläufe mit Kontrollstrukturen (Sequenz, Selektion und Iteration
 11. Kennt das Testvorgehen zur Integration von Scripts.
 12. Kennt die Elemente einer Dokumentation für die involvierten Rollen (z.B. System, Administrator, Entwickler)
 13. Kennt die Bedeutung der Dokumentation in Bezug auf Qualitätssicherung und Wartbarkeit.
+14. Versteht, wozu Big Data und NoSQL Datenbanken eingesetzt werden
+15. Kann typische Big-Data-Architekturen erklären
+16. Kann Daten sammeln, verarbeiten und analysieren
+17. Kann Skripting als Werkzeug für Datenverarbeitung einsetzen
+18. Kann einfache Massendaten automatisiert auswerten
