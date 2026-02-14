@@ -6,13 +6,12 @@
 
 </br>
 
-- **Modulübersicht / Handlungsziele**
+- **[Modulübersicht / Handlungsziele](./../GE2_Intro/README.md)**
 - Übersicht / Einleitung
   - Werkzeuge, Voraussetzungen
   - Unterrichtsgestaltung
     - Frontal, Praxis, Partner- und Gruppenarbeit
   - Prüfungen
-  - [Kursübersicht](./../GE2_Intro/README.md)
 
 ---
 

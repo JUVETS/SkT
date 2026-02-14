@@ -6,8 +6,8 @@
   - [1.1. Wer bin ich](#11-wer-bin-ich)
   - [1.2. Vorstellungsrunde](#12-vorstellungsrunde)
   - [1.3. Kursübersicht PowerShell](#13-kursübersicht-powershell)
-  - [1.4. Kursübersicht Bash](#14-kursübersicht-bash)
-  - [1.5. Praktische Projektarbeit](#15-praktische-projektarbeit)
+  - [1.4. Kursübersicht BigData / MongoDB](#14-kursübersicht-bigdata--mongodb)
+  - [1.5. Prüfungen](#15-prüfungen)
   - [1.6. Unterricht](#16-unterricht)
   - [1.7. Regeln](#17-regeln)
 
@@ -68,7 +68,7 @@
 - **PowerShell Profile**
   - Ausführungsrichtlinien
 
-- **PowerShell Programmiergrundlagen**
+- **PowerShell Programmiergrundlagen / Skripting**
 - Variablen, Array
 - Operatoren
 - Sprachkonstrukte
@@ -77,30 +77,25 @@
 
 ---
 
-## 1.4. Kursübersicht Bash
+## 1.4. Kursübersicht BigData / MongoDB
 
-- **Unix Bash**
-  - Grundlegende Sprachelemente
-  - Variablen, Array
-  - Operatoren / Arithmetische Ausdrücke
-  - Funktionen
-  - Programmablaufkontrolle / Konstrukte
-  - Ein- und Ausgabe, Umleitung (Datenströme)
-  - Pipe
-  - Umgebungsvariablen
-  - Integration in Systemumgebung
-  - Automatisierungsaufgaben
-  - Systemaufgaben
-  - Sicherheitsmassnahmen
+- **NoSQL Datenbank / MongoDB**
+  - Einführung NoSQL Datenbanksystem
+  - CAP-Theorem
+  - Hauptgruppen von NoSQL-Datenbanken
+  - Einführung MongoDB
+  - MongoDB Shell (mongosh)
+  - MongoDB Query
+  - Einführung in Big Data \& ETL
+  - BigData mit PowerShell und MongoDB
 
 ---
 
-## 1.5. Praktische Projektarbeit
+## 1.5. Prüfungen
 
-- **Aufgabe**
-  - Umfangreiches Projekt mit Skriptprogrammierung und Datenbank
-  - Präsentation, Live Demo
-  - Wird bewertet, Note für beide Module Skt u. Db2
+- [PowerShell Theorie](./GE4_Exams/E-PowerShell-Theory.md)
+- [PowerShell Techniken](./GE4_Exams/E-PowerShell-Techniques.md)
+- [Projektarbeit](./GE4_Exams/E-Practical-Work.md)
 
 ---
 

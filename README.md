@@ -11,11 +11,6 @@
 ## Allgemein
 
 - [Kursübersicht u. Vorstellung](./GE2_Intro/README.md)
-- [Voraussetzungen / Softwareinstallationen](./GE3_Requirements/README.md)
-- Prüfungen
-  - [PowerShell Theorie](./GE4_Exams/E-PowerShell-Theory.md)
-  - [PowerShell Techniken](./GE4_Exams/E-PowerShell-Techniques.md)
-  - [Projektarbeit](./GE4_Exams/E-Practical-Work.md)
 
 ## Kompetenz
 
