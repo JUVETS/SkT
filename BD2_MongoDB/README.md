@@ -11,7 +11,8 @@
   - [1.6. Kern‑Cmdlets (Praxisorientierter Überblick)](#16-kerncmdlets-praxisorientierter-überblick)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Einstieg Verbinden und Daten einfügen](#21-einstieg-verbinden-und-daten-einfügen)
-  - [2.2. 2.1.Big-Data-Workflow](#22-21big-data-workflow)
+  - [2.2. Big-Data-Workflow (CSV)](#22-big-data-workflow-csv)
+  - [2.3. Big-Data-Workflow (WebAPI)](#23-big-data-workflow-webapi)
 
 ---
 
@@ -196,7 +197,7 @@ Invoke-MdbcCommand -Command @{
 
 ---
 
-## 2.2. 2.1.Big-Data-Workflow
+## 2.2. Big-Data-Workflow (CSV)
 
 | **Vorgabe**             | **Beschreibung**                                     |
 | :---------------------- | :--------------------------------------------------- |
@@ -221,3 +222,67 @@ Invoke-MdbcCommand -Command @{
 
 - Automatisiere den Import
 - Füge Logging hinzu
+
+---
+
+## 2.3. Big-Data-Workflow (WebAPI)
+
+| **Vorgabe**             | **Beschreibung**                                          |
+| :---------------------- | :-------------------------------------------------------- |
+| **Lernziele**           | Daten aus externe WebAPI abrufen                          |
+|                         | eine Verbindung von PowerShell zu MongoDB herstellen      |
+|                         | Daten mit PowerShell in einer MongoDB Datenbank speichern |
+| **Sozialform**          | Einzelarbeit                                              |
+| **Hilfsmittel**         |                                                           |
+| **Erwartete Resultate** |                                                           |
+| **Zeitbedarf**          | 90 min                                                    |
+| **Lösungselemente**     | PowerShell-Script (.ps1)                                  |
+
+**Auftrag:**
+
+- Ein Unternehmen möchte Daten aus einer externen WebAPI automatisiert beziehen, speichern und auswerten.
+- Die Daten werden regelmässig aktualisiert und sollen für Analyse- und Entscheidungszwecke genutzt werden.
+- Zur Umsetzung stehen folgende Technologien zur Verfügung:
+  - PowerShell für das Skripting und die Automatisierung
+  - WebAPI als Datenquelle (REST, JSON)
+  - MongoDB als NoSQL-Datenbank
+  - KPI-Auswertung zur Bewertung der Daten
+
+**Programmiere eine Datenpipeline, welche:**
+
+- Daten aus einer WebAPI abruft
+- die Daten aufbereitet und speichert
+- Kennzahlen (KPIs) aus den gespeicherten Daten berechnet
+- die Ergebnisse nachvollziehbar dokumentiert
+
+**Empfohlene Datenquellen für die Aufgabe:**
+
+1. [Finanz- & Kryptodaten (coingecko)](https://www.coingecko.com/en/api)
+   - Aktuelle Wechselkurse für über 160 Währungen.
+   - Liefert aktuelle Kurse von tausenden Kryptowährungen. Keine Registrierung für Basis-Abfragen nötig.
+     - URL: https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+2. [Open Data Schweiz Opendata.swiss)](https://opendata.swiss/de)
+   - Das zentrale Portal für Schweizer Behördendaten.
+   - Beispiele: Aktuelle Standorte von Mobility-Fahrzeugen, Postleitzahlen-Verzeichnisse oder Wetterdaten von MeteoSchweiz.
+3. [Open Transport Data](https://opentransportdata.swiss/de/) 
+   - Echtzeit-Fahrplandaten des öffentlichen Verkehrs (SBB/ZVV etc.).
+4. [Wissenschaft & Umwelt](https://api.nasa.gov)
+   - NASA APIs: Riesige Auswahl an Daten zu Asteroiden, Mars-Fotos oder Erdbeobachtung.
+   - URL: https://api.nasa.gov (Erfordert kostenlosen API-Key).
+5. [OpenWeatherMap](https://openweathermap.org/)
+   - Der Klassiker für Wetterdaten weltweit.
+   - Vergleiche zwischen verschiedenen Städten zu skripten.
+
+**Beispielvorlage:**
+
+```powershell
+# Test-Abfrage für CoinGecko (Top 5 Coins)
+$uri = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=5&page=1"
+
+$data = Invoke-RestMethod -Uri $uri
+
+# Daten in der Konsole visualisieren
+$data | Select-Object name, symbol, current_price | Format-Table
+
+# ...
+```
