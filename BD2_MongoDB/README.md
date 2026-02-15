@@ -26,6 +26,8 @@
 - typische Fehler bei Setup und Verbindung beheben
 - einfache Big-Data-Use-Cases selbstständig umsetzen
 
+![BigData mit MongoDB](./x_gitres/powershell-mogodb-kpi.png)
+
 ## 1.2. Kontext & Nutzen von Mdbc (kurz)
 
 - **Mdbc** ist ein PowerShell‑Modul auf Basis des offiziellen MongoDB C#‑Treibers.
@@ -50,6 +52,8 @@ Empfohlen für den Kurs: PowerShell 7.x (Core) oder Windows PowerShell 5.1, Mong
   - `mongodb://localhost:27017`
 - **Rechte/Netzwerk**
   - Firewall/Port 27017 bzw. Atlas‑IP‑Allowlist korrekt; TLS/Authentifizierung je nach Umgebung. (Für Atlas+LDAP gab es Issues/Workarounds; siehe Referenz‑Thread.)
+
+![BigData mit MongoDB](./x_gitres/powershell-mdbc-etl.png)
 
 ## 1.4. Installation & erster Verbindungsaufbau
 

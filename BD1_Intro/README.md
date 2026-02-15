@@ -30,6 +30,8 @@ Dies umfasst **strukturierte**, **semi‑strukturierte** und **unstrukturierte D
 - Big Data sind **massive, komplexe Datensätze, die exponentiell wachsen** und nicht durch traditionelle Systeme verarbeitet werden können.
   - [smowl.net](https://smowl.net/en/blog/big-data-5v/)
 
+![BigData Übersicht](./x_gitres/bigdata-overview.png)
+
 ---
 
 ## 1.2. Die 5 Vs von Big Data
@@ -51,6 +53,8 @@ Dies umfasst **strukturierte**, **semi‑strukturierte** und **unstrukturierte D
   - Der eigentliche Nutzen liegt in den Erkenntnissen, die aus Daten gewonnen werden:
     - z.B. Prozessoptimierung, personalisierte Angebote, Prognosen.
 
+![BigData mit MongoDB](./x_gitres/bigdata.png)
+
 ---
 
 ## 1.3. ETL – Extract, Transform, Load
@@ -60,7 +64,7 @@ Dies umfasst **strukturierte**, **semi‑strukturierte** und **unstrukturierte D
 ETL ist ein Prozess, der Daten aus **verschiedenen Quellen** extrahiert, transformiert und anschliessend lädt – meist in ein **Data Warehouse oder Data Lake**.
 ETL ist ein zentraler Datenintegrationsprozess für Datenqualität, Analyse und Machine‑Learning‑Arbeitslasten.
 
-![Data warehouse](./x_gitres/data-warehouse.png)
+![Data warehouse](./x_gitres/bigdata-etl-process.png)
 
 ### 1.3.2. Warum ist ETL so wichtig?
 
@@ -149,7 +153,7 @@ Erklären Sie die fünf **V**s von Big Data jeweils in einem Satz mit einem eige
 
 **A2:**
 
-Beschreiben Sie die Schritte Extract, Transform, Load anhand eines Beispiels:
+Beschreiben Sie die Schritte **Extract**, **Transform**, **Load** anhand eines Beispiels:
 
 - "Ein Webshop möchte nächtlich alle Bestellungen in ein Data Warehouse übertragen, um daraus Verkaufsstatistiken zu erstellen."
 
