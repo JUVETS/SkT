@@ -34,16 +34,18 @@
 
 In einem Tag:
 
-- führt Walmart 24 Millionen Transaktionen aus
+- führt Walmart **24 Millionen** Transaktionen aus
 - werden 100 TB Daten bei Facebook hochgeladen
 - 175 Millionen Tweets werden auf Twitter gemacht
+
+[MongoDB](https://www.mongodb.com/)
 
 > **Wie werden solche Daten effizient gespeichert, ausgeführt und abgerufen?**
 
 ## 1.2. Was ist MongoDB?
 
-MongoDB ist eine dokumentenbasierte, verteilte **NoSQL-Datenbank**.
-Im Gegensatz zu SQL-Datenbanken arbeitet MongoDB mit J**SON-ähnlichen Dokumenten**, die flexibel und schemalos sind.
+**MongoDB** (abgeleitet vom engl. humongous, "gigantisch") ist eine dokumentenorientierte, verteilte **NoSQL-Datenbank**.
+Im Gegensatz zu SQL-Datenbanken arbeitet MongoDB mit **JSON-ähnlichen Dokumenten**, die flexibel und **schemalos** sind.
 
 Vorteile von MongoDB:
 
@@ -57,12 +59,13 @@ Vorteile von MongoDB:
 
 ![Logo](./x_gitres/mongodb-logo.jpg)
 
-- MongoDB ist eine Open-Source-Dokumentdatenbank und führende NoSQL-Datenbank.
-- MongoDB ist in C++ geschrieben.
-- MongoDB ist eine plattformübergreifende, dokumentenorientierte Datenbank, die hohe Leistung, hohe Verfügbarkeit und einfache Skalierbarkeit bietet.
-- Der schemalose Ansatz der dokumentenorientierten Datenbanken macht die Entwicklung flexibler.
-- MongoDB ist eine Dokumentendatenbank, die eine Sammlung verschiedene Dokumente enthält. Anzahl der Felder, Inhalt und Grösse des Dokuments kann von Dokument zu Dokument unterschiedlich sein.
-- Keine komplexe Join Operationen.
+- **MongoDB** ist eine Open-Source-Dokumentdatenbank und führende NoSQL-Datenbank.
+- **MongoDB** ist in C++ geschrieben.
+- **MongoDB** ist eine plattformübergreifende, **dokumentenorientierte** Datenbank, die hohe Leistung, hohe Verfügbarkeit und einfache Skalierbarkeit bietet.
+- Der **schemalose** Ansatz der **dokumentenorientierten** Datenbanken macht die Entwicklung flexibler.
+- MongoDB ist eine Dokumentendatenbank, die eine Sammlung verschiedener **JSON-ähnlichen Dokumente** enthält. Anzahl der Felder, Inhalt und Grösse des Dokuments kann von Dokument zu Dokument unterschiedlich sein.
+- Anwendungsdaten lassen sich auf natürlichere Weise modellieren, da die Daten in komplexen Hierarchien verschachtelt werden, dabei aber immer abfragbar und indizierbar bleiben.
+- Es braucht bei Abfragen **keine komplexe Join Operationen**.
 - Konvertierung / Mapping von Anwendungsobjekten zu Datenbankobjekten wird nicht benötigt.
 
 >**Tabellen haben ausgedient - Dokumente als Datensätze**
@@ -72,7 +75,7 @@ Vorteile von MongoDB:
 ### 1.4.1. Datenmodel (JSON)
 
 - MongoDB speichert Daten in Form von JSON-Dokumenten.
-- Diese werden in Sammlungen (Collections) organisiert, die wiederum Teil einer Datenbank sind.
+- Diese werden in **Sammlungen (Collections)** organisiert, die wiederum Teil einer Datenbank sind.
 
 Was ist ein JSON Dokument?
 
@@ -92,8 +95,8 @@ Was ist ein JSON Dokument?
 
 ### 1.4.2. Collections
 
-- Dokumente werden innerhalb von Collections gespeichert.
-- Collections sind Gruppen von irgendwie zusammenhängenden Dokumenten, die jedoch nicht dieselbe Struktur haben müssen.
+- Dokumente werden innerhalb von **Collections** gespeichert.
+- **Collections** sind Gruppen von irgendwie zusammenhängenden Dokumenten, die jedoch nicht dieselbe Struktur haben müssen.
 - Entwickler müssen das Schema der Datenbank nicht im Voraus kennen, sondern können es während der Entwicklung dynamisch ändern.
 - ![Collections](./x_gitres/mongodb-collections.png)
 - ![Collection Structure](./x_gitres/mongodb-collections-structure.png)
@@ -129,14 +132,14 @@ Dokumente enthalten verschiedene Datenstrukturen
 
 ## 1.5. ObjectId
 
-Die **ObjectId** in MongoDB ist ein einzigartiger, 12-Byte grosser Identifikator, der standardmässig von MongoDB für die Felder **_id** erzeugt wird, wenn kein eigener Wert bereitgestellt wird. 
+Die **ObjectId** in MongoDB ist ein einzigartiger, 12-Byte grosser Identifikator, der standardmässig von MongoDB für die Felder **_id** erzeugt wird, wenn kein eigener Wert bereitgestellt wird.
 Sie dient dazu, Dokumente eindeutig zu identifizieren.
 Die **ObjectId** ist ein zentraler Bestandteil von MongoDB, der sicherstellt, dass jedes Dokument **eindeutig identifizierbar** ist.
 Ihre integrierte Zeitstempel- und Maschinenkennung macht sie sowohl effizient als auch praktisch für viele Anwendungsfälle.
 
 ### 1.5.1. Aufbau der ObjectId
 
-Eine ObjectId besteht aus 12 Bytes, die in folgende Abschnitte unterteilt sind:
+Eine **ObjectId** besteht aus 12 Bytes, die in folgende Abschnitte unterteilt sind:
 
 - 4 Bytes: Unix-Timestamp (Sekunden seit dem 1. Januar 1970).
 - 5 Bytes: Maschinenkennung (Host-spezifische Informationen, wie z. B. die MAC-Adresse).
@@ -160,7 +163,7 @@ ObjectId("64af2b5c8f3a4d5e5c9d8e01")
 
 ## 1.6. _id Feld
 
-- Jedes in einer Collection gespeicherte Dokument benötigt ein eindeutiges **_id**-Feld, das als Primärschlüssel dient. 
+- Jedes in einer Collection gespeicherte Dokument benötigt ein eindeutiges **_id**-Feld, das als Primärschlüssel dient.
 - Das _id Feld wird automatisch indiziert. Suchanfragen mit der Angabe {`_id: <someval>`} beziehen sich auf den **_id**-Index .
 - Für _id kann auch einen anderen Datentyp als ObjectID verwenden werden.
 
@@ -177,7 +180,7 @@ Insgesamt sind nicht relationale Datenbanken darauf spezialisiert, unstrukturier
 
 ### 1.8.1. Embedding
 
-Bei der Einbettung werden verwandte Daten direkt in einem Dokument gespeichert. Dies eignet sich für Szenarien, in denen Daten häufig zusammen gelesen werden und eine starke Beziehung zwischen den Daten besteht.
+Bei der **Einbettung** werden verwandte Daten direkt in einem Dokument gespeichert. Dies eignet sich für Szenarien, in denen Daten häufig zusammen gelesen werden und eine starke Beziehung zwischen den Daten besteht.
 
 ```json
 {
@@ -201,7 +204,7 @@ Bei der Einbettung werden verwandte Daten direkt in einem Dokument gespeichert. 
 
 ### 1.8.2. Referencing
 
-Beim Referencing werden Daten in separaten Dokumenten gespeichert und durch Referenzen verknüpft. Dies eignet sich für Szenarien, in denen Daten modular und wiederverwendbar sein sollen.
+Beim **Referencing** werden Daten in separaten Dokumenten gespeichert und durch **Referenzen** verknüpft. Dies eignet sich für Szenarien, in denen Daten modular und wiederverwendbar sein sollen.
 
 ```json
 {
@@ -236,7 +239,7 @@ Beim Referencing werden Daten in separaten Dokumenten gespeichert und durch Refe
 - BSON steht für „**Binary JSON**“
 - Die binäre Struktur von **BSON** codiert Typ- und Längeninformationen, wodurch sie im Vergleich zu JSON viel **schneller** durchlaufen werden können.
 - **BSON** fügt einige **nicht-JSON-native Datentypen** hinzu, wie Datums- und Binärdaten
-- MongoDB speichert Daten sowohl intern als auch über das Netzwerk im BSON-Format
+- MongoDB speichert Daten sowohl intern als auch über das Netzwerk im **BSON-Format**
 
 ![JSON-BSON](./x_gitres/mongodb-json-bson.png)
 
@@ -298,4 +301,4 @@ Links
 
 **Aufgabe 2:**
 
-- Ermittle die Verbindungsinformation zum Cluster und versuche von der Shell (mongosh) und Compass Anwendung eine Verbindung zum Cluster einzurichten.
+- Ermittle die Verbindungsinformation zum Cluster und versuche von der Shell (`mongosh`) und Compass Anwendung eine Verbindung zum Cluster einzurichten.
