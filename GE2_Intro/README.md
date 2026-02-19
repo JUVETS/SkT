@@ -6,7 +6,7 @@
   - [1.1. Wer bin ich](#11-wer-bin-ich)
   - [1.2. Vorstellungsrunde](#12-vorstellungsrunde)
   - [1.3. Kursübersicht PowerShell](#13-kursübersicht-powershell)
-  - [1.4. Kursübersicht BigData / MongoDB](#14-kursübersicht-bigdata--mongodb)
+  - [1.4. Kursübersicht Big data/MongoDB](#14-kursübersicht-big-datamongodb)
   - [1.5. Prüfungen](#15-prüfungen)
   - [1.6. Unterricht](#16-unterricht)
   - [1.7. Regeln](#17-regeln)
@@ -69,32 +69,33 @@
   - Ausführungsrichtlinien
 
 - **PowerShell Programmiergrundlagen / Skripting**
-- Variablen, Array
-- Operatoren
-- Sprachkonstrukte
-- Funktionen, Filter
-- Module
+  - Variablen, Array
+  - Operatoren
+  - Sprachkonstrukte
+  - Funktionen, Filter
+  - Module
 
 ---
 
-## 1.4. Kursübersicht BigData / MongoDB
+## 1.4. Kursübersicht Big data/MongoDB
 
 - **NoSQL Datenbank / MongoDB**
   - Einführung NoSQL Datenbanksystem
   - CAP-Theorem
   - Hauptgruppen von NoSQL-Datenbanken
-  - Einführung MongoDB
+- **Einführung MongoDB**
   - MongoDB Shell (mongosh)
   - MongoDB Query
+- **Big data und ETL**
   - Einführung in Big Data \& ETL
-  - BigData mit PowerShell und MongoDB
+  - Big data mit PowerShell und MongoDB
 
 ---
 
 ## 1.5. Prüfungen
 
-- [PowerShell Theorie](./GE4_Exams/E-PowerShell-Theory.md)
-- [PowerShell Techniken](./GE4_Exams/E-PowerShell-Techniques.md)
+- [PowerShell Theorie Prüfng](./GE4_Exams/E-PowerShell-Theory.md)
+- [PowerShell Techniken Praxisarbeit](./GE4_Exams/E-PowerShell-Techniques.md)
 - [Projektarbeit](./GE4_Exams/E-Practical-Work.md)
 
 ---

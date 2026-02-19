@@ -284,8 +284,7 @@ Get-Help Get-Help -Online  # Online Hilfe im Browser
 
 **A5:**
 
-- Welche Eigenschaften von Diensten auf Ihrem Rechner kann das
-- Cmdlet `Get-Service` anzeigen?
+- Welche Eigenschaften von Diensten auf Ihrem Rechner kann das Cmdlet `Get-Service` anzeigen?
 
 **A6:**
 
