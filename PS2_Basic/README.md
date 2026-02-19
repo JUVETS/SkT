@@ -265,8 +265,8 @@ Get-Help Get-Help -Online  # Online Hilfe im Browser
 | **Auftrag**             | siehe unten                                    |
 | **Hilfsmittel**         | Google / ChatGPT usw.                          |
 | **Erwartete Resultate** | Präsentation                                   |
-| **Zeitbedarf**          | 40min (Arbeit)                                 |
-|                         | 5-10min (Präsentation)                         |
+| **Zeitbedarf**          | 40 min (Arbeit)                                |
+|                         | 5-10 min (Präsentation)                        |
 | **Lösungselemente**     | Markdown Dokument mit Code Beispielen          |
 
 **Aufgabe:**
@@ -289,9 +289,12 @@ Recherchieren Sie die folgenden Grundkonzepte von PowerShell und fassen Sie die 
 
 - Aufruf und Anzeigemöglichkeiten
 - Suchmöglichkeiten nach Befehlen (CmdLets)
+- Wieviele Befehle (CmdLets) gibt es?
 
 **Gruppe 4 - Syntax von PowerShell Befehlen (allgemein):**
 
 - Wie funktioniert PowerShell
 - Min. 3 wichtige Befehle
 - Befehlsparameter
+  - Wie kann die Syntax interpretiert werden?
+  - Welche allgemeine Parameter stehen zur Verfügung?
