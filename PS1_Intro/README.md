@@ -274,7 +274,7 @@ Get-Help about_*
 **A2:**
 
 - Rufen Sie die Hilfe für das Cmdlet `Get-Service` auf.
-  - Vergleichen Sie die Ausgabe, wenn Sie keine weiteren Parameter angeben mit der Ausgabe, die Sie jeweils bei zusätzlicher Eingabe es Parameters `-Detailed`, `-Full` bzw. `-Examples` erhalten.
+- Vergleichen Sie die Ausgabe, wenn Sie keine weiteren Parameter angeben mit der Ausgabe, die Sie jeweils bei zusätzlicher Eingabe es Parameters `-Detailed`, `-Full` bzw. `-Examples` erhalten.
 
 **A3:**
 
