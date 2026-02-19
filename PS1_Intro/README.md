@@ -266,6 +266,9 @@ Test die Hilfe wie folgt:
 ```powershell
 Get-Help Get-Help -Full
 Get-Help Get-Help -Online  # Online Hilfe im Browser
+
+# Infos zu Themen und Konzepten rund um PowerShell mit about... annzeigen
+Get-Help about_*
 ```
 
 **A2:**
