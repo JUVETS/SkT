@@ -187,7 +187,7 @@ Teste soweit möglich, dass alle Komponenten ohne Fehler ausgeführt werden und fu
 | **Zeitbedarf**      | 10 min                                     |
 | **Lösungselemente** |                                            |
 
-Erstelle einen GitHub Account. Verwende dabei wenn möglich eine IPSO E-Mail Adresse.
+Erstelle einen **GitHub** Account. Verwende dabei wenn möglich die E-Mail Adresse deiner Bildungsinstitution.
 Gehe dabei wie folgt vor:
 
 1. Gehe auf die Website
@@ -195,7 +195,7 @@ Gehe dabei wie folgt vor:
 2. Klicke auf **„Sign up“**
    1. Oben rechts auf der Startseite findest du die Schaltfläche „Sign up“ (Registrieren).
 3. Gib deine E-Mail-Adresse ein
-   1. Beispiel: <dein.name@student.ipso.ch>
+   1. Beispiel: <dein.name@schule.ch>
    2. ? Klicke dann auf **„Continue“**
 4. Wähle einen Benutzernamen
    1. Das ist dein öffentlicher Name auf GitHub, z.B. **codefan123**.
