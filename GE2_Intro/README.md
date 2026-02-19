@@ -94,9 +94,9 @@
 
 ## 1.5. Prüfungen
 
-- [PowerShell Theorie Prüfng](./GE4_Exams/E-PowerShell-Theory.md)
-- [PowerShell Techniken Praxisarbeit](./GE4_Exams/E-PowerShell-Techniques.md)
-- [Projektarbeit](./GE4_Exams/E-Practical-Work.md)
+- [PowerShell Theorie Prüfng](../GE4_Exams/E-PowerShell-Theory.md)
+- [PowerShell Techniken Praxisarbeit](../GE4_Exams/E-PowerShell-Techniques.md)
+- [Projektarbeit](../GE4_Exams/E-Practical-Work.md)
 
 ---
 

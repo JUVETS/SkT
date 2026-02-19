@@ -297,4 +297,4 @@ Recherchieren Sie die folgenden Grundkonzepte von PowerShell und fassen Sie die 
 - Min. 3 wichtige Befehle
 - Befehlsparameter
   - Wie kann die Syntax interpretiert werden?
-  - Welche allgemeine Parameter stehen zur Verfügung?
+  - Welche allgemeine bzw. Standard Parameter stehen zur Verfügung?
