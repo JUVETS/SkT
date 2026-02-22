@@ -1,10 +1,12 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 1
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 1
 
 - **[Modulübersicht / Handlungsziele](./../GE2_Intro/README.md)**
 - Übersicht / Einleitung
@@ -38,3 +40,17 @@
   - Cmdlet - Parameter
   - Hilfesystem
   - Praxis, Übungsaufgaben
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Lernziele u. Kompetenzen sind bekannt
+- [x] Prüfungsarbeiten und Termine sind bekannt
+- [x] Die PowerShell Arbeitsumgebung einzurichten
+- [x] Befehle mit PowerShell auszuführen
+- [x] Das Hilfesystem konsultieren und analysieren

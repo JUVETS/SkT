@@ -1,6 +1,6 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
 - [1. MongoDB Query](#1-mongodb-query)
   - [1.1. Dokumente suchen (Vergleichsoperatoren)](#11-dokumente-suchen-vergleichsoperatoren)

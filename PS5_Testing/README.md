@@ -1,6 +1,6 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
 - [1. Testing und Debugging](#1-testing-und-debugging)
   - [1.1. Lernziele](#11-lernziele)

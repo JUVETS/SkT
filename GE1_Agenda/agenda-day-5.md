@@ -1,10 +1,12 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 5
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 5
 
 - **[Einführung NoSQL Datenbanksysteme](../NS1_Basics/README.md)**
   - Warum NoSQL
@@ -51,3 +53,18 @@
   - Komplexe Queries (Stringsuche, Reguläre Ausdrücke)
   - Aggregation Framework
   - Übungsaufgaben
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Können den Sinn und Zweck von NoSQL Datenbank erläutern
+- [x] Kann Begriffe und Konzepte der NoSQL Datenbanken erläutern. (z.B. AP Theorem, BASE, ACID, Indexing Strukturen, Caching, Datenanalyse, Datawarehouse, FullText Search, Netzwerke, Testing).
+- [x] Kann ein vorgegebenes Datenmodell mit einer NoSQL Datenbank umsetzen.
+- [x] Kann den Einsatz einer NoSQL Datenbank kritisch hinterfragen und Verbesserungen vorschlagen
+- [x] Kann Probleme bei der Übernahme von Daten in eine NoSQL Datenbank erkennen undLösungen aufzeigen.
+- [x] Kann das Prinzip des Zugriffes bei einer NoSQL Datenbank erläutern. (z.B. Queries, Projections).

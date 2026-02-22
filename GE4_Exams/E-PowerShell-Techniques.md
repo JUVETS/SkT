@@ -1,6 +1,6 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
 - [1. Projektarbeit "Skriptingtechnik PowerShell"](#1-projektarbeit-skriptingtechnik-powershell)
   - [1.1. Organisation](#11-organisation)

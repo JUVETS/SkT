@@ -1,6 +1,6 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
 - [1. Hauptgruppen von NoSQL-Datenbanken](#1-hauptgruppen-von-nosql-datenbanken)
   - [1.1. Dokumentdatenbanken](#11-dokumentdatenbanken)

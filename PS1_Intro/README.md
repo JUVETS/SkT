@@ -1,6 +1,6 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
 - [1. PowerShell Einführung](#1-powershell-einführung)
   - [1.1. Was ist die Windows PowerShell](#11-was-ist-die-windows-powershell)

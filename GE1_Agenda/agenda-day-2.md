@@ -1,10 +1,12 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 2
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 2
 
 - **[PowerShell - Cmdlets/Pipeline](../PS2_Basic/Extend.md)**
   - Einführung in die objektbasierte Pipeline
@@ -37,3 +39,20 @@
   - Umgebungsvariablen
   - Sicherheit und sensible Werte
   - Praxis, Übungsaufgaben
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Die PowerShell Arbeitsumgebung einzurichten
+- [x] Befehle mit PowerShell auszuführen
+- [x] Das Hilfesystem konsultieren und analysieren
+- [x] Aufbau (Notation) der Cmdlets zu erläutern
+- [x] Ein Cmdlet per Hilfesystem zu erforschen
+- [x] Die verschiedenen Parametertypen zu unterscheiden
+- [x] Die Syntax eines Cmdlets korrekt zu interpretieren
+- [x] Das objektorientierte Pipelining korrekt einsetzen

@@ -1,10 +1,12 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 8
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 8
 
 - **[Präsentation der Projektarbeit](./../GE4_Exams/E-Practical-Work.md)**
   - Projektabgabe
@@ -21,3 +23,15 @@
   - Reflexion / Feedback
   - Lern- u. Handlungsziele
   - Ausblick
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Kann eine Projektarbeit strukturiert im vorgegebenen Zeitrahmen vollständig präsentieren
+- [x] Kann eine Projektarbeit vollständig korrekt über ein Portal hochladen und abgeben.
+- [x] Unterrichtsbewertung ist ausgefüllt.

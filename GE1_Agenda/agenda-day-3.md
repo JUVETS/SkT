@@ -1,10 +1,12 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 3
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 3
 
 - **[Powershell Kontrollstrukturen](../PS3_Script/README-controls.md)**
   - Bedingungen \& Vergleichsoperatoren
@@ -38,3 +40,19 @@
   - Fehlerabfangen
   - Fehlerauswerten
   - Praxis, Übungsaufgaben
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] PowerShell Skripte mit Parametern aufzurufen und einzusetzen.
+- [x] In PowerShell mit Variablen in verschiedenen Gültigkeitsbereichen typisiert anzuwenden.
+- [x] In PowerShell Variablenbedingungen, Zahlen und Arrays einzusetzen
+- [x] Funktionen zu schreiben und aufzurufen.
+- [x] Funktionen mit mehreren Parameter zu schreiben
+- [x] Pflichtparameter von Funktionen festzulegen
+- [x] Funktionen auslagern und mit Dot-Sourcing einzubinden

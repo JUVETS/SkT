@@ -1,10 +1,12 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
-# Agenda Tag 6
+---
 
-</br>
+![Agenda](../x_gitres/agenda.png)
+
+## Agenda Tag 6
 
 - **[Einführung in Big Data \& ETL](../BD1_Intro/README.md)**
   - Einführung BigData
@@ -18,3 +20,16 @@
   - Kontext \& Nutzen von Mdbc
   - Kern‑Cmdlets
   - Übungsaufgaben
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Kann Probleme bei der Übernahme von Daten in eine NoSQL Datenbank erkennen undLösungen aufzeigen.
+- [x] Kann eine Anbindung an eine NoSQL Datenbank implementieren. (z.B. PowerShell).
+- [x] Kann den ETL-Prozess erläutern
+- [x] Kann ein ETL-Prozess vollständig mit PowerShell implementieren
