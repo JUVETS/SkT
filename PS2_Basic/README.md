@@ -302,4 +302,4 @@ Recherchieren Sie die folgenden Grundkonzepte von PowerShell und fassen Sie die 
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](lincense.md) file for details.
+See [LICENSE](..\license.md) file for details.

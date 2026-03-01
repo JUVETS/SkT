@@ -297,4 +297,4 @@ Geben Sie mithilfe einer For Schleife die ganzen Vielfachen der Zahl 5 bis zum W
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](lincense.md) file for details.
+See [LICENSE](..\license.md) file for details.

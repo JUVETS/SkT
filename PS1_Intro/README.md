@@ -308,4 +308,4 @@ Finden Sie heraus, welche Eigenschaft Ihnen für das Cmdlet `Get-Module` Verfüg
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](lincense.md) file for details.
+See [LICENSE](..\license.md) file for details.

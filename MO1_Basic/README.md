@@ -306,4 +306,4 @@ Links
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](lincense.md) file for details.
+See [LICENSE](..\license.md) file for details.

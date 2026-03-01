@@ -594,4 +594,4 @@ In der Datei [launches.json](./x_gitres/launches.json) findest du die Raketensta
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](lincense.md) file for details.
+See [LICENSE](..\license.md) file for details.
