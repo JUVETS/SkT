@@ -22,6 +22,7 @@
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Installation u. Softwarevoraussetzungen / Tools](#21-installation-u-softwarevoraussetzungen--tools)
   - [2.2. GitHub Account erstellen](#22-github-account-erstellen)
+  - [2.3. Get Started with Atlas](#23-get-started-with-atlas)
 
 ---
 
@@ -84,10 +85,10 @@ Mit der Installation der PowerShell Extension unterstützt der Editor den komplet
 
 ### 1.3.1. Docker
 
-- MongoDB lässt sich effektiv in einem Docker-Container betreiben. 
-- Auf Docker Hub gibt es zwei Arten von MongoDB-Images: 
+- MongoDB lässt sich effektiv in einem Docker-Container betreiben.
+- Auf Docker Hub gibt es zwei Arten von MongoDB-Images:
   - die **Community Edition** und die **Enterprise Edition**.
-- Welche dieser beiden Varianten für Sie am besten geeignet ist, hängt von Ihren spezifischen Ansprüchen ab. 
+- Welche dieser beiden Varianten für Sie am besten geeignet ist, hängt von Ihren spezifischen Ansprüchen ab.
 - Die **Community Edition** wird typischerweise für nicht-kommerzielle Zwecke oder kleinere Bereitstellungen genutzt.
 
 - [Docker Hub](https://hub.docker.com/_/mongo)
@@ -124,11 +125,12 @@ Nachdem das Docker-Image für MongoDB erfolgreich heruntergeladen wurde, können S
 
 ### 1.3.6. Installation Shell u. Tools
 
-- Mongo Shell
+- **Mongo Shell**
+  - [Download MongoDB Shell, Windows, MSI](https://downloads.mongodb.com/compass/mongosh-2.7.0-x64.msi)
   - ![Shell Setup 1](./x_gitres/mongodb-setup-shell-1.png)
   - ![Shell Setup 2](./x_gitres/mongodb-setup-shell-2.png)
 
-- MongoDB Tools
+- **MongoDB Tools**
   - ![MongoDB Tools 1](./x_gitres/mongodb-setup-tools-1.png)
   - ![MongoDB Tools 2](./x_gitres/mongodb-setup-tools-2.png)
 
@@ -145,12 +147,10 @@ Nachdem das Docker-Image für MongoDB erfolgreich heruntergeladen wurde, können S
 - Die MongoDB-Shell ist der schnellste Weg zum Verbinden, Konfigurieren, Abfragen und Arbeiten mit Ihrer MongoDB-Datenbank.
 - Die Shell fungiert als Befehlszeilen-Client des MongoDB-Servers.
 
-- Shell starten
-  - `C:\>mongosh.exe`
-- Datenbanken anzeigen
-  - `test>show dbs`
-- Shell beenden
-  - `test> exit`
+- **Version**: `mongosh --version`
+- **Shell starten**: `C:\>mongosh.exe`
+- **Datenbanken anzeigen**: `test> show dbs`
+- **Shell beenden**: `test> exit`
 
 ---
 
@@ -213,3 +213,40 @@ Gehe dabei wie folgt vor:
 10. Fertig!
     1. Du wirst zu deinem GitHub-Dashboard weitergeleitet.
 11. Trage nun dein GitHub Benutzername im Class Notebook (Teams) bei Kursnotizen ein.
+
+---
+
+## 2.3. Get Started with Atlas
+
+| **Vorgabe**             | **Beschreibung**                                            |
+| :---------------------- | :---------------------------------------------------------- |
+| **Lernziele**           | Können einen Atlas-Cluster Zugang einrichten                |
+|                         | Können den Zugriff zum Cluster von lokalen Tools einrichten |
+|                         | Können in der MongoDB Shell Befehle ausführen               |
+| **Sozialform**          | Einzelarbeit                                                |
+| **Auftrag**             | siehe unten                                                 |
+| **Hilfsmittel**         | Internet                                                    |
+| **Erwartete Resultate** |                                                             |
+| **Zeitbedarf**          | 50 min                                                      |
+| **Lösungselemente**     | Atlas Account eingerichtet, Verbindungszeichenfolge         |
+
+**MongoDB Atlas** bietet eine einfache Möglichkeit, Ihre Daten in der Cloud zu hosten und zu verwalten.
+
+**Aufgabe 1:**
+
+- Der nachfolgenden Link führt zu einem Tutorial [Get Stared with Atlas (Atlas UI)](https://www.mongodb.com/docs/atlas/getting-started).
+- In diesem Tutorial kann ein **Atlas-Clusters** (free) erstellt und mit insgesamt 7 Schritten eingerichtet werden.
+- Arbeite dieses Tutorial komplett bis zum **Schritt 7** durch und stelle sicher, dass deine Zugangsdaten nicht verloren bzw. vergessen gehen.
+
+[Chapter 1, Atlas](https://www.mongodb.com/docs/guides/)
+
+**Aufgabe 2:**
+
+- Ermittle die Verbindungsinformation zum Cluster und versuche von der Shell (`mongosh`) und Compass Anwendung eine Verbindung zum Cluster einzurichten.
+- **Version prüfen**: `mongosh --version`
+- **Connection string**: `mongosh "mongodb+srv://cluster0.68xjc46.mongodb.net/" --apiVersion 1 --username <db_username> --password <password>`
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

@@ -33,3 +33,8 @@
 - [x] Kann eine Anbindung an eine NoSQL Datenbank implementieren. (z.B. PowerShell).
 - [x] Kann den ETL-Prozess erläutern
 - [x] Kann ein ETL-Prozess vollständig mit PowerShell implementieren
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

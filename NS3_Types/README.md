@@ -43,9 +43,9 @@
 ## 1.3. Spaltenorientierte Datenbanken
 
 - Speichern Daten in Spalten anstelle von Zeilen, was besonders für analytische Abfragen effizient ist.
-- Struktur wurde verändert. Daten werden Spaltenweise abgelegt (nicht zeilenorientierte Ablage). 
-- Vorteile bei Summen bilden. 
-- Spalten können auf unterschiedene Maschinen liegen. 
+- Struktur wurde verändert. Daten werden Spaltenweise abgelegt (nicht zeilenorientierte Ablage).
+- Vorteile bei Summen bilden.
+- Spalten können auf unterschiedene Maschinen liegen.
 - Datenbanken sind schemalos.
 - Beispiele:
   - Cassandra, HBase.
@@ -71,3 +71,8 @@
 ### 1.4.1. Beispiel Neo4j
 
 ![Graph](./x_gitres/nosql-graph-types-2.png)
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

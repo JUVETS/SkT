@@ -56,3 +56,8 @@
 - [x] Die verschiedenen Parametertypen zu unterscheiden
 - [x] Die Syntax eines Cmdlets korrekt zu interpretieren
 - [x] Das objektorientierte Pipelining korrekt einsetzen
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

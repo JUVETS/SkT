@@ -240,3 +240,8 @@ Baue dein Script (Log-Aufräumprozess) um:
 - Nutze Schleifen zur Verarbeitung mehrerer Dateien
 - Übergabe von Parametern
 - Rückgabewerte verwenden
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

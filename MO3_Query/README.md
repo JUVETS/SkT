@@ -590,3 +590,8 @@ In der Datei [launches.json](./x_gitres/launches.json) findest du die Raketensta
   - Alternativ:
     - Über `db.launches.drop()` kannst du die Collection auch komplett entfernen
     - Und dann z.B. über mongoimport neu importieren
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

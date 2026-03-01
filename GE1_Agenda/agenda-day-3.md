@@ -56,3 +56,8 @@
 - [x] Funktionen mit mehreren Parameter zu schreiben
 - [x] Pflichtparameter von Funktionen festzulegen
 - [x] Funktionen auslagern und mit Dot-Sourcing einzubinden
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

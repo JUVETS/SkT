@@ -35,3 +35,8 @@
 - [x] Kann eine Projektarbeit strukturiert im vorgegebenen Zeitrahmen vollständig präsentieren
 - [x] Kann eine Projektarbeit vollständig korrekt über ein Portal hochladen und abgeben.
 - [x] Unterrichtsbewertung ist ausgefüllt.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

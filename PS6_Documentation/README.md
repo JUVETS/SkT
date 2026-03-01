@@ -202,3 +202,8 @@ Füge deinem Skript eine vollständige Inline‑Hilfe hinzu, inkl. **.SYNOPSIS**
   Autor: <Name> | Version: <vX.Y.Z> | Lizenz: <Lizenz>
 #>
 ```
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

@@ -286,3 +286,8 @@ $data | Select-Object name, symbol, current_price | Format-Table
 
 # ...
 ```
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

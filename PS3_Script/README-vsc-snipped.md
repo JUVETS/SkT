@@ -43,3 +43,8 @@ Anschliessend kann der Standard-Dokumentations-Header über das entsprechende Sn
     }   
 }
 ```
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

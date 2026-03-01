@@ -270,3 +270,8 @@ Ergänzen Sie Ihr Beispiel mit ausführlichen Kommentaren im Code, sodass die Fu
 - Clear-Content
 - Get-Content
 - Set-Content
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

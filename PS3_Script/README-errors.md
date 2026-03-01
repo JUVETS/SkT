@@ -235,3 +235,8 @@ Schreibe ein Skript `Read-ImportantFile.ps1`, das eine Textdatei einliest (Pfad 
 
 - Bei fehlendem Pfad: terminierend abbrechen (sinnvolle Meldung).
 - Bei Erfolg: Exitcode 0, bei Fehler: Exitcode 1.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

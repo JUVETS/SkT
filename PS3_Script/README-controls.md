@@ -293,3 +293,8 @@ Programmieren Sie eine Schleife, die die Werte 10 bis 100 in Zehnerschritten aus
 
 **A5:**
 Geben Sie mithilfe einer For Schleife die ganzen Vielfachen der Zahl 5 bis zum Wert 100 aus.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

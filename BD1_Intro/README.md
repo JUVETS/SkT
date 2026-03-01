@@ -161,3 +161,8 @@ Beschreiben Sie die Schritte **Extract**, **Transform**, **Load** anhand eines B
 
 Warum benötigen klassische SQL‑Datenbanken bei Big Data Unterstützung durch Data Lakes?
 Unterschied Batch vs. Stream‑Processing?
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

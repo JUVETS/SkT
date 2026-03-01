@@ -112,3 +112,8 @@ Die Applikation hat sich aus einem Datenbeschaffungs- (Quelle), Archivierung- (p
 
 Termin für Konzeptabgabe: **21.06.2026, 14:00 Uhr, OpenOLAT (Ordner Studierende)**
 Termin für Projektabgabe: **25.06.2026, 23:59 Uhr, OpenOLAT (Ordner Studierende)**
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

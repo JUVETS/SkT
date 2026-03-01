@@ -366,3 +366,8 @@ Recherchiere die der Gruppe zugeteilten Methoden und erstelle eine kurze Befehls
 5. Wie greifst du auf eine einzelne Uni zu (per `ID`)?
 6. Wie können wir uns alle Universitäten aus einer bestimmten Stadt ausgeben lassen?
 7. Wie können wir eine Universität nachträglich umbenennen?
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

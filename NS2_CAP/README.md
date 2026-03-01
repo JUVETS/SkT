@@ -227,3 +227,8 @@ Vergleichen Sie die beiden Konsistenzmodelle **ACID** und **BASE** anhand der fo
   - Diskutieren Sie, wie **ACID** und **BASE** in Bezug auf Skalierbarkeit und Verfügbarkeit abschneiden. Welche Kompromisse müssen eingegangen werden?
 - **Beispiele:**
   - Geben Sie jeweils ein konkretes Beispiel für ein System oder eine Technologie, das/die **ACID** bzw. **BASE** verwendet.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

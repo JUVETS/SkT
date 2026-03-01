@@ -298,3 +298,8 @@ Recherchieren Sie die folgenden Grundkonzepte von PowerShell und fassen Sie die 
 - Befehlsparameter
   - Wie kann die Syntax interpretiert werden?
   - Welche allgemeine bzw. Standard Parameter stehen zur Verfügung?
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

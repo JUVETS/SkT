@@ -338,3 +338,8 @@ b) Lassen Sie den 6. Eintrag des Arrays anzeigen.
 
 Schreiben Sie für die Notendurchschnitt Berechnung ein Script, welches Sie zur Eingabe von Prüfungsnoten auffordert und danach die Durchschnittsnote ausgibt.
 Die Aufforderung zur Noteneingabe wird mit der Eingabe von 0 beendet.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

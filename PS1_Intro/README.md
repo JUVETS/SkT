@@ -304,3 +304,8 @@ Lesen Sie die vollständigen Hilfetexte zu den vorgestellten Get-Befehlen `Get-H
 **A8:**
 
 Finden Sie heraus, welche Eigenschaft Ihnen für das Cmdlet `Get-Module` Verfügung stehen.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

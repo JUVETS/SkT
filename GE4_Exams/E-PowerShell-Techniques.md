@@ -10,7 +10,7 @@
     - [1.4.1. PowerShell Remoting](#141-powershell-remoting)
     - [1.4.2. Verwendung von .NET-Klassen und COM-Klassen](#142-verwendung-von-net-klassen-und-com-klassen)
     - [1.4.3. Active Directory](#143-active-directory)
-    - [1.4.4. Entwicklung eigener Commandlets mit C#](#144-entwicklung-eigener-commandlets-mit-c)
+    - [1.4.4. Entwicklung eigener Commandlets mit C](#144-entwicklung-eigener-commandlets-mit-c)
     - [1.4.5. Datenbanken und grafische Benutzeroberflächen](#145-datenbanken-und-grafische-benutzeroberflächen)
 - [2. Bewertung](#2-bewertung)
 
@@ -79,7 +79,7 @@ In einzelnen Teams sollen folgende Powershell Techniken untersucht werden:
 - System.DirectoryServices
 - Verwaltung der Organisationseinheiten
 
-### 1.4.4. Entwicklung eigener Commandlets mit C#
+### 1.4.4. Entwicklung eigener Commandlets mit C #
 
 - Grundkonzept
 - Erstellung eines Commandlets mit Rückgabeobjekten
@@ -115,3 +115,8 @@ In einzelnen Teams sollen folgende Powershell Techniken untersucht werden:
 | **Abgabe der Arbeit**                                                        |     2      |
 | - Strukturiert und vollständig                                               |            |
 | **Total**                                                                    |   **12**   |
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

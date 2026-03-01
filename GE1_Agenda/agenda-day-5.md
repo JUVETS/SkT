@@ -68,3 +68,8 @@
 - [x] Kann den Einsatz einer NoSQL Datenbank kritisch hinterfragen und Verbesserungen vorschlagen
 - [x] Kann Probleme bei der Übernahme von Daten in eine NoSQL Datenbank erkennen undLösungen aufzeigen.
 - [x] Kann das Prinzip des Zugriffes bei einer NoSQL Datenbank erläutern. (z.B. Queries, Projections).
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

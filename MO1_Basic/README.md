@@ -302,3 +302,8 @@ Links
 **Aufgabe 2:**
 
 - Ermittle die Verbindungsinformation zum Cluster und versuche von der Shell (`mongosh`) und Compass Anwendung eine Verbindung zum Cluster einzurichten.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

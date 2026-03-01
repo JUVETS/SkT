@@ -123,3 +123,8 @@
 - Keine Ringtones während dem Unterricht
 - Keine Verpflegung im Klassenzimmer
 - Abfall entsorgen, keine Müllhalde
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

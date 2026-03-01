@@ -568,3 +568,8 @@ Mindestanforderungen
 - Sicherheitsabfrage vor Löschung
 
 > **Noch ohne Funktionen, Fokus auf Ablauf!**
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

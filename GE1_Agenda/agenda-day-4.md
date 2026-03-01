@@ -58,3 +58,8 @@
 - [x] Können neue Module erstellen
 - [x] Sie können benutzerdefinierte Objekte in PowerShell auf verschiedene Arten erstellen
 - [x] Sie kennen die Einsatzmöglichkeiten von benutzerdefinierten Objekten zur einfachen Verwaltung von strukturierten Daten.
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

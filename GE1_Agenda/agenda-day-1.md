@@ -54,3 +54,8 @@
 - [x] Die PowerShell Arbeitsumgebung einzurichten
 - [x] Befehle mit PowerShell auszuführen
 - [x] Das Hilfesystem konsultieren und analysieren
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

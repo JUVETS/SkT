@@ -208,3 +208,8 @@ Ermitteln Sie alle **wichtigen Informationen** über das Ihnen zugeteilte Datenp
 - Wide Column Stores
   - Cassandra (<http://cassandra.apache.org/>)
   - HBase (<http://hbase.apache.org/>)
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.

@@ -44,3 +44,8 @@ Funktionen und Abläufe mit Kontrollstrukturen (Sequenz, Selektion und Iteration
 16. Kann Daten sammeln, verarbeiten und analysieren
 17. Kann Skripting als Werkzeug für Datenverarbeitung einsetzen
 18. Kann einfache Massendaten automatisiert auswerten
+
+---
+
+© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
+See [LICENSE](lincense.md) file for details.
