@@ -48,29 +48,29 @@ Die Pipeline kann in 4 grundlegende Phasen unterteilt werden:
 4. Ausgabe / Aktion (z.B. Out-File, Export-CSV, Remove-Item, Set-Service)
 
 ```powershell
-Get-EventLog -LogName System `
-    | Where-Object { $_.EntryType -eq 'Error' } `
-    | Select-Object TimeGenerated, Source, Message `
-    | Out-File C:\Errors.txt
+Get-EventLog -LogName System | 
+  Where-Object { $_.EntryType -eq 'Error' } | 
+  Select-Object TimeGenerated, Source, Message | 
+  Out-File C:\Errors.txt
 ```
 
 Die Pipeline kann beliebig lang sein, d.h., die Anzahl der Cmdlets in einer einzigen Pipeline ist nicht begrenzt.
 Cmdlets müssen mit Pipeline-Operator getrennt werden
 
 ```powershell
-Get-EventLog -LogName System -After (Get-Date).AddDays(-7) `
-| Where-Object { $_.EntryType -eq "Error" } `
-| Sort-Object TimeGenerated -Descending `
-| Select-Object TimeGenerated, Source, EventID, Message -First 5 `
-| ConvertTo-Html -Title "Error Report" `
-| Out-File C:\errorreport.html
+Get-EventLog -LogName System -After (Get-Date).AddDays(-7) | 
+  Where-Object { $_.EntryType -eq "Error" } | 
+  Sort-Object TimeGenerated -Descending | 
+  Select-Object TimeGenerated, Source, EventID, Message -First 5 | 
+  ConvertTo-Html -Title "Error Report" ` | 
+  Out-File C:\errorreport.html
 ```
 
-- `Get-ChildItem` - ermittelt alle .doc Dateien im Ordner d:\daten
-- `Where-Object`  - Restriktion der Datenmenge mit Länge > 40000
-- `Select-Object` - Attribute Name u. Länge werden ausgewählt
-- `Sort-Object` - Elemente werden nach der Länge sortiert
-- `Format-List` - Ausgabe als Listendarstellung
+- `Get-EventLog`  - ermittelt alle System-Ereigniseinträge der letzten Woche
+- `Where-Object`  - Restriktion der Datenmenge mit Type = Error
+- `Sort-Object`   - Elemente werden nach der Zeit sortiert
+- `Select-Object` - Attribute Zeit, Quelle, Ereignis und Meldung werden ausgewählt
+- `Out-File`      - Ausgabe in errorreport.html Datei
 
 ## 1.1. Pipeline-Variablen
 
@@ -128,7 +128,9 @@ Cmdlet `Get-Unique` entfernt Duplikate aus einer Liste.
 > **Achtung: Die Liste muss vorher sortiert sein!**
 
 ```powershell
-1,5,7,8,5,7 | Sort-Object | Get-Unique 
+1,5,7,8,5,7 | 
+  Sort-Object | 
+  Get-Unique 
 ```
 
 ## 1.7. Group-Object - Gruppierung
@@ -137,7 +139,8 @@ Mit `Group-Object` kann man Objekte in der Pipeline nach Eigenschaften gruppiere
 Dienste werden nach Ihrem Status gruppiert ausgegeben:
 
 ```powershell
-Get-Service | Group-Object status 
+Get-Service | 
+  Group-Object status 
 ```
 
 ## 1.8. Measure-Object - Berechnungen
@@ -146,7 +149,7 @@ Mit `Measure-Object` lassen sich verschiedene Berechnungen von Objekteigenschaft
 Ohne Parameter liefert das Measure-Object nur die Anzahl. Die weiteren Berechnungen wie min, max, etc. müssen explizit angegeben werden.
 
 ```powershell
-Get-ChildItem c:\windows|
+Get-ChildItem c:\windows |
   Measure-Object -Property length -min -max -average -sum 
 ```
 
@@ -159,7 +162,8 @@ Beim Aufruf von Methoden müssen zwingend die runden Klammern angegeben werden.
 Hier wird die Kill()-Methode aufgerufen.
 
 ```powershell
-Get-Process iexplore | Foreach-Object { $_.Kill() } 
+Get-Process iexplore | 
+  Foreach-Object { $_.Kill() } 
 ```
 
 ---
@@ -185,37 +189,37 @@ Get-Process iexplore | Foreach-Object { $_.Kill() }
 |                         | Bei jeder Lösung ist die Aufgaben Nr. zu versehen (Kommentar)                                             |
 
 **A1:**
-Beende durch Aufruf der Methode Kill() alle Prozesse, die „chrome“ heissen, wobei die Gross/Kleinschreibung des Prozessnamens irrelevant ist.
+Beende durch Aufruf der Methode `Kill()` alle Prozesse, die **„chrome“** heissen, wobei die Gross/Kleinschreibung des Prozessnamens irrelevant ist.
 
 **A2:**
-Sortiere die Prozesse, die das Wort „chrome“ im Namen tragen, gemäss ihrer CPU-Nutzung und beende den Prozess, der in der aufsteigenden Liste der CPU-Nutzung am weitesten unten steht (also am meisten Rechenleistung verbraucht).
+Sortiere die Prozesse, die das Wort **„chrome“** im Namen tragen, gemäss ihrer CPU-Nutzung und beende den Prozess, der in der aufsteigenden Liste der CPU-Nutzung am weitesten unten steht (also am meisten Rechenleistung verbraucht).
 
 **A3:**
-Gib die Summe der Speichernutzung aller Prozesse aus.
+Gib die **Summe** der Speichernutzung aller **Prozesse** aus.
 
 **A4:**
-Gruppiere die Einträge im System-Ereignisprotokoll nach Benutzernamen.
+**Gruppiere** die Einträge im **System-Ereignisprotokoll** nach **Benutzernamen**.
 
 **A5:**
-Zeige die letzten zehn Einträge im System-Ereignisprotokoll.
+Zeige die letzten zehn Einträge im **System-Ereignisprotokoll**.
 
 **A6:**
-Zeige für die letzten zehn Einträge im System-Ereignisprotokoll die Quelle an.
+Zeige für die letzten **zehn Einträge im System-Ereignisprotokoll** die Quelle an.
 
 **A7:**
-Importiere die Textdatei test.txt, wobei die Textdatei als eine CSV-Datei mit dem Semikolon als Trennzeichen zu interpretieren ist und die erste Zeile die Spaltennamen enthalten muss.
-Zeige daraus die Spalten ID und Url. Die test.txt Datei muss von Ihnen erstellt werden.
+Importiere die Textdatei `test.csv`, wobei die Textdatei als eine CSV-Datei mit dem **Semikolon** als Trennzeichen zu interpretieren ist und die erste Zeile die Spaltennamen enthalten muss.
+Zeige daraus die Spalten `ID` und `Url`. Die `test.csv` Datei muss von Ihnen erstellt werden.
 
 **A8:**
-Ermittle aus dem Verzeichnis System32 alle Dateien, die mit dem Buchstaben **„a“** beginnen.
-Beschränke die Menge auf diejenigen Dateien, die grösser als 40000 Byte sind, und gruppiere die Ergebnismenge nach Dateinamenerweiterungen.
-Sortiere die gruppierte Menge nach dem Namen der Dateierweiterung.
+Ermittle aus dem Verzeichnis **System32** alle Dateien, die mit dem Buchstaben **„a“** beginnen.
+Beschränke die Menge auf diejenigen Dateien, die grösser als **40000 Byte** sind, und **gruppiere** die Ergebnismenge nach Dateinamenerweiterungen.
+**Sortiere** die gruppierte Menge nach dem Namen der **Dateierweiterung**.
 
 **A9:**
-Ermittle aus dem Verzeichnis System32 alle Dateien, die mit dem Buchstaben **„b“** beginnen.
-Beschränke die Menge auf diejenigen Dateien, die grösser als 40000 Byte sind, und gruppiere die Ergebnismenge nach Dateierweiterungen.
-Sortiere die Gruppen nach der Anzahl der Einträge absteigend und beschränke die Menge auf das oberste Element.
-Gib für alle Mitglieder dieser Gruppe die Attribute Name und Length aus und passe die Spaltenbreite automatisch an.
+Ermittle aus dem Verzeichnis **System32** alle Dateien, die mit dem Buchstaben **„b“** beginnen.
+Beschränke die Menge auf diejenigen Dateien, die **grösser als 40000 Byte** sind, und **gruppiere** die Ergebnismenge nach **Dateierweiterungen**.
+**Sortiere** die Gruppen nach der Anzahl der Einträge absteigend und beschränke die Menge auf das **oberste Element**.
+Gib für alle Mitglieder dieser Gruppe die Attribute **Name** und **Length** aus und passe die Spaltenbreite automatisch an.
 
 ---
 
@@ -236,7 +240,7 @@ Gib für alle Mitglieder dieser Gruppe die Attribute Name und Length aus und pas
 |                         | 5-10min (Präsentation)                                                                                    |
 | **Lösungselmente**      | Eine Skript Datei mit vollständigen Lösungen                                                              |
 
-Analysieren Sie den Einsatz der aufgeführten Cmdlets und programmieren Sie ein Beispiel, welches Sie im Anschluss der Klasse präsentieren.
+Analysieren Sie den Einsatz der aufgeführten **Cmdlets** und programmieren Sie ein Beispiel, welches Sie im Anschluss der Klasse präsentieren.
 
 Ergänzen Sie Ihr Beispiel mit ausführlichen Kommentaren im Code, sodass die Funktionsweise des Cmdlets von Ihren Kollegen gut verstanden wird.
 
