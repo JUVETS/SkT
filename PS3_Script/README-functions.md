@@ -14,6 +14,7 @@
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Funktionen implementieren](#21-funktionen-implementieren)
   - [2.2. Aufgabe - Log-Aufräumprozess erweitert](#22-aufgabe---log-aufräumprozess-erweitert)
+  - [2.3. Lotto Statistik Generator](#23-lotto-statistik-generator)
 
 </br>
 
@@ -240,6 +241,57 @@ Baue dein Script (Log-Aufräumprozess) um:
 - Nutze Schleifen zur Verarbeitung mehrerer Dateien
 - Übergabe von Parametern
 - Rückgabewerte verwenden
+
+---
+
+## 2.3. Lotto Statistik Generator
+
+| **Vorgabe**             | **Beschreibung**                         |
+| :---------------------- | :--------------------------------------- |
+| **Lernziele**           | Variablen gezielt einsetzen              |
+|                         | HashTables nutzen                        |
+|                         | Datenaggregation durchführen             |
+|                         | Korrekte Dokumention (Header u. Code)    |
+| **Sozialform**          | Einzelarbeit                             |
+| **Hilfsmittel**         |                                          |
+| **Erwartete Resultate** |                                          |
+| **Zeitbedarf**          | 40 min                                   |
+| **Lösungselemente**     | PowerShell Datei mit sämtlichen Lösungen |
+
+**Ausgangslage:**
+
+Die Lotteriegesellschaft möchte ein kleines Tool entwickeln lassen, mit dem **zufällige Lottozahlen nach dem Schweizer Lotto-System generiert werden können**.
+
+Beim Schweizer Lotto werden:
+
+- **6 Hauptzahlen aus dem Bereich 1–42**
+- **1 Glückszahl aus dem Bereich 1–6**
+
+gezogen.
+
+**A1:**
+Erweitere das Programm **"Lottozahlen"** um die nachfolgenden statistischen Auswertungen und strukturiere es mit mehreren Funktionen:
+
+- 1000 Ziehungen simulieren
+- Statistik berechnen:
+  - Häufigkeit jeder Zahl
+  - häufigste Zahl
+  - seltenste Zahl
+- Resultat ausgeben
+
+**Beispiel:**
+
+Häufigkeit der Zahlen
+
+```console
+1  : 145
+2  : 132
+...
+42 : 119
+
+Häufigste Zahl : 17
+Seltenste Zahl : 4
+```
 
 ---
 

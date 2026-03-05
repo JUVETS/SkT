@@ -28,6 +28,7 @@
   - [1.15. Reguläre Ausdrücke](#115-reguläre-ausdrücke)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Skript erstellen - Pfad prüfen](#21-skript-erstellen---pfad-prüfen)
+  - [2.2. Lottozahlen ermitteln](#22-lottozahlen-ermitteln)
 
 # 1. Powershell-Variablen
 
@@ -338,6 +339,46 @@ b) Lassen Sie den 6. Eintrag des Arrays anzeigen.
 
 Schreiben Sie für die Notendurchschnitt Berechnung ein Script, welches Sie zur Eingabe von Prüfungsnoten auffordert und danach die Durchschnittsnote ausgibt.
 Die Aufforderung zur Noteneingabe wird mit der Eingabe von 0 beendet.
+
+---
+
+## 2.2. Lottozahlen ermitteln
+
+| **Vorgabe**             | **Beschreibung**                                                                                               |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------- |
+| **Lernziele**           | Die Teilnehmer sind in der Lage, in Skript Dateien Variablen für Objekte und Objektmengen korrekt einzusetzen. |
+|                         | Sie kennen die mathematischen Operatoren und können diese in Berechnungen korrekt anwenden.                    |
+| **Sozialform**          | Einzelarbeit                                                                                                   |
+| **Hilfsmittel**         |                                                                                                                |
+| **Erwartete Resultate** |                                                                                                                |
+| **Zeitbedarf**          | 30 min                                                                                                         |
+| **Lösungselemente**     | PowerShell Datei mit sämtlichen Lösungen                                                                       |
+
+**Ausgangslage:**
+
+Die Lotteriegesellschaft möchte ein kleines Tool entwickeln lassen, mit dem **zufällige Lottozahlen nach dem Schweizer Lotto-System generiert werden können**.
+
+Beim Schweizer Lotto werden:
+
+- **6 Hauptzahlen aus dem Bereich 1–42**
+- **1 Glückszahl aus dem Bereich 1–6**
+
+gezogen.
+
+**A1:**
+
+- Die Zahlen müssen **zufällig generiert**, sortiert und **strukturiert ausgegeben** werden.
+- Zur Umsetzung soll ein **PowerShell-Skript** entwickelt werden.
+
+**A2:**
+
+Speichere die generierten Zahlen zusätzlich in eine Datei (z.B. `lottozahlen.csv`)
+
+```console
+Ziehung;Zahlen;Glueckszahl
+1;3,7,12,18,24,41;4
+2;1,8,14,19,22,35;2
+```
 
 ---
 
