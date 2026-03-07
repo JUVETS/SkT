@@ -383,6 +383,20 @@ Ziehung;Zahlen;Glueckszahl
 2;1,8,14,19,22,35;2
 ```
 
+**A3: (optional):**
+
+- Speichere die generierten Zahlen anstelle der CSV-Datei in einer **Sqlite-Datenbank** ab.
+- Verwende hierfür das Modul **`PSSQLite`**
+
+Gehe dabei wie folgt vor:
+
+- `Install-Module -Name PSSQLite -Scope AllUsers` **# Als Adminsitrator ausführen**
+- Verwende für die SQL-Queries das Cmdlet `Invoke-SqliteQuery`
+  - Beispiel: `Invoke-SqliteQuery -DataSource $dbPath -Query $createTableQuery`
+- Erstelle per Skript die Tabelle `lotto` mit den jeweiligend Spalten (`create table lotto ...`)
+- Füge die generierte Daten in die `lotto` Tabelle ein (`insert into`)
+- Führe eine Abfrage aus, die alle erfassten Lottozahlen ausgibt (`select .. from lotto`)
+
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
