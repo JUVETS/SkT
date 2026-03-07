@@ -13,8 +13,9 @@
   - [1.8. Measure-Object - Berechnungen](#18-measure-object---berechnungen)
   - [1.9. Methoden ausführen](#19-methoden-ausführen)
 - [2. Aufgaben](#2-aufgaben)
-  - [2.1. PowerShell Pipelining](#21-powershell-pipelining)
-  - [2.2. Gruppenarbeit Cmdlets](#22-gruppenarbeit-cmdlets)
+  - [2.1. PowerShell Pipelining (einfach)](#21-powershell-pipelining-einfach)
+  - [2.2. PowerShell Pipelining (schwer)](#22-powershell-pipelining-schwer)
+  - [2.3. Gruppenarbeit Cmdlets](#23-gruppenarbeit-cmdlets)
 
 </br>
 
@@ -172,7 +173,65 @@ Get-Process iexplore |
 
 # 2. Aufgaben
 
-## 2.1. PowerShell Pipelining
+## 2.1. PowerShell Pipelining (einfach)
+
+| **Vorgabe**             | **Beschreibung**                                                                                          |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------- |
+| **Lernziele**           | Die Teilnehmer sind in der Lage, in Skript Dateien Powershell Cmdlets mit Pipelining korrekt einzusetzen. |
+|                         | Sie können die Online Hilfe nutzen                                                                        |
+|                         | Sie verstehen die Syntax von PowerShell                                                                   |
+| **Sozialform**          | Einzelarbeit                                                                                              |
+| **Auftrag**             | siehe unten                                                                                               |
+| **Hilfsmittel**         | Google / ChatGPT usw.                                                                                     |
+| **Erwartete Resultate** | Präsentation                                                                                              |
+| **Zeitbedarf**          | 40min (Arbeit)                                                                                            |
+|                         | 5-10min (Präsentation)                                                                                    |
+| **Lösungselmente**      | Eine Skript Datei mit vollständigen Lösungen                                                              |
+|                         | Bei jeder Lösung ist die Aufgaben Nr. zu versehen (Kommentar)                                             |
+
+**A1:**
+
+Zeigen Sie alle Dienste an, die mit dem Buchstaben **s** beginnen, aber **beendet (stopped)** sind.
+
+**A2:**
+
+**Sortieren** Sie den Verzeichnisinhalt des **Windows**-Verzeichnisses (nur Dateien) **absteigend nach Grösse** und exportieren das Ergebnis in die CSV-Datei `dateien.csv` im aktuellen Verzeichnis.
+
+**A3:**
+Es liegen drei Dateien vor:
+
+- `prozesse1.csv`
+- `prozesse2.csv`
+- `prozesse3.csv`
+
+Die Dateien wurden mit folgenden Befehlen erstellt:
+`Get-Process | Export-Csv -Path .\prozesse1.csv`
+`Get-Process | Export-Csv -Path .\prozesse2.csv -Delimiter ";"`
+`Get-Process | Export-Csv -Path .\prozesse3.csv -UseCulture`
+
+Welche **Unterschiede** weisen die Dateien 1., 2. und 3. auf?
+Was ist der **Unterschied** zwischen den Dateien 2. und 3.?
+
+**A4:**
+
+- Wie viele Dateien mit der Erweiterung **.exe (extension)** weist Ihr Windows-Verzeichnis auf?
+- Wie **gross** sind diese Dateien insgesamt und durchschnittlich?
+
+**A5:**
+
+a)
+
+- Rufen Sie **zehnmal** die Anwendung **notepad.exe** auf
+
+b)
+
+- Lassen Sie sich die **zehn laufenden Prozesse** anzeigen und beenden sie dann.
+
+---
+
+</br>
+
+## 2.2. PowerShell Pipelining (schwer)
 
 | **Vorgabe**             | **Beschreibung**                                                                                          |
 | :---------------------- | :-------------------------------------------------------------------------------------------------------- |
@@ -225,7 +284,7 @@ Gib für alle Mitglieder dieser Gruppe die Attribute **Name** und **Length** aus
 
 </br>
 
-## 2.2. Gruppenarbeit Cmdlets
+## 2.3. Gruppenarbeit Cmdlets
 
 | **Vorgabe**             | **Beschreibung**                                                                                          |
 | :---------------------- | :-------------------------------------------------------------------------------------------------------- |

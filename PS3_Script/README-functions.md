@@ -5,16 +5,20 @@
 - [1. Powershell-Funktionen](#1-powershell-funktionen)
   - [1.1. Lernziele](#11-lernziele)
   - [1.2. Warum Funktionen?](#12-warum-funktionen)
-  - [1.3. Grundaufbau einer Funktion](#13-grundaufbau-einer-funktion)
-  - [1.4. Parameter \& Validierungen](#14-parameter--validierungen)
-  - [1.5. Advanced Functions („Cmdlet‑ähnlich“)](#15-advanced-functions-cmdletähnlich)
-  - [1.6. Rückgabewerte](#16-rückgabewerte)
-  - [1.7. Scopes in Funktionen – wichtige Regeln](#17-scopes-in-funktionen--wichtige-regeln)
-  - [1.8. Naming Best Practices](#18-naming-best-practices)
+  - [1.3. Funktionsbereich](#13-funktionsbereich)
+  - [1.4. Grundaufbau einer Funktion](#14-grundaufbau-einer-funktion)
+  - [1.5. Parameterblock param](#15-parameterblock-param)
+  - [1.6. Parameter \& Validierungen](#16-parameter--validierungen)
+  - [1.7. Advanced Functions („Cmdlet‑ähnlich“)](#17-advanced-functions-cmdletähnlich)
+  - [1.8. Rückgabewerte](#18-rückgabewerte)
+  - [1.9. Scopes in Funktionen – wichtige Regeln](#19-scopes-in-funktionen--wichtige-regeln)
+  - [1.10. Naming Best Practices](#110-naming-best-practices)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Funktionen implementieren](#21-funktionen-implementieren)
   - [2.2. Aufgabe - Log-Aufräumprozess erweitert](#22-aufgabe---log-aufräumprozess-erweitert)
   - [2.3. Lotto Statistik Generator](#23-lotto-statistik-generator)
+
+---
 
 </br>
 
@@ -32,7 +36,7 @@
 
 ## 1.2. Warum Funktionen?
 
-Funktionen sind wiederverwendbare Bausteine, die …
+**Funktionen** sind wiederverwendbare Bausteine, die …
 
 - Code strukturieren,
 - Fehlerquellen reduzieren,
@@ -40,7 +44,20 @@ Funktionen sind wiederverwendbare Bausteine, die …
 - Wiederverwendung ermöglichen,
 - Testbarkeit erleichtern.
 
-## 1.3. Grundaufbau einer Funktion
+## 1.3. Funktionsbereich
+
+Mit Funktionen kann ein Skript strukturiert und die Wiederverwendbarkeit und Lesbarkeit erhöht werden.
+
+```powershell
+function Write-Log {
+    param([string]$Message)
+
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    "$timestamp - $Message" | Out-File ".\script.log" -Append
+}
+```
+
+## 1.4. Grundaufbau einer Funktion
 
 ```powershell
 
@@ -61,7 +78,29 @@ function Say-Hello {
 Say-Hello -Name "Max"
 ```
 
-## 1.4. Parameter & Validierungen
+## 1.5. Parameterblock param
+
+Damit Skripte flexibel werden, nutzt man `param()`:
+
+Vorteile von Skript mit Parametern (`param()`):
+
+- Skript ist anpassbar ohne Codeänderung
+- Skript wird wiederverwendbar
+- Inputs validierbar
+
+```powershell
+param (
+    [Parameter(Mandatory)]
+    [string]$SourcePath,
+
+    [Parameter()]
+    [string]$DestinationPath = "C:\Archive",
+
+    [switch]$VerboseMode
+)
+```
+
+## 1.6. Parameter & Validierungen
 
 Parameter ermöglichen es, Funktionen flexibel zu gestalten.
 
@@ -92,7 +131,7 @@ function Backup-Folder {
 }
 ```
 
-## 1.5. Advanced Functions („Cmdlet‑ähnlich“)
+## 1.7. Advanced Functions („Cmdlet‑ähnlich“)
 
 Mit `[CmdletBinding()]` wird eine Funktion wie ein echtes Cmdlet behandelt:
 
@@ -115,7 +154,7 @@ function Get-UserInfo {
 "max","anna" | Get-UserInfo -Verbose
 ```
 
-## 1.6. Rückgabewerte
+## 1.8. Rückgabewerte
 
 `return <wert>` beendet Funktion + gibt Wert zurück
 
@@ -127,7 +166,7 @@ function Add-Numbers {
 }
 ```
 
-## 1.7. Scopes in Funktionen – wichtige Regeln
+## 1.9. Scopes in Funktionen – wichtige Regeln
 
 PowerShell kennt folgende Scopes:
 
@@ -144,7 +183,7 @@ function Increase-Counter {
 }
 ```
 
-## 1.8. Naming Best Practices
+## 1.10. Naming Best Practices
 
 - CmdletStyle: Verb‑Noun verwenden
 - Kein „SetX“ → besser „Set‑Config“, „Add‑User“

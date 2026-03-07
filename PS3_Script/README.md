@@ -1,6 +1,6 @@
-|                             |                               |                                 |
-| --------------------------- | ----------------------------- | ------------------------------- |
-| **Techniker HF Informatik** | **Kurs Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
+|                             |                          |                                 |
+| --------------------------- | ------------------------ | ------------------------------- |
+| **Techniker HF Informatik** | **Scripting / Big data** | ![Logo](./../x_gitres/logo.png) |
 
 - [1. PowerShell Scripting](#1-powershell-scripting)
   - [1.1. Lernziele](#11-lernziele)
@@ -9,9 +9,7 @@
     - [1.3.1. Editoren](#131-editoren)
   - [1.4. Grundaufbau eines PowerShell-Skripts](#14-grundaufbau-eines-powershell-skripts)
     - [1.4.1. Header / Kommentarblock](#141-header--kommentarblock)
-    - [1.4.2. Parameterblock](#142-parameterblock)
-    - [1.4.3. Funktionsbereich](#143-funktionsbereich)
-    - [1.4.4. Skriptlogik / Ablauf](#144-skriptlogik--ablauf)
+    - [1.4.2. Skriptlogik / Ablauf](#142-skriptlogik--ablauf)
   - [1.5. Mehrzeiliger Befehl](#15-mehrzeiliger-befehl)
     - [1.5.1. Fehlermanagement](#151-fehlermanagement)
     - [1.5.2. PowerShell-Skripte speichern](#152-powershell-skripte-speichern)
@@ -21,10 +19,10 @@
   - [1.7. Parameter für Skripte](#17-parameter-für-skripte)
     - [1.7.1. Beispiel](#171-beispiel)
   - [1.8. Sicherheit](#18-sicherheit)
-  - [Wichtige Skripteinstellungen](#wichtige-skripteinstellungen)
-    - [set-psdebug - Debugfingfunktionen](#set-psdebug---debugfingfunktionen)
-    - [set-strictmode - Codierungsregeln](#set-strictmode---codierungsregeln)
-  - [1.9. Vollständiges Demo-Skript](#19-vollständiges-demo-skript)
+  - [1.9. Wichtige Skripteinstellungen](#19-wichtige-skripteinstellungen)
+    - [1.9.1. set-psdebug - Debugfingfunktionen](#191-set-psdebug---debugfingfunktionen)
+    - [1.9.2. set-strictmode - Codierungsregeln](#192-set-strictmode---codierungsregeln)
+  - [1.10. Vollständiges Demo-Skript](#110-vollständiges-demo-skript)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Alter Berechnung](#21-alter-berechnung)
   - [2.2. Systeminformationen](#22-systeminformationen)
@@ -60,7 +58,7 @@ Diese Skripte sind reine Textdateien und haben die Dateinamenerweiterung.
 "Datum: " + (Get-Date).ToShortDateString()
 "Zeit: " + (Get-Date).ToLongTimeString()
 "Anzahl laufender Prozesse: " + (Get-Process).Count
-"Anzahl gestarteter Dienste: " + (Get-Service | 
+"Anzahl gestarteter Dienste: " + (Get-Service -ErrorAction SilentlyContinue | 
                                     Where-Object { $_.Status -eq "running"}).Count
 ```
 
@@ -120,42 +118,7 @@ Hilfe in Windows PowerShell kann vor Beginn einer Funktion innerhalb des Komment
 $services = Get-Service   # holt die gestarteten Dienste 
 ```
 
-### 1.4.2. Parameterblock
-
-Damit Skripte flexibel werden, nutzt man `param()`:
-
-Vorteile von Skript mit Parametern (`param()`):
-
-- Skript ist anpassbar ohne Codeänderung
-- Skript wird wiederverwendbar
-- Inputs validierbar
-
-```powershell
-param (
-    [Parameter(Mandatory)]
-    [string]$SourcePath,
-
-    [Parameter()]
-    [string]$DestinationPath = "C:\Archive",
-
-    [switch]$VerboseMode
-)
-```
-
-### 1.4.3. Funktionsbereich
-
-Mit Funktionen kann ein Skript strukturiert und die Wiederverwendbarkeit und Lesbarkeit erhöht werden.
-
-```powershell
-function Write-Log {
-    param([string]$Message)
-
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    "$timestamp - $Message" | Out-File ".\script.log" -Append
-}
-```
-
-### 1.4.4. Skriptlogik / Ablauf
+### 1.4.2. Skriptlogik / Ablauf
 
 Hier wird das eigentliche Verhalten umgesetzt:
 
@@ -298,9 +261,9 @@ Get-ExecutionPolicy   # Status prüfen
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass  # temporär erlauben (empfohlen für Schulungen!)
 ```
 
-## Wichtige Skripteinstellungen
+## 1.9. Wichtige Skripteinstellungen
 
-### set-psdebug - Debugfingfunktionen
+### 1.9.1. set-psdebug - Debugfingfunktionen
 
 ```powershell
 # set-psdebug aktiviert/deaktiviert Debuggingfunktionen
@@ -308,7 +271,7 @@ set-psdebug -off                  # Deaktiviert alle Skript-Debuggingfunktionen
 set-psdebug -strict               # Fehler, wenn auf eine Variable verwiesen wird, bevor ihr ein Wert zugewiesen wurde
 ```
 
-### set-strictmode - Codierungsregeln
+### 1.9.2. set-strictmode - Codierungsregeln
 
 ```powershell
 # set-strictmode falls Codierungsregeln gebrochen werden bricht der Skript ab
@@ -317,7 +280,7 @@ set-strictmode -version latest    # Bevorzugt! Verhindert u.a. Verweise auf nich
 #endregion
 ```
 
-## 1.9. Vollständiges Demo-Skript
+## 1.10. Vollständiges Demo-Skript
 
 ```powershell
 <#
@@ -380,11 +343,11 @@ exit 0
 | **Zeitbedarf**          | 15min                                                                                             |
 | **Lösungselemente**     | Lauffähiger Skript                                                                                |
 
-Schreiben Sie ein Skript welches Sie zur Eingabe des Geburtsdatums auffordert und danach Ihre Alter in Tage, Stunden, Minuten und Sekunden berechnet und in der Konsole ausgibt.
+Schreiben Sie ein Skript welches Sie zur Eingabe des **Geburtsdatums** auffordert und danach Ihre **Alter in Tage, Stunden, Minuten und Sekunden berechnet** und in der Konsole ausgibt.
 Gehen Sie dabei wie folgt vor:
 
-- Finden und erforschen Sie mithilfe von Get-Help das geeignete Cmdlets um Daten von der Konsole einlesen und ausgeben zu können.
-- Suchen Sie das Cmdlets um zwischen zwei Datumswerten die Differenz zu rechnen.
+- Finden und erforschen Sie mithilfe von `Get-Help` das geeignete **Cmdlets** um Daten von der Konsole einlesen und ausgeben zu können.
+- Suchen Sie das **Cmdlets** um zwischen zwei Datumswerten die Differenz zu rechnen.
 
 ---
 
@@ -520,7 +483,7 @@ invoke-Expression "$filepath\$vComputerName.html"
 | **Zeitbedarf**          | 30 min                                                |
 | **Lösungselemente**     | Programmablaufplan als draw.io Datei                  |
 
-Erstelle einen Skript für:
+**Erstelle einen Skript für:**
 
 - Eingabe eines Pfades
 - Prüfung ob Pfad existiert
@@ -544,23 +507,23 @@ Erstelle einen Skript für:
 | **Zeitbedarf**          | 60 min                                                          |
 | **Lösungselemente**     | Lauffähiger Skript                                              |
 
-Implementiere den Ablauf aus Modul "Analyse u. Präsentation" als lineares Script:
+Implementiere den Ablauf aus Modul "**Analyse u. Präsentation**" als lineares Script:
 
-Ein IT-Administrator möchte einen Log-Aufräumprozess automatisieren:
+Ein IT-Administrator möchte einen `Log-Aufräumprozess` automatisieren:
 
-- Benutzer wählt:
+- **Benutzer wählt:**
   - Verzeichnis
   - Dateityp (z. B. *.log)
   - Alter der Dateien (in Tagen)
 
-- Script
+- **Script**
   - prüft Eingaben
   - listet betroffene Dateien auf
   - fragt nach Bestätigung
   - löscht Dateien
   - schreibt Log
 
-Mindestanforderungen
+**Mindestanforderungen:**
 
 - Benutzereingaben
 - Validierung der Eingaben

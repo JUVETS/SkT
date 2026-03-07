@@ -325,20 +325,23 @@ $Ergebnis1 = $Eingabe1 -match $Muster
 
 **A1:**
 
-a) Erstellen Sie eine Variable $geld und weisen Sie ihr den Wert 68 zu.
+a) Erstellen Sie eine Variable `$geld` und weisen Sie ihr den Wert 68 zu.
+
 b) Teilen Sie den Wert mit einem weiteren Befehl durch 4. Nutzen Sie dafür einen möglichst kurzen Befehl.
-c) Erstellen Sie eine Konstante $c_euro mit dem Wert Euro in meiner Geldbörse.
-d) Lassen Sie den Satz «Ich habe x Euro in meiner Geldbörse» ausgeben. Anstelle des «x» sollt der Wert der Variablen $geld stehen.
 
-**A2:**
+c) Erstellen Sie eine **Konstante** `$c_euro` mit dem Wert Euro in meiner Geldbörse.
 
-a) Legen Sie eine Arrayvariable $prozesse an, die als Werte die Namen der aktuellen auf Ihrem System laufende Prozesse enthält.
-b) Lassen Sie den 6. Eintrag des Arrays anzeigen.
+d) Lassen Sie den Satz «**Ich habe x Euro in meiner Geldbörse**» ausgeben. Anstelle des **«x»** sollt der Wert der Variablen `$geld` stehen.
+
+**A2:** 
+
+a) Legen Sie eine Arrayvariable `$prozesse` an, die als Werte die Namen der aktuellen auf Ihrem System laufende Prozesse enthält.
+
+b) Lassen Sie den **6. Eintrag des Arrays** anzeigen.
 
 **A3:**
-
 Schreiben Sie für die Notendurchschnitt Berechnung ein Script, welches Sie zur Eingabe von Prüfungsnoten auffordert und danach die Durchschnittsnote ausgibt.
-Die Aufforderung zur Noteneingabe wird mit der Eingabe von 0 beendet.
+Die Aufforderung zur Noteneingabe wird mit der **Eingabe von 0 beendet**.
 
 ---
 
