@@ -18,7 +18,7 @@
 
 ---
 
-- **[Funktionen](../M4_Scripting/README-functions.md)**
+- **[Funktionen](../PS3_Script/README-functions.md)**
   - Code Strukturierung
   - Grundaufbau
   - Parameter u. Validierung
@@ -27,7 +27,7 @@
 
 ---
 
-- **[Startup-Argumente](../M4_Scripting/README-args.md)**
+- **[Startup-Argumente](../PS3_Script/README-args.md)**
   - Sinn u. Zweck
   - Skript Startup Argumente erwarten auswerten
   - Elemente `$args`, `param()`
