@@ -44,6 +44,8 @@ Anschliessend kann der Standard-Dokumentations-Header über das entsprechende Sn
 }
 ```
 
+> **Danach kann im Editor das "Comment Header" Snippet mit CTRL + SPACE ausgewählt und eingefügt werden.**
+
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0

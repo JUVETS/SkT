@@ -396,6 +396,7 @@ Gehe dabei wie folgt vor:
 - Erstelle per Skript die Tabelle `lotto` mit den jeweiligend Spalten (`create table lotto ...`)
 - Füge die generierte Daten in die `lotto` Tabelle ein (`insert into`)
 - Führe eine Abfrage aus, die alle erfassten Lottozahlen ausgibt (`select .. from lotto`)
+- Prüfe die Daten mittels dem [DB Browser for SQLite](https://sqlitebrowser.org/)
 
 ---
 
