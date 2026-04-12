@@ -8,10 +8,11 @@
   - [1.3. Execution Policy, Signierung \& Vertrauensmodell](#13-execution-policy-signierung--vertrauensmodell)
   - [1.4. Skript‑/Modul‑Signierung (Überblick)](#14-skriptmodulsignierung-überblick)
   - [1.5. Startmechanismen: Zeit‑/Boot‑/Event‑gesteuert](#15-startmechanismen-zeitbooteventgesteuert)
-  - [1.6. Logging, Exitcodes \& Monitoring](#16-logging-exitcodes--monitoring)
-  - [1.7. Windows Eventlog (optional)](#17-windows-eventlog-optional)
-  - [1.8. Exitcodes](#18-exitcodes)
-  - [1.9. Fehlerbehandlung \& Robustheit](#19-fehlerbehandlung--robustheit)
+  - [1.6. PowerShell Scripts in Scheduled Tasks ausführen](#16-powershell-scripts-in-scheduled-tasks-ausführen)
+  - [1.7. Logging, Exitcodes \& Monitoring](#17-logging-exitcodes--monitoring)
+  - [1.8. Windows Eventlog (optional)](#18-windows-eventlog-optional)
+  - [1.9. Exitcodes](#19-exitcodes)
+  - [1.10. Fehlerbehandlung \& Robustheit](#110-fehlerbehandlung--robustheit)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Shortcut erstellen](#21-shortcut-erstellen)
   - [2.2. Scheduled Task‑Auftrag](#22-scheduled-taskauftrag)
@@ -30,6 +31,8 @@
 - Logging/Monitoring (Exitcodes, Protokolle, Eventlog) implementieren.
 - Remoting, Rechte, JEA (Übersicht) verstehen und Fehlerquellen vermeiden.
 
+---
+
 ## 1.2. Grundprinzipien der Systemintegration
 
 - **Reproduzierbarkeit**: Skripte müssen unabhängig von einem interaktiven Benutzer laufen (keine GUI‑Prompts, keine Read-Host in Automation).
@@ -37,6 +40,8 @@
 - **Sicherheit**: Geringste Rechte, Code‑Signierung, Secrets nie im Klartext.
 - **Beobachtbarkeit**: Logging (Datei/Eventlog), Exitcodes, ggf. Metriken.
 - **Wartbarkeit**: Versionierung, Doku, Idempotenz (mehrfach ausführbar ohne Schaden).
+
+---
 
 ## 1.3. Execution Policy, Signierung & Vertrauensmodell
 
@@ -46,12 +51,16 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 
 > **Hinweis: Nur im Scope Process lockern – kein systemweites Absenken. In produktiven Umgebungen auf signierte Skripte setzen.**
 
+---
+
 ## 1.4. Skript‑/Modul‑Signierung (Überblick)
 
 - Signaturzertifikat (Code Signing) im Zertifikatsspeicher.
 - Skript signieren (Beispiel mit Set-AuthenticodeSignature).
 - Verteilung nur aus vertrauenswürdigen Repositories.
 - Prüfen: `Get-AuthenticodeSignature .\Script.ps1`.
+
+---
 
 ## 1.5. Startmechanismen: Zeit‑/Boot‑/Event‑gesteuert
 
@@ -64,7 +73,32 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Scripts\Job.ps1" -ParamA X
 ```
 
-**Task erstellen:**
+---
+
+## 1.6. PowerShell Scripts in Scheduled Tasks ausführen
+
+Im Gegensatz zu Command-/Batch-Scripts sollten PowerShell Scripts in Scheduled Tasks nicht direkt über das Feld **Program/Script** ausgeführt werden, sondern über das optionale **Argument** Feld
+
+1. **Öffnen Sie den Taskplaner**: Drücke `Win + R`, gebe „`taskschd.msc`“ in das Dialogfeld **Ausführen** ein und drücke die Eingabetaste.
+   1. ![Task-Scheduler](./x_gitres/task-scheduler.png)
+2. Im Aktionsbereich auf der rechten Seite **Aufgabe erstellen** wählen
+3. **Namen** und eine **Beschreibung** für Ihre Aufgabe eingeben
+   1. ![Task-Erstellen](./x_gitres/create-task.png)
+4. Wechsel zur Registerkarte **„Trigger“** und klicke auf **„Neu“**. Wählen im Bereich **„Neuer Trigger“**
+   1. Wann die Aufgabe beginnen soll
+   2. Die Häufigkeit, mit der sie ausgeführt werden soll, z.B. einmalig, täglich oder wöchentlich
+   3. ![Trigger-Erstellen](./x_gitres/create-trigger.png)
+5. Wechsele zur Registerkarte **„Aktionen“**. Klicke auf **„Neu“**, um eine neue Aktion zum Ausführen Ihres PowerShell-Skripts einzurichten:
+   1. **Action**: Start a program
+   2. **Program/Script**: %SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe
+   3. Add Arguments (optional): `-ExecutionPolicy Bypass -NoProfile -NoLogo -NonInteractive -File "<Pfad>\<Script-Name>.ps1"`
+   4. ![Task](./x_gitres/new-task.png)
+
+> Der `-ExecutionPolicy Bypass` Parameter sorgt dafür, dass das Script ausgeführt wird, auch wenn die eigentliche Execution Policy des Systems die Ausführung bestimmter Scripts **nicht zulässt**.
+
+[Video](https://www.youtube.com/watch?v=ZtBEQLSRRlc)
+
+**Task mit PowerShell erstellen:**
 
 ```powershell
 $taskName = "Daily_Job"
@@ -84,7 +118,9 @@ Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Pr
 - Trigger auf bestimmtes Eventlog‑Ereignis oder **FileSystemWatcher** im Dienst/Job.
 - Achtung: Debouncing/Throttling gegen Event‑Stürme.
 
-## 1.6. Logging, Exitcodes & Monitoring
+---
+
+## 1.7. Logging, Exitcodes & Monitoring
 
 **Dateilog + Verbose/Debug:**
 
@@ -106,18 +142,24 @@ $log = New-Logger -DebugMode
 $log.Invoke("Job gestartet")
 ```
 
-## 1.7. Windows Eventlog (optional)
+---
+
+## 1.8. Windows Eventlog (optional)
 
 - Eigenes Eventlog/Quelle anlegen, dann `Write-EventLog`.
 - Für strukturierte Beobachtung in SIEM/Log‑Tools.
 
-## 1.8. Exitcodes
+---
+
+## 1.9. Exitcodes
 
 - 0 = Erfolg, ≠0 = Fehler.
 - Am Ende des Skripts explizit exit 0/exit 1 setzen.
 - Task Scheduler zeigt LastTaskResult.
 
-## 1.9. Fehlerbehandlung & Robustheit
+---
+
+## 1.10. Fehlerbehandlung & Robustheit
 
 - `$ErrorActionPreference = 'Stop'` im Automationskontext, dann **try/catch**.
 - Retry‑Muster bei transienten Fehlern (Netz, File Locks).
@@ -150,10 +192,46 @@ Stop-Transcript
 | **Zeitbedarf**          | 40 min                                                             |
 | **Lösungselemente**     | Lauffähiger Skript                                                 |
 
-- Schreibe ein Skript z.B. BootLog.ps1 der eine Meldung in ein Logfile schreibe.
-- Registriere das Skript, sodass dieses beim Booten automatisch ausgeführt wird.
+Speichere die nachfolgenden Befehle in der `start-backup.ps1` Skript Datei ab und erstelle für automatische Ausführung ein geplante Task (**Name: Backup**)
+Die Skriptausführung soll vorerst zu Testzwecken alle **5min** erfolgen (Trigger).
+
 - Prüfe im Logfile die korrekte Ausführung
 - Prüfe mit PowerShell die letzte Laufzeit/Ergebnis `Get-ScheduledTask`, `Get-ScheduledTaskInfo`
+
+```powershell
+<#
+  .SYNOPSIS
+  Sytem Backup
+  .DESCRIPTION
+  Backup Windows System
+#>
+
+
+<#
+  .SYNOPSIS
+  Write log message
+  .DESCRIPTION
+  Write a log entry with a timestamp to a log file
+#>
+function Write-Log {
+    param([string]$Message)
+
+    $logFile = Join-Path $PSScriptRoot "backup.log"
+
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    "$timestamp - $Message" | Out-File $logFile -Append
+}
+
+#
+# MAIN
+#
+
+Write-Log "Backup started"
+
+# TODO (Backup)
+
+Write-Log "Backup completed
+```
 
 ---
 
