@@ -11,7 +11,7 @@
 - **[Prüfung 1](../GE4_Exams/E-PowerShell-Techniques.md)**
   - Abgabe und Präsentation am 20.05.2026, 23:59 Uhr
   - OpenOLAT, Ordner Studierende (1 x pro Team)
-  - Präsentation finde am 21.05.2026, ab 14 Uhr statt
+  - Präsentation findet am 21.05.2026, ab 14 Uhr statt
   
 ---
 
