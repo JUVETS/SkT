@@ -8,11 +8,10 @@
 
 ## Agenda Tag 4
 
-- **Prüfung 1**
-  - Theorie, Closed Book
-  - ca. 16-20 Fragen zu PowerShell
-  - ohne Skript Programmierung
-  - Dauer ca. 35min
+- **[Prüfung 1](../GE4_Exams/E-PowerShell-Techniques.md)**
+  - Abgabe und Präsentation am 20.05.2026, 23:59 Uhr
+  - OpenOLAT, Ordner Studierende (1 x pro Team)
+  - Präsentation finde am 21.05.2026, ab 14 Uhr statt
   
 ---
 

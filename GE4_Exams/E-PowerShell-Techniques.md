@@ -8,10 +8,12 @@
   - [1.3. Aufträge](#13-aufträge)
   - [1.4. Gruppeneinteilung](#14-gruppeneinteilung)
     - [1.4.1. PowerShell Remoting](#141-powershell-remoting)
-    - [1.4.2. Verwendung von .NET-Klassen und COM-Klassen](#142-verwendung-von-net-klassen-und-com-klassen)
-    - [1.4.3. Active Directory](#143-active-directory)
-    - [1.4.4. Entwicklung eigener Commandlets mit C](#144-entwicklung-eigener-commandlets-mit-c)
-    - [1.4.5. Datenbanken und grafische Benutzeroberflächen](#145-datenbanken-und-grafische-benutzeroberflächen)
+    - [1.4.2. REST-APIs \& Web-Anbindung](#142-rest-apis--web-anbindung)
+    - [1.4.3. Dateioperationen \& Reporting](#143-dateioperationen--reporting)
+    - [1.4.4. Systemadministration \& Automatisierung](#144-systemadministration--automatisierung)
+    - [1.4.5. CI/CD \& DevOps-Automatisierung](#145-cicd--devops-automatisierung)
+    - [1.4.6. Entwicklung eigener Commandlets mit C#](#146-entwicklung-eigener-commandlets-mit-c)
+    - [1.4.7. Datenbanken und grafische Benutzeroberflächen](#147-datenbanken-und-grafische-benutzeroberflächen)
 - [2. Bewertung](#2-bewertung)
 
 </br>
@@ -26,7 +28,7 @@
 | **Sozialform**      | Gruppenarbeit (max. 3 Mitglieder)                                  |
 | **Auftrag**         | siehe unten                                                        |
 | **Hilfsmittel**     | Internet                                                           |
-| **Zeitbedarf**      | Total ca. 3h / pro Mitglied                                        |
+| **Zeitbedarf**      | Total ca. 2h / pro Mitglied                                        |
 | **Lösungselemente** | Vollständiges Projekt inkl. Dokumentation u. Präsentation          |
 
 </br>
@@ -65,28 +67,42 @@ In einzelnen Teams sollen folgende Powershell Techniken untersucht werden:
 - Fernausführungs-Commandlets
 - Fernausführung von Skripten
 
-### 1.4.2. Verwendung von .NET-Klassen und COM-Klassen
+### 1.4.2. REST-APIs & Web-Anbindung
 
-- Erzeugen von Instanzen
-- Generische Klassen nutzen
-- Zugriff auf bestehende Objekte
-- Automatisierungen
+- PowerShell als HTTP-Client
+- REST-APIs abfragen
+- JSON verarbeiten und Webhooks auslösen
+- Integration von Cloud-Services ohne Drittanbieter-Tools
 
-### 1.4.3. Active Directory
+### 1.4.3. Dateioperationen & Reporting
+
+- Dateisysteme analysieren
+- Log-Dateien auswerten
+- CSV/JSON/XML verarbeiten
+- Automatisierte Berichte (z.b. HTML) generieren
+
+### 1.4.4. Systemadministration & Automatisierung
 
 - Benutzer- und Gruppenverwaltung im Active Directory
-- Suche im Active Directory
-- System.DirectoryServices
 - Verwaltung der Organisationseinheiten
+- Dienste, Tasks und Systeminformationen
+- Scheduled Tasks
 
-### 1.4.4. Entwicklung eigener Commandlets mit C #
+### 1.4.5. CI/CD & DevOps-Automatisierung
+
+- Build- und Deployment-Prozesse
+- Versionsverwaltung, GIT-Automatisierung
+- Tests, Pester-Tests
+- IIS-Deployment
+
+### 1.4.6. Entwicklung eigener Commandlets mit C\#
 
 - Grundkonzept
 - Erstellung eines Commandlets mit Rückgabeobjekten
 - Verarbeitung von Pipeline-Eingaben
 - Integration von Hilfeinformationen
   
-### 1.4.5. Datenbanken und grafische Benutzeroberflächen
+### 1.4.7. Datenbanken und grafische Benutzeroberflächen
 
 - ADO.NET Grundlagen
 - Datenzugriff mit Powershell
