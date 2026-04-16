@@ -11,7 +11,7 @@
   - [1.6. Beispiel - Comment‑based help – Inline‑Hilfe](#16-beispiel---commentbased-help--inlinehilfe)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. README.md erstellen/verbessern](#21-readmemd-erstellenverbessern)
-  - [2.2. 3.1.Comment‑based help ergänzen](#22-31commentbased-help-ergänzen)
+  - [2.2. Comment‑based help ergänzen](#22-commentbased-help-ergänzen)
 
 ---
 
@@ -160,7 +160,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\ProgramData\<Company
 
 ---
 
-## 2.2. 3.1.Comment‑based help ergänzen
+## 2.2. Comment‑based help ergänzen
 
 | **Vorgabe**             | **Beschreibung**                                                          |
 | :---------------------- | :------------------------------------------------------------------------ |

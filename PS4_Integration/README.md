@@ -248,7 +248,7 @@ Write-Log "Backup completed
 | **Zeitbedarf**          | 30 min                                                             |
 | **Lösungselemente**     | Lauffähiger Skript                                                 |
 
-Registriere ein PowerShell Skript, die ein Skript stündlich startet und ein Logfile schreibt.
+Registriere ein PowerShell Skript, das ein Skript stündlich startet und ein Logfile schreibt.
 
 **Weitere Anforderungen:**
 

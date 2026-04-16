@@ -119,8 +119,8 @@ param(
 - Beim Aufruf dieser Skript Datei müssen drei IP-Adressen übergeben werden, die im Skript eingelesen und ausgegeben werden.
 - Prüfen Sie auch die Anzahl die übergebenen Parameter.
 
-- Implementieren Sie die Variante mit $args Array.
-- Ändern Sie die Skript Datei durch die Variante mit einer expliziten Parameter Deklaration.
+- Implementieren Sie die Variante mit `$args` Array.
+- Ändern Sie die Skript Datei durch die Variante mit einer **expliziten Parameter** Deklaration.
 
 ---
 
