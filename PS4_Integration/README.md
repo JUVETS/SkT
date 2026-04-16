@@ -14,7 +14,7 @@
   - [1.9. Exitcodes](#19-exitcodes)
   - [1.10. Fehlerbehandlung \& Robustheit](#110-fehlerbehandlung--robustheit)
 - [2. Aufgaben](#2-aufgaben)
-  - [2.1. Shortcut erstellen](#21-shortcut-erstellen)
+  - [2.1. Backup Task erstellen](#21-backup-task-erstellen)
   - [2.2. Scheduled Task‑Auftrag](#22-scheduled-taskauftrag)
 
 ---
@@ -179,7 +179,7 @@ Stop-Transcript
 
 # 2. Aufgaben
 
-## 2.1. Shortcut erstellen
+## 2.1. Backup Task erstellen
 
 | **Vorgabe**             | **Beschreibung**                                                   |
 | :---------------------- | :----------------------------------------------------------------- |
