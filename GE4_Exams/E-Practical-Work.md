@@ -228,6 +228,8 @@ Die Live-Demo muss auf der eigenen Maschine lauffähig sein und folgende Punkte 
 
 > **Notenskala: Erreichte Punktzahl x 5 / Max. Punktzahl + 1 = Note (auf 1/10 Noten gerundet)**
 
+---
+
 ## 1.10. Termine
 
 Termin für Konzeptabgabe: **21.06.2026, 14:00 Uhr, OpenOLAT (Ordner Studierende)**
