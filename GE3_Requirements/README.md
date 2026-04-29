@@ -12,12 +12,12 @@
     - [1.2.3. Extension Markdown All in One](#123-extension-markdown-all-in-one)
   - [1.3. MongoDB](#13-mongodb)
     - [1.3.1. Docker](#131-docker)
-    - [1.3.2. MongoDB-Docker-Image herunterladen](#132-mongodb-docker-image-herunterladen)
-    - [1.3.3. MongoDB-Docker-Container starten](#133-mongodb-docker-container-starten)
-    - [1.3.4. MongoDB Downloads (Optional)](#134-mongodb-downloads-optional)
-    - [1.3.5. Installation Server](#135-installation-server)
-    - [1.3.6. Installation Shell u. Tools](#136-installation-shell-u-tools)
-    - [1.3.7. MongoDB for VS-Code](#137-mongodb-for-vs-code)
+    - [1.3.2. MongoDB Downloads](#132-mongodb-downloads)
+    - [1.3.3. Installation Server](#133-installation-server)
+    - [1.3.4. Installation Shell u. Tools](#134-installation-shell-u-tools)
+    - [1.3.5. MongoDB for VS-Code](#135-mongodb-for-vs-code)
+    - [1.3.6. MongoDB-Docker-Image herunterladen (Optional)](#136-mongodb-docker-image-herunterladen-optional)
+    - [1.3.7. MongoDB-Docker-Container starten](#137-mongodb-docker-container-starten)
   - [1.4. Mongo-Shell (mongosh) Commands](#14-mongo-shell-mongosh-commands)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Installation u. Softwarevoraussetzungen / Tools](#21-installation-u-softwarevoraussetzungen--tools)
@@ -93,37 +93,19 @@ Mit der Installation der PowerShell Extension unterstützt der Editor den komplet
 
 - [Docker Hub](https://hub.docker.com/_/mongo)
 
-### 1.3.2. MongoDB-Docker-Image herunterladen
-
-Um einen MongoDB-Docker-Container zu erstellen, beginnen wir zuerst damit, das entsprechende Image für die Ausführung von Docker Hub zu beziehen. Öffnen Sie Ihr Terminal bzw. Ihre Kommandozeile und führen Sie den folgenden Befehl aus:
-
-> `docker pull mongo:latest`
-
-### 1.3.3. MongoDB-Docker-Container starten
-
-Nachdem das Docker-Image für MongoDB erfolgreich heruntergeladen wurde, können Sie nun einen Container basierend auf diesem Image starten:
-
-> `docker run --name mongodb-container -d -p 27017:27017 mongo:latest`
-
-- `docker run`: Startet einen neuen Docker-Container
-- `--name mongodb-container`: Gibt dem Container den Namen „mongodb-container“
-- `-d`: Mit diesem Parameter starten Sie den Container im Hintergrund (detached mode). Dadurch ist das Terminal weiterhin nutzbar, während der Container läuft.
-- `-p 27017:27017`: Öffnet den MongoDB-Standard-Port 27017 des Containers auf Ihrem Hostsystem
-- `mongo:latest`: Gibt die Anweisung, das neueste verfügbare Image zu beziehen
-
-### 1.3.4. MongoDB Downloads (Optional)
+### 1.3.2. MongoDB Downloads
 
 - [Download Community Edition](https://www.mongodb.com/try/download/community)
 - [MongoDB Shell](https://www.mongodb.com/try/download/shell)
 - [Database Tools (msi Package)](https://www.mongodb.com/try/download/database-tools)
 
-### 1.3.5. Installation Server
+### 1.3.3. Installation Server
 
 - MongoDB Community Server Download
 - Vollständige Installation
 - Inkl. Compass
 
-### 1.3.6. Installation Shell u. Tools
+### 1.3.4. Installation Shell u. Tools
 
 - **Mongo Shell**
   - [Download MongoDB Shell, Windows, MSI](https://downloads.mongodb.com/compass/mongosh-2.7.0-x64.msi)
@@ -134,9 +116,27 @@ Nachdem das Docker-Image für MongoDB erfolgreich heruntergeladen wurde, können S
   - ![MongoDB Tools 1](./x_gitres/mongodb-setup-tools-1.png)
   - ![MongoDB Tools 2](./x_gitres/mongodb-setup-tools-2.png)
 
-### 1.3.7. MongoDB for VS-Code
+### 1.3.5. MongoDB for VS-Code
 
 - ![Visual Studio Extension](./x_gitres/mongodb-vsc-extension.png)
+
+### 1.3.6. MongoDB-Docker-Image herunterladen (Optional)
+
+Um einen MongoDB-Docker-Container zu erstellen, beginnen wir zuerst damit, das entsprechende Image für die Ausführung von Docker Hub zu beziehen. Öffnen Sie Ihr Terminal bzw. Ihre Kommandozeile und führen Sie den folgenden Befehl aus:
+
+> `docker pull mongo:latest`
+
+### 1.3.7. MongoDB-Docker-Container starten
+
+Nachdem das Docker-Image für MongoDB erfolgreich heruntergeladen wurde, können Sie nun einen Container basierend auf diesem Image starten:
+
+> `docker run --name mongodb-container -d -p 27017:27017 mongo:latest`
+
+- `docker run`: Startet einen neuen Docker-Container
+- `--name mongodb-container`: Gibt dem Container den Namen „mongodb-container“
+- `-d`: Mit diesem Parameter starten Sie den Container im Hintergrund (detached mode). Dadurch ist das Terminal weiterhin nutzbar, während der Container läuft.
+- `-p 27017:27017`: Öffnet den MongoDB-Standard-Port 27017 des Containers auf Ihrem Hostsystem
+- `mongo:latest`: Gibt die Anweisung, das neueste verfügbare Image zu beziehen
 
 </br>
 

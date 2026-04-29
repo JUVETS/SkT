@@ -13,7 +13,7 @@
     - [1.3.5. Load (Laden)](#135-load-laden)
   - [1.4. ETL vs. ELT (moderne Datenpipelines)](#14-etl-vs-elt-moderne-datenpipelines)
 - [2. Aufgaben](#2-aufgaben)
-  - [2.1. Skript mit Startup-Argumenten implementieren](#21-skript-mit-startup-argumenten-implementieren)
+  - [2.1. BigData Recherche](#21-bigdata-recherche)
 
 ---
 
@@ -135,7 +135,7 @@ Moderne Cloud‑Systeme ermöglichen **ELT**, um die Transformation in leistungs
 
 # 2. Aufgaben
 
-## 2.1. Skript mit Startup-Argumenten implementieren
+## 2.1. BigData Recherche
 
 | **Vorgabe**             | **Beschreibung**                                                      |
 | :---------------------- | :-------------------------------------------------------------------- |

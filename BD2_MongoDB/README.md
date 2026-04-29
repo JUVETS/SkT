@@ -69,8 +69,8 @@ Import-Module Mdbc
 Get-Module mdbc -ListAvailable
 
 # Hilfe und verfügbaren Befehlssatz erkunden
-help about_Mdbc
-help Connect-Mdbc -Full
+Get-Help about_Mdbc
+Get-Help Connect-Mdbc -Full
 Get-Command -Module Mdbc
 
 # Die about_Mdbc‑Hilfeseite listet die Cmdlets und typische Workflows.
@@ -93,7 +93,7 @@ Connect-Mdbc -ConnectionString "mongodb://localhost:27017" `
 Connect-Mdbc -ConnectionString "mongodb://localhost:27017" -Database bigdata
 
 # Collection auswählen
-Get-MdbcCollection -Name logs
+$collection = Get-MdbcCollection -Name logs
 ```
 
 ## 1.6. Kern‑Cmdlets (Praxisorientierter Überblick)
@@ -121,16 +121,16 @@ Add-MdbcData -Many @(
 )
 
 # FIND (Filter + Projektion + Sortierung)
-Get-MdbcData -Filter @{ city = "Bern" } -Project @{ _id = 0; name = 1 } -Sort @{ name = 1 }
+Get-MdbcData -Collection sensordaten -Filter @{ city = "Bern" } -Project @{ _id = 0; name = 1 } -Sort @{ name = 1 }
 
 # UPDATE (klassisch)
-Update-MdbcData -Filter @{ _id = 1 } -Update @{ '$set' = @{ city = "Luzern" } }
+Update-MdbcData -Collection sensordaten -Filter @{ _id = 1 } -Update @{ '$set' = @{ city = "Luzern" } }
 
 # DELETE
-Remove-MdbcData -Filter @{ _id = 2 }
+Remove-MdbcData -Collection sensordaten -Filter @{ _id = 2 }
 
 # Upsert‑Muster (Idempotenz)
-Update-MdbcData -Filter @{ _id = 99 } `
+Update-MdbcData -Collection sensordaten -Filter @{ _id = 99 } `
   -Update @{
     '$set'        = @{ name = "Upsert User"; city = "Bern" }
     '$setOnInsert'= @{ createdAt = (Get-Date) }
