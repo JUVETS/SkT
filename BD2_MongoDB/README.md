@@ -9,6 +9,8 @@
   - [1.4. Installation \& erster Verbindungsaufbau](#14-installation--erster-verbindungsaufbau)
   - [1.5. Verbinden (Client → DB → Collection)](#15-verbinden-client--db--collection)
   - [1.6. Kern‑Cmdlets (Praxisorientierter Überblick)](#16-kerncmdlets-praxisorientierter-überblick)
+  - [1.7. Beispiel 1: CSV → MongoDB](#17-beispiel-1-csv--mongodb)
+  - [1.8. Beispiel 2: JSON → MongoDB](#18-beispiel-2-json--mongodb)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Einstieg Verbinden und Daten einfügen](#21-einstieg-verbinden-und-daten-einfügen)
   - [2.2. Big-Data-Workflow (CSV)](#22-big-data-workflow-csv)
@@ -86,14 +88,14 @@ Get-Command -Module Mdbc
 ```powershell
 # Beispiel 1: lokale Instanz, DB "hf_class", Collection "logs"
 Connect-Mdbc -ConnectionString "mongodb://localhost:27017" `
-             -Database hf_class `
-             -Collection logs
+             -Database "bigdata" `
+             -Collection "logs"
 
 # Beispiel 2: Verbindung zu MongoDB herstellen
-Connect-Mdbc -ConnectionString "mongodb://localhost:27017" -Database bigdata
+Connect-Mdbc -ConnectionString "mongodb://localhost:27017" -Database "bigdata"
 
 # Collection auswählen
-$collection = Get-MdbcCollection -Name logs
+$collection = Get-MdbcCollection -Name "logs"
 ```
 
 ## 1.6. Kern‑Cmdlets (Praxisorientierter Überblick)
@@ -110,27 +112,34 @@ $doc = @{
     status = "OK"
 }
 
-Add-MdbcData -Collection sensordaten -InputObject $doc
+Add-MdbcData -Collection $collection -InputObject $doc
+
+Add-MdbcData -Collection $collection -Document @{
+    timestamp = Get-Date
+    machine   = "M1"
+    temperature = 92.4
+    status = "OK"
+}
 
 # Beispiel 2:
 # INSERT (einzeln/mehrere)
-Add-MdbcData @{ _id = 1; name = "Alice"; city = "Bern" }
-Add-MdbcData -Many @(
+Add-MdbcData -Collection $collection @{ _id = 1; name = "Alice"; city = "Bern" }
+Add-MdbcData -Collection $collection -Many @(
   @{ _id = 2; name = "Bob"; city = "Zürich" },
   @{ _id = 3; name = "Cara"; city = "Basel" }
 )
 
 # FIND (Filter + Projektion + Sortierung)
-Get-MdbcData -Collection sensordaten -Filter @{ city = "Bern" } -Project @{ _id = 0; name = 1 } -Sort @{ name = 1 }
+Get-MdbcData -Collection $collection -Filter @{ city = "Bern" } -Project @{ _id = 0; name = 1 } -Sort @{ name = 1 }
 
 # UPDATE (klassisch)
-Update-MdbcData -Collection sensordaten -Filter @{ _id = 1 } -Update @{ '$set' = @{ city = "Luzern" } }
+Update-MdbcData -Collection $collection -Filter @{ _id = 1 } -Update @{ '$set' = @{ city = "Luzern" } }
 
 # DELETE
-Remove-MdbcData -Collection sensordaten -Filter @{ _id = 2 }
+Remove-MdbcData -Collection $collection -Filter @{ _id = 2 }
 
 # Upsert‑Muster (Idempotenz)
-Update-MdbcData -Collection sensordaten -Filter @{ _id = 99 } `
+Update-MdbcData -Collection $collection -Filter @{ _id = 99 } `
   -Update @{
     '$set'        = @{ name = "Upsert User"; city = "Bern" }
     '$setOnInsert'= @{ createdAt = (Get-Date) }
@@ -138,7 +147,7 @@ Update-MdbcData -Collection sensordaten -Filter @{ _id = 99 } `
   -Upsert
 
 # Aggregation Pipeline (Analytics/KPIs)
-Invoke-MdbcAggregate @(
+Invoke-MdbcAggregate -Collection $collection @(
   @{ '$match' = @{ city = @{ '$exists' = $true } } },
   @{ '$group' = @{ _id = '$city'; c = @{ '$sum' = 1 } } },
   @{ '$sort'  = @{ c = -1 } }
@@ -165,6 +174,76 @@ Invoke-MdbcCommand -Command @{
               @{ key = @{ status = 1; ts = -1 }; name = "status_ts" })
 }
 ```
+
+## 1.7. Beispiel 1: CSV → MongoDB
+
+Beispiel CSV (`users.csv`):
+
+```console
+name,age,city
+Max,30,Zürich
+Anna,25,Bern
+Peter,40,Basel
+```
+
+PowerShell Script:
+
+```powershell
+Import-Module Mdbc
+
+# Verbindung herstellen
+Connect-Mdbc "mongodb://localhost"
+
+$db  = Get-MdbcDatabase "testdb"
+$col = Get-MdbcCollection "users"
+
+# CSV einlesen
+$data = Import-Csv "C:\temp\users.csv"
+
+# Daten in MongoDB schreiben
+foreach ($row in $data) {
+    try {
+        Add-MdbcData -Collection $col -Document @{
+            name = $row.name
+            age  = [int]$row.age
+            city = $row.city
+        }
+    }
+    catch {
+        Write-Warning "Fehler bei Datensatz: $($row.name)"
+    }
+}
+```
+
+## 1.8. Beispiel 2: JSON → MongoDB
+
+JSON Datei (`users.json`)
+
+```json
+[
+  { "name": "Max", "age": 30, "city": "Zürich" },
+  { "name": "Anna", "age": 25, "city": "Bern" }
+]
+```
+
+PowerShell Script:
+
+```powershell
+Import-Module Mdbc
+
+Connect-Mdbc "mongodb://localhost"
+
+$db  = Get-MdbcDatabase "testdb"
+$col = Get-MdbcCollection "users"
+
+# JSON einlesen
+$data = Get-Content "C:\temp\users.json" | ConvertFrom-Json
+
+# Direkt einfügen
+Add-MdbcData -Collection $col -Document $data
+```
+
+> **Vorteil:** JSON passt direkt zum MongoDB-Format → kein Mapping nötig.
 
 </br>
 
