@@ -9,8 +9,12 @@
   - [1.4. Installation \& erster Verbindungsaufbau](#14-installation--erster-verbindungsaufbau)
   - [1.5. Verbinden (Client → DB → Collection)](#15-verbinden-client--db--collection)
   - [1.6. Kern‑Cmdlets (Praxisorientierter Überblick)](#16-kerncmdlets-praxisorientierter-überblick)
-  - [1.7. Beispiel 1: CSV → MongoDB](#17-beispiel-1-csv--mongodb)
-  - [1.8. Beispiel 2: JSON → MongoDB](#18-beispiel-2-json--mongodb)
+  - [1.7. Beispiel](#17-beispiel)
+    - [1.7.1. Beispiel 1: CSV → MongoDB](#171-beispiel-1-csv--mongodb)
+    - [1.7.2. Beispiel 2: JSON → MongoDB](#172-beispiel-2-json--mongodb)
+    - [1.7.3. Beispiel: Grosse CSV Dateien performant importieren](#173-beispiel-grosse-csv-dateien-performant-importieren)
+    - [1.7.4. Beispiel: Grosse JSON Dateien importieren](#174-beispiel-grosse-json-dateien-importieren)
+    - [1.7.5. Fazit](#175-fazit)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Einstieg Verbinden und Daten einfügen](#21-einstieg-verbinden-und-daten-einfügen)
   - [2.2. Big-Data-Workflow (CSV)](#22-big-data-workflow-csv)
@@ -175,7 +179,9 @@ Invoke-MdbcCommand -Command @{
 }
 ```
 
-## 1.7. Beispiel 1: CSV → MongoDB
+## 1.7. Beispiel
+
+### 1.7.1. Beispiel 1: CSV → MongoDB
 
 Beispiel CSV (`users.csv`):
 
@@ -215,7 +221,7 @@ foreach ($row in $data) {
 }
 ```
 
-## 1.8. Beispiel 2: JSON → MongoDB
+### 1.7.2. Beispiel 2: JSON → MongoDB
 
 JSON Datei (`users.json`)
 
@@ -244,6 +250,67 @@ Add-MdbcData -Collection $col -Document $data
 ```
 
 > **Vorteil:** JSON passt direkt zum MongoDB-Format → kein Mapping nötig.
+
+### 1.7.3. Beispiel: Grosse CSV Dateien performant importieren
+
+```powershell
+Import-Module Mdbc
+
+$batchSize = 1000
+$batch = @()
+
+Connect-Mdbc "mongodb://localhost"
+
+$db  = Get-MdbcDatabase "testdb"
+$col = Get-MdbcCollection "users"
+
+# Datei streamen (wichtig!)
+Get-Content "C:\temp\bigfile.csv" | Select-Object -Skip 1 | ForEach-Object {
+
+    $fields = $_ -split ","
+
+    $doc = @{
+        name = $fields[0]
+        age  = [int]$fields[1]
+        city = $fields[2]
+    }
+
+    $batch += $doc
+
+    # Wenn Batch voll → schreiben
+    if ($batch.Count -ge $batchSize) {
+        Add-MdbcData -Collection $col -Document $batch
+        $batch = @()  # reset
+    }
+}
+
+# Rest schreiben
+if ($batch.Count -gt 0) {
+    Add-MdbcData -Collection $col -Document $batch
+}
+```
+
+> **Vorteile:**
+>
+> - Kein komplettes Import-Csv (würde alles in RAM laden)
+> - `Get-Content` streamt zeilenweise
+> - Bulk Inserts statt Einzel-Inserts
+> - Konstanter Speicherverbrauch
+
+### 1.7.4. Beispiel: Grosse JSON Dateien importieren
+
+```powershell
+Get-Content "big.json" -ReadCount 1000 | ForEach-Object {
+    $batch = $_ | ConvertFrom-Json
+    Add-MdbcData -Collection $col -Document $batch
+}
+```
+
+> **-ReadCount** = versteckter Performance-Boost
+
+### 1.7.5. Fazit
+
+> **Streaming + Batching = stabil + schnell**
 
 </br>
 
@@ -339,15 +406,15 @@ Add-MdbcData -Collection $col -Document $data
 1. [Finanz- & Kryptodaten (coingecko)](https://www.coingecko.com/en/api)
    - Aktuelle Wechselkurse für über 160 Währungen.
    - Liefert aktuelle Kurse von tausenden Kryptowährungen. Keine Registrierung für Basis-Abfragen nötig.
-     - URL: https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+     - URL: <https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd>
 2. [Open Data Schweiz Opendata.swiss)](https://opendata.swiss/de)
    - Das zentrale Portal für Schweizer Behördendaten.
    - Beispiele: Aktuelle Standorte von Mobility-Fahrzeugen, Postleitzahlen-Verzeichnisse oder Wetterdaten von MeteoSchweiz.
-3. [Open Transport Data](https://opentransportdata.swiss/de/) 
+3. [Open Transport Data](https://opentransportdata.swiss/de/)
    - Echtzeit-Fahrplandaten des öffentlichen Verkehrs (SBB/ZVV etc.).
 4. [Wissenschaft & Umwelt](https://api.nasa.gov)
    - NASA APIs: Riesige Auswahl an Daten zu Asteroiden, Mars-Fotos oder Erdbeobachtung.
-   - URL: https://api.nasa.gov (Erfordert kostenlosen API-Key).
+   - URL: <https://api.nasa.gov> (Erfordert kostenlosen API-Key).
 5. [OpenWeatherMap](https://openweathermap.org/)
    - Der Klassiker für Wetterdaten weltweit.
    - Vergleiche zwischen verschiedenen Städten zu skripten.
