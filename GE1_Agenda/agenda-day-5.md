@@ -15,19 +15,18 @@
   - Übungsaufgaben
 
 ---
-  
-- **[CAP-Theorem](../NS2_CAP/README.md)**
-  - Eigenschaften des CAP-Theorems
-  - BASE (Basically Available, Soft State, Eventual Consistency)
-  - Übungsaufgaben
-
----
 
 - **[Hauptgruppen von NoSQL-Datenbanken](../NS3_Types/README.md)**
   - Dokumentdatenbank
   - Key-Value Datenbanken
   - Spaltenorientierte Datenbanken
   - Graphendatenbanken
+
+---
+  
+- **[CAP-Theorem](../NS2_CAP/README.md)**
+  - Eigenschaften des CAP-Theorems
+  - BASE (Basically Available, Soft State, Eventual Consistency)
   - Übungsaufgaben
 
 ---
