@@ -16,7 +16,7 @@
 
 ---
   
-- **[CAP-Theorem](../SN2_CAP/README.md)**
+- **[CAP-Theorem](../NS2_CAP/README.md)**
   - Eigenschaften des CAP-Theorems
   - BASE (Basically Available, Soft State, Eventual Consistency)
   - Übungsaufgaben
