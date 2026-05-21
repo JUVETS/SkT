@@ -230,7 +230,7 @@ Write-Log "Backup started"
 
 # TODO (Backup)
 
-Write-Log "Backup completed
+Write-Log "Backup completed"
 ```
 
 ---
