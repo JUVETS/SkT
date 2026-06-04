@@ -58,7 +58,7 @@
 
 ## Lernziele
 
-- [x] Können den Sinn und Zweck von NoSQL Datenbank erläutern
+- [x] Können den Sinn und Zweck von NoSQL Datenbank erläutern.
 - [x] Kann Begriffe und Konzepte der NoSQL Datenbanken erläutern. (z.B. AP Theorem, BASE, ACID, Indexing Strukturen, Caching, Datenanalyse, Datawarehouse, FullText Search, Netzwerke, Testing).
 - [x] Kann ein vorgegebenes Datenmodell mit einer NoSQL Datenbank umsetzen.
 - [x] Kann den Einsatz einer NoSQL Datenbank kritisch hinterfragen und Verbesserungen vorschlagen
