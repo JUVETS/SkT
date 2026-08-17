@@ -8,11 +8,31 @@
 
 ## Agenda Tag 7
 
-- **[Projektarbeit Skripting / BigData](./../GE4_Exams/E-Practical-Work.md)**
-  - freies Arbeiten
-  - Es findet kein Unterricht statt
-  
-  ---
-  
+- **[BigData mit PowerShell und MongoDB](../BD2_MongoDB/README.md)**
+  - Voraussetzungen
+  - Kontext \& Nutzen von Mdbc
+  - Kern‑Cmdlets
+  - Übungsaufgaben
+
+---
+
+- **Zeitpuffer / Rekapitulation**
+  - Nachholungen
+
+---
+
+</br>
+
+![Lernziele](../x_gitres/learning-objectives.png)
+
+## Lernziele
+
+- [x] Kann Probleme bei der Übernahme von Daten in eine NoSQL Datenbank erkennen undLösungen aufzeigen.
+- [x] Kann eine Anbindung an eine NoSQL Datenbank implementieren. (z.B. PowerShell).
+- [x] Kann den ETL-Prozess erläutern
+- [x] Kann ein ETL-Prozess vollständig mit PowerShell implementieren
+
+---
+
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
 See [LICENSE](..\license.md) file for details.
