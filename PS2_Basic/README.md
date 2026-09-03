@@ -92,10 +92,12 @@ Es gibt einige Parameter, die in vielen (aber nicht allen) **Commandlets** vorko
 Durch sogenannte **Aliase** kann die Eingabe von **Commandlets** verkürzt werden. So ist `ps` als **Alias** für `Get-Process` oder `help` für `Get-Help` vordefiniert.
 Statt `Get-Process i*` kann also auch geschrieben werden: `ps i*`.
 
-Durch Angabe eines Namens bei Get-Alias erhält man die Bedeutung eines Alias.
+Durch Angabe eines Namens bei `Get-Alias` erhält man die Bedeutung eines Alias.
 
 ```powershell
-Get-Alias pgs
+Get-Alias ps     # → Get-Process
+Get-Alias help   # → Get-Help
+Get-Alias cls    # → Clear-Host
 ```
 
 Vordefinierte Aliase:
@@ -146,19 +148,19 @@ Get-Help CMDLET               # (Befehlsübersicht)
 Get-Help CMDLET -Full         # (Gesamte Information) 
 Get-Help CMDLET -Detailed     # (Detaillierte Informationen)
 Get-Help CMDLET -Examples     # (Einsatzbeispiele)
-Get-Help CMDLET –Parameter *  # (Hilfe zu den Parametern) 
+Get-Help CMDLET -Parameter *  # (Hilfe zu den Parametern) 
 ```
 
 ## 2.3. Cmdlets – Get-Command
 
 Mit `Get-Command` kann man einerseits nach **cmdlets** für eine bestimmte Aufgabe suchen, aber auch interessante Informationen über cmdlets auslesen.
-In PowerShell 5.0 unter Win10 gibt es inzwischen **340 cmdlets**
+In PowerShell 7 gibt es je nach installierten Modulen **über 1000 Cmdlets**
 
 z.B.
 Es sollen **Cmdlets** herausgefiltert werden, mit denen Prozesse verwaltet werden können
 
 ```powershell
-Get-Command –Commandtype cmdlet *process* | Format-Table Name -Auto
+Get-Command -CommandType Cmdlet *process* | Format-Table Name -Auto
 ```
 
 ```powershell
@@ -171,18 +173,18 @@ Stop-Process
 Wait-Process  
 ```
 
-Das cmdlet `Get-Command` hat in der Powershell 3.0 den neuen Positionsparameter `-Parametername` bekommen, mit dem sich **cmdlets** nach bestimmten Parametern filtern lassen
+Das Cmdlet `Get-Command` verfügt über den Parameter `-ParameterName`, mit dem sich **Cmdlets** nach bestimmten Parametern filtern lassen.
 
 z.B.
-Dadurch lassen sich die **Cmdlets** herausfinden, mit denen sich besonders einfach Remotemaschinen verwalten lassen
+Dadurch lassen sich die **Cmdlets** herausfinden, mit denen sich besonders einfach Remotemaschinen verwalten lassen:
 
 ```powershell
-Get-Command -ParameterName Computername
+Get-Command -ParameterName ComputerName
 
 # Ausgabe gekürzt
 CommandType     Name 
-Cmdlet          Add-Computer
-Cmdlet          Clear-EventLog
+Cmdlet          Get-Process
+Cmdlet          Get-Service
 Cmdlet          Connect-PSSession 
 ```
 
@@ -204,8 +206,8 @@ ToLongTimeString     Method         string ToLongTimeString()
 ToString             Method         string ToString(), string 
 …  
 
-(Get-Date).Date               #<-Property
-(Get-Date).ToLongTime()  #<-Methoden mit ()
+(Get-Date).Date                    #<- Property
+(Get-Date).ToLongTimeString()      #<- Methode mit ()
 ```
 
 **Beispiel: Erforschen eines String Objects:**
@@ -241,10 +243,10 @@ Update-Help -UICulture en-US -Verbose -Force -ErrorAction SilentlyContinue
 
 Get-Help Get-Help -Full
 
-Get-Help Get-Help -Online  # Online Hilfe im Browser
+Get-Help Get-Help -Online  # Online Hilfe im Browser (learn.microsoft.com)
 
 # Online Hilfe
-# https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?view=powershell-6
+# https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.5
 ```
 
 ---
@@ -302,4 +304,4 @@ Recherchieren Sie die folgenden Grundkonzepte von PowerShell und fassen Sie die 
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

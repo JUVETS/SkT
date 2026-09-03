@@ -5,7 +5,7 @@
 - [1. Voraussetzungen / Softwareinstallationen](#1-voraussetzungen--softwareinstallationen)
   - [1.1. PowerShell](#11-powershell)
     - [1.1.1. PowerShell-Konsole](#111-powershell-konsole)
-    - [1.1.2. PowerShell ISE (Editor)](#112-powershell-ise-editor)
+    - [1.1.2. Hinweis: PowerShell ISE (veraltet)](#112-hinweis-powershell-ise-veraltet)
   - [1.2. Visual Studio Code (VSC)](#12-visual-studio-code-vsc)
     - [1.2.1. Extension PowerShell](#121-extension-powershell)
     - [1.2.2. Extension Material Icon Theme](#122-extension-material-icon-theme)
@@ -41,9 +41,12 @@
 Die **Konsole** muss auf dem System installiert sein.
 ![PowerShell Konsole](./x_gitres/ps-console.png)
 
-### 1.1.2. PowerShell ISE (Editor)
+### 1.1.2. Hinweis: PowerShell ISE (veraltet)
 
-Für die PS-Skript Entwicklung muss die **ISE** installiert sein
+> **Die PowerShell ISE (Integrated Scripting Environment) wird nicht mehr weiterentwickelt und steht nur unter Windows PowerShell 5.1 zur VerfÃ¼gung.** FÃ¼r die Skriptentwicklung in diesem Kurs wird **Visual Studio Code** (siehe 1.2) verwendet.
+
+Die ISE-Bilder dienen nur zur Orientierung, falls auf einem System noch PS 5.1 vorinstalliert ist:
+
 ![PowerShell ISE](./x_gitres/ps-ise.png)
 
 ---
@@ -52,8 +55,7 @@ Für die PS-Skript Entwicklung muss die **ISE** installiert sein
 
 ## 1.2. Visual Studio Code (VSC)
 
-Anstelle PowerShell ISE kann auch der **Visual Code Editor** verwendet werden.
-Mit der Installation der PowerShell Extension unterstützt der Editor den kompletten PowerShell Befehlsumfang.
+**Visual Studio Code (VS Code)** ist der empfohlene Editor fÃ¼r die PowerShell-Entwicklung in diesem Kurs â€“ kostenlos, plattformÃ¼bergreifend (Windows, macOS, Linux) und mit vollstÃ¤ndiger PowerShell-UnterstÃ¼tzung.
 
 [Download Visual Studio Code](https://code.visualstudio.com/)
 
@@ -85,11 +87,11 @@ Mit der Installation der PowerShell Extension unterstützt der Editor den komplet
 
 ### 1.3.1. Docker
 
-- MongoDB lässt sich effektiv in einem Docker-Container betreiben.
+- MongoDB lÃ¤sst sich effektiv in einem Docker-Container betreiben.
 - Auf Docker Hub gibt es zwei Arten von MongoDB-Images:
   - die **Community Edition** und die **Enterprise Edition**.
-- Welche dieser beiden Varianten für Sie am besten geeignet ist, hängt von Ihren spezifischen Ansprüchen ab.
-- Die **Community Edition** wird typischerweise für nicht-kommerzielle Zwecke oder kleinere Bereitstellungen genutzt.
+- Welche dieser beiden Varianten fÃ¼r Sie am besten geeignet ist, hÃ¤ngt von Ihren spezifischen AnsprÃ¼chen ab.
+- Die **Community Edition** wird typischerweise fÃ¼r nicht-kommerzielle Zwecke oder kleinere Bereitstellungen genutzt.
 
 - [Docker Hub](https://hub.docker.com/_/mongo)
 
@@ -102,13 +104,13 @@ Mit der Installation der PowerShell Extension unterstützt der Editor den komplet
 ### 1.3.3. Installation Server
 
 - MongoDB Community Server Download
-- Vollständige Installation
+- VollstÃ¤ndige Installation
 - Inkl. Compass
 
 ### 1.3.4. Installation Shell u. Tools
 
 - **Mongo Shell**
-  - [Download MongoDB Shell, Windows, MSI](https://downloads.mongodb.com/compass/mongosh-2.7.0-x64.msi)
+  - [Download MongoDB Shell (aktuelle Version)](https://www.mongodb.com/try/download/shell) â€“ MSI fÃ¼r Windows wÃ¤hlen
   - ![Shell Setup 1](./x_gitres/mongodb-setup-shell-1.png)
   - ![Shell Setup 2](./x_gitres/mongodb-setup-shell-2.png)
 
@@ -122,21 +124,21 @@ Mit der Installation der PowerShell Extension unterstützt der Editor den komplet
 
 ### 1.3.6. MongoDB-Docker-Image herunterladen (Optional)
 
-Um einen MongoDB-Docker-Container zu erstellen, beginnen wir zuerst damit, das entsprechende Image für die Ausführung von Docker Hub zu beziehen. Öffnen Sie Ihr Terminal bzw. Ihre Kommandozeile und führen Sie den folgenden Befehl aus:
+Um einen MongoDB-Docker-Container zu erstellen, beginnen wir zuerst damit, das entsprechende Image fÃ¼r die AusfÃ¼hrung von Docker Hub zu beziehen. Ã–ffnen Sie Ihr Terminal bzw. Ihre Kommandozeile und fÃ¼hren Sie den folgenden Befehl aus:
 
 > `docker pull mongo:latest`
 
 ### 1.3.7. MongoDB-Docker-Container starten
 
-Nachdem das Docker-Image für MongoDB erfolgreich heruntergeladen wurde, können Sie nun einen Container basierend auf diesem Image starten:
+Nachdem das Docker-Image fÃ¼r MongoDB erfolgreich heruntergeladen wurde, kÃ¶nnen Sie nun einen Container basierend auf diesem Image starten:
 
 > `docker run --name mongodb-container -d -p 27017:27017 mongo:latest`
 
 - `docker run`: Startet einen neuen Docker-Container
-- `--name mongodb-container`: Gibt dem Container den Namen „mongodb-container“
-- `-d`: Mit diesem Parameter starten Sie den Container im Hintergrund (detached mode). Dadurch ist das Terminal weiterhin nutzbar, während der Container läuft.
-- `-p 27017:27017`: Öffnet den MongoDB-Standard-Port 27017 des Containers auf Ihrem Hostsystem
-- `mongo:latest`: Gibt die Anweisung, das neueste verfügbare Image zu beziehen
+- `--name mongodb-container`: Gibt dem Container den Namen â€žmongodb-containerâ€œ
+- `-d`: Mit diesem Parameter starten Sie den Container im Hintergrund (detached mode). Dadurch ist das Terminal weiterhin nutzbar, wÃ¤hrend der Container lÃ¤uft.
+- `-p 27017:27017`: Ã–ffnet den MongoDB-Standard-Port 27017 des Containers auf Ihrem Hostsystem
+- `mongo:latest`: Gibt die Anweisung, das neueste verfÃ¼gbare Image zu beziehen
 
 </br>
 
@@ -162,16 +164,16 @@ Nachdem das Docker-Image für MongoDB erfolgreich heruntergeladen wurde, können S
 
 | **Vorgabe**             | **Beschreibung**                     |
 | :---------------------- | :----------------------------------- |
-| **Lernziele**           | Softwarevoraussetzungen sind erfüllt |
+| **Lernziele**           | Softwarevoraussetzungen sind erfÃ¼llt |
 | **Sozialform**          | Einzelarbeit                         |
 | **Auftrag**             | Softwareinstallationen auf Laptop    |
 | **Hilfsmittel**         | siehe Download links                 |
 | **Erwartete Resultate** |                                      |
 | **Zeitbedarf**          | 40 min                               |
-| **Lösungselemente**     | Ausführbare SW Anwendungen           |
+| **LÃ¶sungselemente**     | AusfÃ¼hrbare SW Anwendungen           |
 
 Installiere alle erforderlichen Softwarekomponenten auf Deinem Rechner.
-Teste soweit möglich, dass alle Komponenten ohne Fehler ausgeführt werden und funktionstauglich sind.
+Teste soweit mÃ¶glich, dass alle Komponenten ohne Fehler ausgefÃ¼hrt werden und funktionstauglich sind.
 
 </br>
 
@@ -179,35 +181,35 @@ Teste soweit möglich, dass alle Komponenten ohne Fehler ausgeführt werden und fu
 
 | **Vorgabe**         | **Beschreibung**                           |
 | :------------------ | :----------------------------------------- |
-| **Lernziele**       | GitHub Account seht zur Verfügung          |
+| **Lernziele**       | GitHub Account seht zur VerfÃ¼gung          |
 |                     | GitHub Benutzername in OneNote eingetragen |
 | **Sozialform**      | Einzelarbeit                               |
 | **Auftrag**         | siehe unten                                |
 | **Hilfsmittel**     | Internet / Browser                         |
 | **Zeitbedarf**      | 10 min                                     |
-| **Lösungselemente** |                                            |
+| **LÃ¶sungselemente** |                                            |
 
-Erstelle einen **GitHub** Account. Verwende dabei wenn möglich die E-Mail Adresse deiner Bildungsinstitution.
+Erstelle einen **GitHub** Account. Verwende dabei wenn mÃ¶glich die E-Mail Adresse deiner Bildungsinstitution.
 Gehe dabei wie folgt vor:
 
 1. Gehe auf die Website
    1. <https://github.com/>
-2. Klicke auf **„Sign up“**
-   1. Oben rechts auf der Startseite findest du die Schaltfläche „Sign up“ (Registrieren).
+2. Klicke auf **â€žSign upâ€œ**
+   1. Oben rechts auf der Startseite findest du die SchaltflÃ¤che â€žSign upâ€œ (Registrieren).
 3. Gib deine E-Mail-Adresse ein
    1. Beispiel: <dein.name@schule.ch>
-   2. ? Klicke dann auf **„Continue“**
-4. Wähle einen Benutzernamen
-   1. Das ist dein öffentlicher Name auf GitHub, z.B. **codefan123**.
+   2. ? Klicke dann auf **â€žContinueâ€œ**
+4. WÃ¤hle einen Benutzernamen
+   1. Das ist dein Ã¶ffentlicher Name auf GitHub, z.B. **codefan123**.
 5. Lege ein sicheres Passwort fest
    1. Mindestens 8 Zeichen, am besten mit Gross-, Kleinbuchstaben, Zahlen und Symbolen.
 6. Gib an, ob du E-Mails von GitHub erhalten willst
    1. Das ist optional.
 7. Verifiziere, dass du kein Roboter bist
-   1. GitHub zeigt dir manchmal ein kleines Rätsel oder Bild-Puzzle.
-8. Bestätige deine E-Mail-Adresse
-   1. GitHub sendet dir eine Mail mit einem Bestätigungslink – klicke darauf, um dein Konto zu aktivieren.
-9. Wähle deine GitHub-Einstellungen
+   1. GitHub zeigt dir manchmal ein kleines RÃ¤tsel oder Bild-Puzzle.
+8. BestÃ¤tige deine E-Mail-Adresse
+   1. GitHub sendet dir eine Mail mit einem BestÃ¤tigungslink â€“ klicke darauf, um dein Konto zu aktivieren.
+9. WÃ¤hle deine GitHub-Einstellungen
    1. Privatperson oder Unternehmen
    2. Deine Interessen
 10. Fertig!
@@ -220,21 +222,21 @@ Gehe dabei wie folgt vor:
 
 | **Vorgabe**             | **Beschreibung**                                            |
 | :---------------------- | :---------------------------------------------------------- |
-| **Lernziele**           | Können einen Atlas-Cluster Zugang einrichten                |
-|                         | Können den Zugriff zum Cluster von lokalen Tools einrichten |
-|                         | Können in der MongoDB Shell Befehle ausführen               |
+| **Lernziele**           | KÃ¶nnen einen Atlas-Cluster Zugang einrichten                |
+|                         | KÃ¶nnen den Zugriff zum Cluster von lokalen Tools einrichten |
+|                         | KÃ¶nnen in der MongoDB Shell Befehle ausfÃ¼hren               |
 | **Sozialform**          | Einzelarbeit                                                |
 | **Auftrag**             | siehe unten                                                 |
 | **Hilfsmittel**         | Internet                                                    |
 | **Erwartete Resultate** |                                                             |
 | **Zeitbedarf**          | 50 min                                                      |
-| **Lösungselemente**     | Atlas Account eingerichtet, Verbindungszeichenfolge         |
+| **LÃ¶sungselemente**     | Atlas Account eingerichtet, Verbindungszeichenfolge         |
 
-**MongoDB Atlas** bietet eine einfache Möglichkeit, Ihre Daten in der Cloud zu hosten und zu verwalten.
+**MongoDB Atlas** bietet eine einfache MÃ¶glichkeit, Ihre Daten in der Cloud zu hosten und zu verwalten.
 
 **Aufgabe 1:**
 
-- Der nachfolgenden Link führt zu einem Tutorial [Get Stared with Atlas (Atlas UI)](https://www.mongodb.com/docs/atlas/getting-started).
+- Der nachfolgenden Link fÃ¼hrt zu einem Tutorial [Get Started with Atlas (Atlas UI)](https://www.mongodb.com/docs/atlas/getting-started).
 - In diesem Tutorial kann ein **Atlas-Clusters** (free) erstellt und mit insgesamt 7 Schritten eingerichtet werden.
 - Arbeite dieses Tutorial komplett bis zum **Schritt 7** durch und stelle sicher, dass deine Zugangsdaten nicht verloren bzw. vergessen gehen.
 
@@ -243,10 +245,12 @@ Gehe dabei wie folgt vor:
 **Aufgabe 2:**
 
 - Ermittle die Verbindungsinformation zum Cluster und versuche von der Shell (`mongosh`) und Compass Anwendung eine Verbindung zum Cluster einzurichten.
-- **Version prüfen**: `mongosh --version`
-- **Connection string**: `mongosh "mongodb+srv://cluster0.68xjc46.mongodb.net/" --apiVersion 1 --username <db_username> --password <password>`
+- **Version prÃ¼fen**: `mongosh --version`
+- **Connection string**: `mongosh "mongodb+srv://<cluster>.mongodb.net/" --apiVersion 1 --username <db_username> --password <password>`
+
+  > Den genauen Connection-String findest du in Atlas unter: **Database â†’ Connect â†’ Shell**.
 
 ---
 
-© 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+Â© 2026 Lukas MÃ¼ller â€“ Licensed under CC BY-NC-ND 4.0
+See [LICENSE](../license.md) file for details.

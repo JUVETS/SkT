@@ -23,6 +23,7 @@
   - [1.10. Variable Scope \& Lebensdauer](#110-variable-scope--lebensdauer)
   - [1.11. Preference Variables (Auswahl)](#111-preference-variables-auswahl)
   - [1.12. Umgebungsvariablen ($env: Drive)](#112-umgebungsvariablen-env-drive)
+  - [1.12b. Splatting – Parameter übersichtlich übergeben](#112b-splatting--parameter-übersichtlich-übergeben)
   - [1.13. Sicherheit \& sensible Werte](#113-sicherheit--sensible-werte)
   - [1.14. Beispiel](#114-beispiel)
   - [1.15. Reguläre Ausdrücke](#115-reguläre-ausdrücke)
@@ -43,7 +44,7 @@
 
 ## 1.2. Was ist eine Variable in PowerShell?
 
-Eine Variable ist ein benannter Speicherplatz, in dem zur Laufzeit Objekte referenziert werden. PowerShell ist dynamisch typisiert jede Variable kann grundsätzlich jedes .NET‑Objekt halten.
+Eine Variable ist ein benannter Speicherplatz, in dem zur Laufzeit Objekte referenziert werden. PowerShell ist dynamisch typisiert – jede Variable kann grundsätzlich jedes .NET‑Objekt halten.
 
 ```powershell
 $greeting = "Hallo Welt"         # String
@@ -91,7 +92,8 @@ Variablen müssen nicht explizit deklariert werden und es besteht bei Schreibfeh
 Typisierungszwang einschalten mit:
 
 ```powershell
-Set-StrictMode -Version 4.0 
+Set-StrictMode -Version Latest   # empfohlen: immer strengste verfügbare Version
+# Weitere gültige Werte: 1.0, 2.0, 3.0
 ```
 
 ## 1.6. Variablenbedingungen
@@ -172,12 +174,24 @@ Alle Methoden anzeigen:
 PS> "" | get-member -MemberType Method 
 ```
 
-Auszug der String-Funktionen:
+Praxisrelevante Auszug der String-Methoden:
 
-- `Clone()`
-- `CompareTo()`
-- `Contains()`
-- `CopyTo()`
+```powershell
+$s = "Hallo Welt"
+
+$s.ToUpper()                  # HALLO WELT
+$s.ToLower()                  # hallo welt
+$s.Length                     # 10
+$s.Contains("Welt")           # True
+$s.StartsWith("Ha")           # True
+$s.EndsWith("lt")             # True
+$s.Replace("Welt", "PS")      # Hallo PS
+$s.Substring(6)               # Welt
+$s.Substring(0, 5)            # Hallo
+$s.Trim()                     # führende/nachgestellte Leerzeichen entfernen
+$s.Split(" ")                 # Array: @("Hallo", "Welt")
+$s.IndexOf("W")               # 6 (0-basierter Index)
+```
 
 ### 1.9.5. Zahlen (int, long, double, decimal)
 
@@ -262,6 +276,40 @@ $env:MySetting = "123"
 Remove-Item Env:MySetting
 ```
 
+## 1.12b. Splatting – Parameter übersichtlich übergeben
+
+Splatting fasst viele Parameter in einer Hashtable zusammen und übergibt sie mit `@`:
+
+```powershell
+# Ohne Splatting – schwer lesbar
+Copy-Item -Path "C:\Logs\app.log" -Destination "D:\Archive\" -Force -Recurse -ErrorAction Stop
+
+# Mit Splatting – übersichtlich und wiederverwendbar
+$params = @{
+    Path        = "C:\Logs\app.log"
+    Destination = "D:\Archive\"
+    Force       = $true
+    Recurse     = $true
+    ErrorAction = 'Stop'
+}
+Copy-Item @params   # @params statt $params beim Aufruf!
+```
+
+> **Merke:** `$params` speichert die Hashtable, `@params` übergibt sie als Parameter-Splatting. Das `@`-Symbol beim Aufruf ist entscheidend.
+
+**Splatting in Funktionen – Parameter weiterleiten:**
+
+```powershell
+function Invoke-SafeCopy {
+    param($Source, $Dest)
+    $p = @{ Path = $Source; Destination = $Dest; ErrorAction = 'Stop' }
+    try   { Copy-Item @p }
+    catch { Write-Warning "Kopieren fehlgeschlagen: $_" }
+}
+```
+
+---
+
 ## 1.13. Sicherheit & sensible Werte
 
 Passwörter nicht im Klartext in Variablen.
@@ -277,16 +325,29 @@ $cred   = New-Object System.Management.Automation.PSCredential("DOMAIN\User", $s
 ```powershell
 param([switch]$DebugMode)
 
-$logFile = ".\script.log"
-function Write-Log([string]$msg, [string]$level="INFO") {
-  $ts = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-  "$ts [$level] $msg" | Out-File $logFile -Append -Encoding utf8
-  if ($level -eq "DEBUG" -and -not $DebugMode) { return }
+$script:LogFile = ".\script.log"
+
+function Write-Log {
+    param(
+        [string]$Message,
+        [ValidateSet('INFO','WARN','ERROR','DEBUG')]
+        [string]$Level = 'INFO'
+    )
+    # DEBUG-Einträge nur verarbeiten wenn -DebugMode gesetzt ist
+    if ($Level -eq 'DEBUG' -and -not $DebugMode) { return }
+
+    $ts   = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+    $line = "$ts [$Level] $Message"
+    $line | Out-File $script:LogFile -Append -Encoding utf8
+    Write-Verbose $line
 }
 
 Write-Log "Start"
-Write-Log "Nur im Debug sichtbar" "DEBUG"
+Write-Log "Nur im Debug-Modus sichtbar und gespeichert" -Level DEBUG
+Write-Log "Warnung aufgetreten" -Level WARN
 ```
+
+> **Hinweis zur früheren Fassung:** Die ursprüngliche Version schrieb zuerst in die Datei und prüfte erst danach ob `$DebugMode` gesetzt ist – DEBUG-Meldungen landeten dadurch immer im Log.
 
 ## 1.15. Reguläre Ausdrücke
 
@@ -300,10 +361,16 @@ Prüfen von regulären Ausdrücken mit:
 **Beispiel:**
 
 ```powershell
-$Muster = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$"
+# -match ist in PS case-insensitive → Muster mit [a-zA-Z0-9] oder nur Kleinbuchstaben
+$Muster   = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 $Eingabe1 = "max@muster.ch"
-$Ergebnis1 = $Eingabe1 -match $Muster 
+$Ergebnis1 = $Eingabe1 -match $Muster   # True
+
+# Für case-sensitive Matching: -cmatch verwenden
+# Für case-insensitive explizit: -imatch (identisch zu -match)
 ```
+
+> **Häufige Falle:** `-match` mit `[A-Z]`-Muster und Kleinbuchstaben-Eingabe gibt `$false` zurück, wenn man fälschlicherweise annimmt, das Muster sei case-insensitive. PS `-match` ist es – aber nur wenn das Muster selbst keine Gross/Klein-Unterscheidung erzwingt. `[A-Z]` im Muster bedeutet: nur Grossbuchstaben.
 
 </br>
 
@@ -329,7 +396,7 @@ a) Erstellen Sie eine Variable `$geld` und weisen Sie ihr den Wert 68 zu.
 
 b) Teilen Sie den Wert mit einem weiteren Befehl durch 4. Nutzen Sie dafür einen möglichst kurzen Befehl.
 
-c) Erstellen Sie eine **Konstante** `$c_euro` mit dem Wert Euro in meiner Geldbörse.
+c) Erstellen Sie eine **Konstante** `$c_euro`, die den aktuellen Wert von `$geld` speichert und unveränderbar ist.
 
 d) Lassen Sie den Satz «**Ich habe x Euro in meiner Geldbörse**» ausgeben. Anstelle des **«x»** sollt der Wert der Variablen `$geld` stehen.
 
@@ -401,4 +468,4 @@ Gehe dabei wie folgt vor:
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

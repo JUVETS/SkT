@@ -8,7 +8,13 @@
   - [1.3. Dokumentation (Überblick)](#13-dokumentation-überblick)
   - [1.4. README.md – Pflichtinhalte \& Vorlage](#14-readmemd--pflichtinhalte--vorlage)
   - [1.5. Beispiel‑Skeleton (README.md)](#15-beispielskeleton-readmemd)
-  - [1.6. Beispiel - Comment‑based help – Inline‑Hilfe](#16-beispiel---commentbased-help--inlinehilfe)
+  - [1.6. Parameter](#16-parameter)
+  - [1.7. Betrieb (Task Scheduler)](#17-betrieb-task-scheduler)
+  - [1.8. Exitcodes](#18-exitcodes)
+  - [1.9. Troubleshooting](#19-troubleshooting)
+  - [1.10. Version / Changelog](#110-version--changelog)
+  - [1.11. Lizenz](#111-lizenz)
+  - [1.12. Versionierung mit SemVer \& Changelog](#112-versionierung-mit-semver--changelog)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. README.md erstellen/verbessern](#21-readmemd-erstellenverbessern)
   - [2.2. Comment‑based help ergänzen](#22-commentbased-help-ergänzen)
@@ -67,17 +73,72 @@
 Archiviert Log-Dateien seit X Tagen in ein ZIP, schreibt Logfile und liefert aussagekräftige Exitcodes.
 
 ## Voraussetzungen
-- PowerShell 5.1
+- PowerShell 7.x
 - Schreibrechte auf Zielpfad
 - Freier Speicher für Archivierung
 
 ## Installation
 1. `CompressLogs.ps1` nach `C:\ProgramData\Company\Automation\` kopieren
 2. (Optional) Signierung prüfen
-3. (Kursbetrieb) Execution Policy pro Prozess lockern:
-   ```powershell
-   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+3. Execution Policy für den Prozess lockern (Kursbetrieb):
+   `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force`
+
+## Verwendung
+
+```powershell
+# Happy Path
+pwsh.exe -NoProfile -ExecutionPolicy Bypass -File "C:\ProgramData\Company\Automation\CompressLogs.ps1" \
+  -Source "C:\Logs" -Destination "D:\Archive" -Verbose
+
+# Fehlerfall – ungültiger Quellpfad (Exitcode 1 erwartet)
+pwsh.exe -NoProfile -ExecutionPolicy Bypass -File "C:\ProgramData\Company\Automation\CompressLogs.ps1" \
+  -Source "C:\Nope" -Destination "D:\Archive"
+$LASTEXITCODE   # sollte 1 sein
 ```
+
+## 1.6. Parameter
+
+| Parameter      | Typ      | Pflicht | Default      | Beschreibung              |
+| -------------- | -------- | ------- | ------------ | ------------------------- |
+| `-Source`      | `string` | Ja      | –            | Quellpfad mit Log-Dateien |
+| `-Destination` | `string` | Nein    | `D:\Archive` | Zielpfad für ZIP-Archiv   |
+| `-Since`       | `int`    | Nein    | `7`          | Dateialter in Tagen       |
+| `-Verbose`     | `switch` | Nein    | –            | Detailausgabe aktivieren  |
+
+## 1.7. Betrieb (Task Scheduler)
+
+- **Trigger**: täglich 02:00 Uhr
+- **Konto**: `DOMAIN\svc_automation` (Least Privilege)
+- **Programm**: `C:\Program Files\PowerShell\7\pwsh.exe`
+- **Argumente**: `-NoProfile -ExecutionPolicy Bypass -File "C:\ProgramData\Company\Automation\CompressLogs.ps1" -Source "C:\Logs" -Destination "D:\Archive"`
+- **Logpfad**: `C:\ProgramData\Company\Automation\Logs\compress.log`
+
+## 1.8. Exitcodes
+
+| Code | Bedeutung                             |
+| ---- | ------------------------------------- |
+| `0`  | Erfolgreich abgeschlossen             |
+| `1`  | Unerwarteter Fehler                   |
+| `2`  | Quellpfad nicht gefunden              |
+| `3`  | Zielpfad konnte nicht erstellt werden |
+
+## 1.9. Troubleshooting
+
+| Problem                        | Mögliche Ursache              | Massnahme                          |
+| ------------------------------ | ----------------------------- | ---------------------------------- |
+| Exitcode 2, Log: „Source leer" | Pfad falsch oder kein Zugriff | Pfad und Rechte prüfen (`icacls`)  |
+| Task startet nicht             | Konto ohne Anmeldungsrecht    | `Log on as batch job` Recht prüfen |
+| ZIP leer                       | Keine Dateien im Alter-Filter | `-Since`-Parameter anpassen        |
+
+## 1.10. Version / Changelog
+
+Siehe [CHANGELOG.md](./CHANGELOG.md)
+
+## 1.11. Lizenz
+
+CC BY-NC-ND 4.0 – Lukas Müller
+
+```powershell
 
 ## 1.6. Beispiel - Comment‑based help – Inline‑Hilfe
 
@@ -90,26 +151,76 @@ Mit einem standardisierten Block im Skript wird die Hilfe per `Get-Help` verfüg
 
 .DESCRIPTION
   Filtert Dateien seit -Since, schreibt Logfile, setzt Exitcodes und (optional) Eventlog-Einträge.
+  Setzt voraus: PowerShell 7.x, Schreibrechte auf Source und Destination.
 
 .PARAMETER Source
-  Quellpfad (Ordner). Pflicht.
+  Quellpfad (Ordner mit Log-Dateien). Pflicht.
 
 .PARAMETER Destination
-  Zielpfad (Ordner). Wird bei Bedarf angelegt.
+  Zielpfad (Ordner für ZIP-Archive). Wird bei Bedarf angelegt.
 
 .PARAMETER Since
-  Datum/Zeitgrenze. Standard: 7 Tage zurück.
+  Datum/Zeitgrenze – nur Dateien älter als dieser Wert werden verarbeitet.
+  Standard: 7 Tage zurück (Get-Date).AddDays(-7).
+
+.PARAMETER Verbose
+  Aktiviert detaillierte Konsolenausgabe.
 
 .EXAMPLE
-  .\CleanUpLogs.ps1 -Source 'C:\Logs' -Destination 'D:\Archive' -Since (Get-Date).AddDays(-7) -Verbose
+  .\CleanUpLogs.ps1 -Source 'C:\Logs' -Destination 'D:\Archive' -Verbose
+  Verarbeitet alle Dateien aus C:\Logs und archiviert sie nach D:\Archive.
+
+.EXAMPLE
+  .\CleanUpLogs.ps1 -Source 'C:\Logs' -Destination 'D:\Archive' -Since (Get-Date).AddDays(-30)
+  Nur Dateien, die älter als 30 Tage sind, werden archiviert.
 
 .NOTES
-  Autor: <Name> | Version: 1.3.0 | Lizenz: <Lizenz>
+  Autor  : <Name>
+  Version: 1.3.0
+  Lizenz : CC BY-NC-ND 4.0
 #>
+```
+
+Hilfe aufrufen:
 
 ```powershell
 Get-Help .\CleanUpLogs.ps1 -Full
+Get-Help .\CleanUpLogs.ps1 -Examples   # nur Beispiele anzeigen
+Get-Help .\CleanUpLogs.ps1 -Parameter Source   # einzelnen Parameter erklären
 ```
+
+## 1.12. Versionierung mit SemVer & Changelog
+
+**Semantic Versioning (SemVer)** ist das Standardformat für Versionsnummern: `MAJOR.MINOR.PATCH`
+
+| **Teil** | **Erhöhen wenn…**                                                    | **Beispiel**      |
+| -------- | -------------------------------------------------------------------- | ----------------- |
+| `MAJOR`  | Inkompatible Änderung (Breaking Change) – bestehende Aufrufe brechen | `1.3.0` → `2.0.0` |
+| `MINOR`  | Neue Funktion, rückwärtskompatibel                                   | `1.3.0` → `1.4.0` |
+| `PATCH`  | Bugfix, rückwärtskompatibel                                          | `1.3.0` → `1.3.1` |
+
+**Empfehlung für Skripte:** Die aktuelle Version im `.NOTES`-Block und im README pflegen. Bei grösseren Projekten eine separate `CHANGELOG.md` führen.
+
+**Changelog-Format (Keep a Changelog):**
+
+```markdown
+# Changelog
+
+## [1.4.0] – 2026-09-01
+### Hinzugefügt
+- Parameter `-Since` für Datumsfilterung
+- Exitcode 2 für fehlenden Quellpfad
+
+## [1.3.1] – 2026-08-15
+### Behoben
+- Encoding-Fehler bei Umlauten im Logfile
+
+## [1.3.0] – 2026-07-01
+### Hinzugefügt
+- Erste stabile Version mit Logging und Exitcodes
+```
+
+> **Tipp:** Das Format `## [Version] – Datum` mit Abschnitten `Hinzugefügt`, `Geändert`, `Behoben`, `Entfernt` ist etabliert und für alle Beteiligten sofort lesbar. Mehr: [keepachangelog.com](https://keepachangelog.com)
 
 ---
 
@@ -145,7 +256,7 @@ Erstelle für dein Skript (z.B. Aufgabe Log-Aufräumprozess) eine `README.md`, d
 <Kurzbeschreibung>
 
 ## Voraussetzungen
-- PowerShell 5.1
+- PowerShell 7.x
 - <weitere Abhängigkeiten>
 
 ## Installation
@@ -154,7 +265,7 @@ Erstelle für dein Skript (z.B. Aufgabe Log-Aufräumprozess) eine `README.md`, d
 
 ## Verwendung (Beispiele)
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\ProgramData\<Company>\Automation\<Script>.ps1" `
+pwsh.exe -NoProfile -ExecutionPolicy Bypass -File "C:\ProgramData\<Company>\Automation\<Script>.ps1" `
   -ParamA ... -ParamB ... -Verbose
 ```
 
@@ -162,17 +273,17 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\ProgramData\<Company
 
 ## 2.2. Comment‑based help ergänzen
 
-| **Vorgabe**             | **Beschreibung**                                                          |
-| :---------------------- | :------------------------------------------------------------------------ |
-| **Lernziele**           | aussagekräftige README.md, Admin‑Guides und Entwicklernotizen erstellen   |
-|                         | comment‑based help in Skripten schreiben und mit Get-Help nutzbar machen. |
-|                         | konsistente Code‑Kommentare, Namenskonventionen und Struktur nutzen       |
-| **Sozialform**          | Einzelarbeit                                                              |
-| **Auftrag**             | siehe unten                                                               |
-| **Hilfsmittel**         |                                                                           |
-| **Erwartete Resultate** |                                                                           |
-| **Zeitbedarf**          | 30 min                                                                    |
-| **Lösungselemente**     | siehe unten                                                               |
+| **Vorgabe**             | **Beschreibung**                                      |
+| :---------------------- | :---------------------------------------------------- |
+| **Lernziele**           | Comment-Based Help vollständig und korrekt schreiben  |
+|                         | `Get-Help` zur Validierung der Inline-Hilfe einsetzen |
+|                         | Alle Parameter, Beispiele und Notizen dokumentieren   |
+| **Sozialform**          | Einzelarbeit                                          |
+| **Auftrag**             | siehe unten                                           |
+| **Hilfsmittel**         |                                                       |
+| **Erwartete Resultate** |                                                       |
+| **Zeitbedarf**          | 30 min                                                |
+| **Lösungselemente**     | siehe unten                                           |
 
 Füge deinem Skript eine vollständige Inline‑Hilfe hinzu, inkl. **.SYNOPSIS**, **.DESCRIPTION**, **.PARAMETER (alle)**, **.EXAMPLE** (mind. 2) und **.NOTES** (Autor/Version).
 
@@ -206,4 +317,4 @@ Füge deinem Skript eine vollständige Inline‑Hilfe hinzu, inkl. **.SYNOPSIS**
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

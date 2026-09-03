@@ -14,7 +14,6 @@
   - [1.7. while – Schleife mit Vorbedingung](#17-while--schleife-mit-vorbedingung)
   - [1.8. do { … } while/until – Nachbedingung](#18-do----whileuntil--nachbedingung)
   - [1.9. Schleifensteuerung: break \& continue](#19-schleifensteuerung-break--continue)
-  - [1.10. continue – fahre mit nächstem Durchlauf fort](#110-continue--fahre-mit-nächstem-durchlauf-fort)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. Kontrollstrukturen implementieren](#21-kontrollstrukturen-implementieren)
   - [2.2. Skript mit Variablen erstellen](#22-skript-mit-variablen-erstellen)
@@ -35,6 +34,8 @@
 
 ## 1.2. Bedingungen & Vergleichsoperatoren
 
+**Vergleichsoperatoren:**
+
 | **Operator** | **Beschreibung**         |
 | ------------ | ------------------------ |
 | `-eq`        | gleich                   |
@@ -43,8 +44,28 @@
 | `-ge`        | grösser/gleich           |
 | `-lt`        | kleiner als              |
 | `-le`        | kleiner/gleich           |
-| `-like`      | Wildcards (z. B. 'Win*') |
+| `-like`      | Wildcards (z. B. `Win*`) |
+| `-notlike`   | Wildcard-Negation        |
 | `-match`     | Regex                    |
+| `-notmatch`  | Regex-Negation           |
+
+**Logische Operatoren** – verknüpfen mehrere Bedingungen:
+
+| **Operator** | **Beschreibung**                         | **Beispiel**              |
+| ------------ | ---------------------------------------- | ------------------------- |
+| `-and`       | beide Bedingungen müssen wahr sein       | `$a -gt 0 -and $b -lt 10` |
+| `-or`        | mindestens eine Bedingung muss wahr sein | `$x -eq 1 -or $x -eq 2`   |
+| `-not`       | negiert eine Bedingung                   | `-not ($path -eq "")`     |
+| `!`          | Kurzform von `-not`                      | `!($path -eq "")`         |
+
+> **PS-Falle: `$null`-Vergleiche immer links schreiben!**
+> Bei Arrays liefert die falsche Reihenfolge unerwartete Ergebnisse:
+>
+> ```powershell
+> $items = @()
+> if ($null -eq $items) { "leer" }   # korrekt
+> if ($items -eq $null) { "leer" }   # FALSCH bei Arrays – filtert statt zu vergleichen
+> ```
 
 ## 1.3. IF / ELSEIF / ELSE — Entscheidungen
 
@@ -166,21 +187,36 @@ do {
 
 ## 1.9. Schleifensteuerung: break & continue
 
-`break` – beende die aktuelle Schleife
+`break` – beendet die aktuelle Schleife sofort:
 
 ```powershell
 foreach ($n in 1..10) {
     if ($n -eq 5) { break }
     $n
 }
+# Ausgabe: 1 2 3 4
 ```
 
-## 1.10. continue – fahre mit nächstem Durchlauf fort
+`continue` – überspringt den aktuellen Durchlauf und fährt mit dem nächsten fort:
 
 ```powershell
 foreach ($n in 1..10) {
-    if ($n % 2 -eq 0) { continue } # Überspringe gerade Zahlen
+    if ($n % 2 -eq 0) { continue }  # überspringe gerade Zahlen
     $n
+}
+# Ausgabe: 1 3 5 7 9
+```
+
+**Labels** – steuern bei verschachtelten Schleifen, welche Ebene `break`/`continue` betrifft:
+
+```powershell
+:outer foreach ($folder in "C:\Logs", "C:\Temp") {
+    foreach ($file in Get-ChildItem $folder -File) {
+        if ($file.Name -like "STOP*") {
+            "Gefunden: $($file.FullName)"
+            break outer    # verlässt beide Schleifen
+        }
+    }
 }
 ```
 
@@ -200,7 +236,7 @@ foreach ($n in 1..10) {
 | **Sozialform**          | Einzelarbeit                                                            |
 | **Hilfsmittel**         |                                                                         |
 | **Erwartete Resultate** |                                                                         |
-| **Zeitbedarf**          | 10 min                                                                  |
+| **Zeitbedarf**          | 45 min                                                                  |
 | **Lösungselemente**     | PowerShell Datei mit sämtlichen Lösungen                                |
 
 **A1: If/Else: Dateigrössen prüfen:**
@@ -275,14 +311,16 @@ Legen Sie eine Variable $note an und weisen Sie ihr einen Wert zwischen 1 und 6 
 Verwenden Sie die Switch Anweisung, um für die Werte die entsprechenden Texte gemäss der folgenden Tabelle auszugeben.
 Experimentieren Sie mit verschiedenen Werten.
 
-| **Note** | **Text**     |
-| -------- | ------------ |
-| 1        | Ungenügend   |
-| 2        | Mangelhaft   |
-| 3        | Ausreichend  |
-| 4        | Befriedigend |
-| 5        | Gut          |
-| 6        | Sehr gut     |
+| **Note** | **Text**       |
+| -------- | -------------- |
+| 1        | Ungenügend (1) |
+| 2        | Ungenügend (2) |
+| 3        | Ungenügend (3) |
+| 4        | Genügend       |
+| 5        | Gut            |
+| 6        | Sehr gut       |
+
+> **Hinweis:** In der Schweizer Notenskala gilt 4 als Mindestanforderung (genügend). Die Noten 1–3 sind ungenügend.
 
 ---
 
@@ -297,4 +335,4 @@ Geben Sie mithilfe einer For Schleife die ganzen Vielfachen der Zahl 5 bis zum W
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

@@ -70,6 +70,10 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 - **Kontext**: Ausführen unter Service‑Konto (least privilege), Run with highest privileges nur wenn nötig.
 
 ```console
+# PowerShell 7 (empfohlen)
+pwsh.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Scripts\Job.ps1" -ParamA X
+
+# Windows PowerShell 5.1 (legacy – nur wenn PS7 nicht verfügbar)
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Scripts\Job.ps1" -ParamA X
 ```
 
@@ -90,7 +94,8 @@ Im Gegensatz zu Command-/Batch-Scripts sollten PowerShell Scripts in Scheduled T
    3. ![Trigger-Erstellen](./x_gitres/create-trigger.png)
 5. Wechsele zur Registerkarte **„Aktionen“**. Klicke auf **„Neu“**, um eine neue Aktion zum Ausführen Ihres PowerShell-Skripts einzurichten:
    1. **Action**: Start a program
-   2. **Program/Script**: %SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe
+   2. **Program/Script** (PS7): `%ProgramFiles%\PowerShell\7\pwsh.exe`
+      **Program/Script** (PS5.1 legacy): `%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe`
    3. Add Arguments (optional): `-ExecutionPolicy Bypass -NoProfile -NoLogo -NonInteractive -File "<Pfad>\<Script-Name>.ps1"`
    4. ![Task](./x_gitres/new-task.png)
 
@@ -101,12 +106,18 @@ Im Gegensatz zu Command-/Batch-Scripts sollten PowerShell Scripts in Scheduled T
 **Task mit PowerShell erstellen:**
 
 ```powershell
-$taskName = "Daily_Job"
-$action   = New-ScheduledTaskAction -Execute "powershell.exe" -Argument '-NoProfile -ExecutionPolicy Bypass -File "C:\Scripts\Job.ps1" -Verbose'
-$trigger  = New-ScheduledTaskTrigger -Daily -At 08:00
-$principal= New-ScheduledTaskPrincipal -UserId "DOMAIN\\svc_automation" -RunLevel Highest
+$taskName  = "Daily_Job"
+$action    = New-ScheduledTaskAction `
+    -Execute  "C:\Program Files\PowerShell\7\pwsh.exe" `
+    -Argument '-NoProfile -ExecutionPolicy Bypass -File "C:\Scripts\Job.ps1"'
+$trigger   = New-ScheduledTaskTrigger -Daily -At 08:00
+$principal = New-ScheduledTaskPrincipal `
+    -UserId   "DOMAIN\svc_automation" `
+    -RunLevel Limited   # Least Privilege: nie Highest ausser zwingend nötig
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Force
 ```
+
+> **Hinweis PS7:** `pwsh.exe` liegt standardmässig unter `C:\Program Files\PowerShell\7\pwsh.exe`. Den Pfad einmalig mit `(Get-Command pwsh).Source` ermitteln.
 
 **Start beim Systemstart (Autostart/Startup Trigger):**
 
@@ -125,29 +136,56 @@ Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Pr
 **Dateilog + Verbose/Debug:**
 
 ```powershell
-function New-Logger {
-  param([string]$Path = "C:\ProgramData\MyApp\Logs\job.log",[switch]$DebugMode)
-  return {
-    param([string]$Message,[ValidateSet('INFO','WARN','ERROR','DEBUG')][string]$Level='INFO')
-    if ($Level -eq 'DEBUG' -and -not $DebugMode) { return }
-    $line = "[{0}] {1} {2}" -f $Level,(Get-Date -Format 'yyyy-MM-dd HH:mm:ss'),$Message
-    $line | Out-File -FilePath $Path -Append -Encoding utf8
-    if ($Level -eq 'ERROR') { Write-Error $Message }
-    elseif ($Level -eq 'WARN') { Write-Warning $Message }
-    elseif ($Level -eq 'DEBUG') { Write-Debug $Message }
-    else { Write-Verbose $Message }
-  }
+# Logger initialisieren (PS7-Stil: einfache Funktion mit script:-Variable)
+$script:LogPath  = "C:\ProgramData\MyApp\Logs\job.log"
+$script:LogDebug = $false   # auf $true setzen für DEBUG-Ausgaben
+
+function Write-Log {
+    param(
+        [string]$Message,
+        [ValidateSet('INFO','WARN','ERROR','DEBUG')]
+        [string]$Level = 'INFO'
+    )
+    if ($Level -eq 'DEBUG' -and -not $script:LogDebug) { return }
+
+    $line = "[{0}] {1} {2}" -f $Level, (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $Message
+    $line | Out-File -FilePath $script:LogPath -Append -Encoding utf8
+
+    switch ($Level) {
+        'ERROR' { Write-Error   $Message }
+        'WARN'  { Write-Warning $Message }
+        'DEBUG' { Write-Debug   $Message }
+        default { Write-Verbose $Message }
+    }
 }
-$log = New-Logger -DebugMode
-$log.Invoke("Job gestartet")
+
+# Verwendung:
+Write-Log "Job gestartet"
+Write-Log "Warnung aufgetreten"  -Level WARN
+Write-Log "Kritischer Fehler"    -Level ERROR
+Write-Log "Debug-Info"           -Level DEBUG   # nur wenn $script:LogDebug = $true
 ```
 
 ---
 
 ## 1.8. Windows Eventlog (optional)
 
-- Eigenes Eventlog/Quelle anlegen, dann `Write-EventLog`.
-- Für strukturierte Beobachtung in SIEM/Log‑Tools.
+- Eigenes Eventlog/Quelle anlegen und Ereignisse schreiben.
+- `Write-EventLog` ist in PS7 als deprecated markiert (nur noch via Windows Compatibility Shim).
+- **PS7-Empfehlung:** `New-WinEvent` für strukturierte ETW-Ereignisse, oder einfache Datei-/Structured-Logs für die meisten Automationsszenarien.
+
+```powershell
+# Eventlog-Quelle einmalig anlegen (benötigt Admin-Rechte)
+New-EventLog -LogName Application -Source "MyApp"
+
+# Eintrag schreiben (funktioniert via Compatibility Shim in PS7)
+Write-EventLog -LogName Application -Source "MyApp" `
+    -EventId 1000 -EntryType Information -Message "Job erfolgreich abgeschlossen"
+
+# Alternativ: New-WinEvent (nativ PS7, kein Shim)
+# Erfordert ein registriertes ETW-Manifest – für einfache Skripte überdimensioniert.
+# Für Produktion: strukturiertes Datei-Logging + zentrales SIEM empfohlen.
+```
 
 ---
 
@@ -201,36 +239,48 @@ Die Skriptausführung soll vorerst zu Testzwecken alle **5min** erfolgen (Trigge
 ```powershell
 <#
   .SYNOPSIS
-  Sytem Backup
+  System Backup
   .DESCRIPTION
-  Backup Windows System
+  Sichert Dateien aus einem Quellpfad in ein Zielverzeichnis.
+  Schreibt ein Logfile und gibt Exitcodes zurück.
+  .NOTES
+  Exitcode 0 = Erfolg, 1 = Fehler
 #>
 
+$ErrorActionPreference = 'Stop'    # alle Fehler terminierend → catch greift
 
-<#
-  .SYNOPSIS
-  Write log message
-  .DESCRIPTION
-  Write a log entry with a timestamp to a log file
-#>
+# ── Konfiguration ──────────────────────────────────────────────────────────────
+$script:LogFile = Join-Path $PSScriptRoot "backup.log"
+
+# ── Funktionen ─────────────────────────────────────────────────────────────────
 function Write-Log {
-    param([string]$Message)
-
-    $logFile = Join-Path $PSScriptRoot "backup.log"
-
+    param(
+        [string]$Message,
+        [ValidateSet('INFO','WARN','ERROR')]
+        [string]$Level = 'INFO'
+    )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    "$timestamp - $Message" | Out-File $logFile -Append
+    "[$Level] $timestamp – $Message" | Out-File $script:LogFile -Append -Encoding utf8
+    if ($Level -eq 'ERROR') { Write-Error $Message }
 }
 
-#
-# MAIN
-#
+# ── Hauptprogramm ──────────────────────────────────────────────────────────────
+try {
+    Write-Log "Backup gestartet"
 
-Write-Log "Backup started"
+    # TODO: Backup-Logik hier implementieren
+    # Beispiel:
+    # $source = "C:\Daten"
+    # $dest   = "D:\Backup\$(Get-Date -Format 'yyyyMMdd')"
+    # Copy-Item -Path $source -Destination $dest -Recurse -ErrorAction Stop
 
-# TODO (Backup)
-
-Write-Log "Backup completed"
+    Write-Log "Backup erfolgreich abgeschlossen"
+    exit 0
+}
+catch {
+    Write-Log "Backup fehlgeschlagen: $($_.Exception.Message)" -Level ERROR
+    exit 1
+}
 ```
 
 ---
@@ -258,4 +308,4 @@ Registriere ein PowerShell Skript, das ein Skript stündlich startet und ein Log
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

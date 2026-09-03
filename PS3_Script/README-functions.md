@@ -60,22 +60,22 @@ function Write-Log {
 ## 1.4. Grundaufbau einer Funktion
 
 ```powershell
-
-# Funktion ohne Parameter
-function Say-Hello {
+# Funktion ohne Parameter (approved Verb: Write)
+function Write-Greeting {
     "Hallo Welt"
 }
 
-## Funktion mit Parameter Name
-function Say-Hello {
+# Funktion mit Parameter
+function Write-Greeting {
     param(
-        [string]$Name
+        [string]$Name = "Welt"   # Default-Wert
     )
     "Hallo $Name"
 }
 
-## Hier wird die Funktion aufgerufen
-Say-Hello -Name "Max"
+# Aufruf
+Write-Greeting                  # → Hallo Welt
+Write-Greeting -Name "Max"      # → Hallo Max
 ```
 
 ## 1.5. Parameterblock param
@@ -156,14 +156,48 @@ function Get-UserInfo {
 
 ## 1.8. Rückgabewerte
 
-`return <wert>` beendet Funktion + gibt Wert zurück
+`return <wert>` beendet die Funktion und gibt einen Wert zurück.
+
+> **PS-Besonderheit:** In PowerShell wird **alles, was auf die Pipeline fällt**, zurückgegeben – nicht nur explizite `return`-Aufrufe. Das führt zu einem häufigen Stolperstein:
+>
+> ```powershell
+> function Get-Sum {
+>     param($A, $B)
+>     Write-Output "Berechne..."   # landet AUCH im Rückgabewert!
+>     return ($A + $B)
+> }
+> $result = Get-Sum 3 4
+> # $result ist @("Berechne...", 7) – nicht nur 7!
+> ```
+>
+> **Lösung:** Für Konsolenausgaben `Write-Host` verwenden (geht nicht in die Pipeline), oder `[void]`-Cast für unerwünschte Ausgaben.
 
 ```powershell
 function Add-Numbers {
-    param($A, $B)
-
-    return ($A + $B)
+    param(
+        [int]$A,
+        [int]$B
+    )
+    return ($A + $B)   # einziger Pipeline-Output → sauber
 }
+
+$sum = Add-Numbers -A 3 -B 4
+"Summe: $sum"   # → Summe: 7
+```
+
+**Rückgabe strukturierter Daten mit `[PSCustomObject]`:**
+
+```powershell
+function Get-SystemSummary {
+    return [PSCustomObject]@{
+        ComputerName = $env:COMPUTERNAME
+        OSVersion    = $PSVersionTable.OS
+        PSVersion    = $PSVersionTable.PSVersion.ToString()
+    }
+}
+
+$info = Get-SystemSummary
+"PC: $($info.ComputerName), PS: $($info.PSVersion)"
 ```
 
 ## 1.9. Scopes in Funktionen – wichtige Regeln
@@ -176,18 +210,25 @@ PowerShell kennt folgende Scopes:
 - `private`: – isoliert im aktuellen Scope
 
 ```powershell
-$global:Counter = 0
+# Korrekt: einheitlicher Scope
+$script:Counter = 0
 
-function Increase-Counter {
-    $script:Counter = $script:Counter + 1
+function Add-Counter {
+    $script:Counter++
 }
+
+Add-Counter
+Add-Counter
+"Zählerstand: $script:Counter"   # → 2
 ```
+
+> **Häufiger Fehler:** `$global:Counter = 0` und dann `$script:Counter++` inkrementiert eine *andere* Variable (`script:` und `global:` sind verschiedene Scopes). Scope immer konsistent verwenden.
 
 ## 1.10. Naming Best Practices
 
 - CmdletStyle: Verb‑Noun verwenden
 - Kein „SetX“ → besser „Set‑Config“, „Add‑User“
-- Microsoft approved Verbs nutzen (Get‑Help Verb)
+- Microsoft approved Verbs nutzen (`Get-Verb` listet alle gültigen Verben)
 
 **Beispiele:**
 
@@ -228,9 +269,19 @@ Rufe die Write-Log Funktionen im Hauptprogramm auf.
 
 ```powershell
 function Write-Log {
-    param($Message,[ValidateSet('INFO','WARN','ERROR')]$Level)
-    "$Level $(Get-Date): $Message" | Out-File ".\script.log" -Append
+    param(
+        [string]$Message,
+        [ValidateSet('INFO','WARN','ERROR')]
+        [string]$Level = 'INFO'
+    )
+    $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+    "[$Level] $timestamp $Message" | Out-File ".\script.log" -Append
 }
+
+# Aufruf:
+Write-Log "Skript gestartet"
+Write-Log "Datei fehlt" -Level WARN
+Write-Log "Verbindung fehlgeschlagen" -Level ERROR
 ```
 
 **A3:**
@@ -247,9 +298,11 @@ Schreiben Sie ein Programm, das den km-Stand vor Abfahrt und den nach der Differ
 - Prüfen Sie die Benutzereingabe, sodass KM-Stand Start immer kleiner ist als KM-Stand Ende.
 - Fügen Sie der Skriptdatei einen Kommentarheader hinzu.
 - Gliedern Sie Ihren Code in mehrere Funktionen:
-  - `TitelAusgeben()`: Titel ausgeben
-  - `KMStandEinlesen()`: Eine Kilometerstand einlesen
-  - `MietkostenBerechnung()`: Aus den gefahrenen KM die Mietkostenberechnung durchführen
+  - `Write-Title`: Titel ausgeben
+  - `Read-Mileage`: Einen Kilometerstand einlesen und validieren
+  - `Get-RentalCost`: Aus den gefahrenen KM die Mietkosten berechnen
+
+> **Hinweis:** Funktionsnamen folgen dem PowerShell Verb-Noun-Standard (approved Verbs: `Get-Verb`). Klammern `()` gehören nicht zum Funktionsnamen.
 
 ---
 
@@ -335,4 +388,4 @@ Seltenste Zahl : 4
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

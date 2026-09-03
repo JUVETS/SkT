@@ -75,9 +75,9 @@ Skripte sind ideal für:
 
 Für professionelles Arbeiten nutze:
 
-- VS Code + PowerShell Extension (bevorzugte Wahl)
-- Syntax-Highlighting, Autovervollständigung, Debugger
-- PowerShell ISE (älter, aber in Windows 5.1 noch vorhanden)
+- **VS Code + PowerShell Extension** (bevorzugte Wahl, plattformübergreifend)
+  - Syntax-Highlighting, Autovervollständigung, Debugger, integriertes Terminal
+- PowerShell ISE (nur Windows PowerShell 5.1, wird von Microsoft nicht mehr weiterentwickelt)
 
 ## 1.4. Grundaufbau eines PowerShell-Skripts
 
@@ -248,8 +248,8 @@ param([string] $Computer)
 
 ```powershell
 Set-ExecutionPolicy AllSigned       # Nur signierte Scripts werden ausgeführt
-Set-ExecutionPolicy RemoteSigned    # Aus dem Internet heruntergeladene Scripts müssen signiert sein
-Set-ExecutionPolicy Unrestricted    # Bevorzugt! Alle Scripts werden ausgeführt. Unsignierten Scripts aus dem Internet müssen bestätigt werden
+Set-ExecutionPolicy RemoteSigned    # Aus dem Internet heruntergeladene Scripts müssen signiert sein (empfohlen für Produktion)
+Set-ExecutionPolicy Unrestricted    # Alle Scripts werden ausgeführt. Unsignierten Scripts aus dem Internet müssen bestätigt werden
 Set-ExecutionPolicy Bypass          # Keinerlei Einschränkungen, Warnungen oder Prompts
 Set-ExecutionPolicy Undefined       # Entfernt eine zugewiesene Richtlinie
 ```
@@ -373,97 +373,104 @@ Prüfe die korrekte Funktionsweise des Skripts und kontrolliere die Skriptausgab
 ```powershell
 <#
   .SYNOPSIS
-  Kurzbeschreibung
+  Systeminformationen als HTML-Report ausgeben.
   .DESCRIPTION
-  Ausführliche Beschreibung
-  .PARAMETER <ParameterName-1>
-  Beschreibung des ersten Parameters
-  .PARAMETER <ParameterName-N>
-  Beschreibung des n. Parameters
-  .EXAMPLE
-  Beispielanwendung und -erläuterung
-  .EXAMPLE
-  Weitere Beispielanwendung und -erläuterung
+  Sammelt Hardware-, OS- und Softwareinformationen und erstellt einen HTML-Bericht.
+  Verwendet Get-CimInstance (PS7-kompatibel, Ersatz für das veraltete Get-WmiObject).
   .NOTES
-  Weitere Hinweise
+  Läuft unter PowerShell 7+ auf Windows.
   .LINK
-  Angabe von URLs oder ähnlichen Cmdlets
-#> 
-# Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+  https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance
+#>
+
+# Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
 #### HTML Output Formatting #######
 $a = "<style>"
-$a = $a + "BODY{background-color:Lavender ;}"
-$a = $a + "TABLE{border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}"
-$a = $a + "TH{border-width: 1px;padding: 0px;border-style: solid;border-color: black;background-color:thistle}"
-$a = $a + "TD{border-width: 1px;padding: 0px;border-style: solid;border-color: black;background-color:PaleGoldenrod}"
+$a = $a + "BODY{background-color:Lavender;}"
+$a = $a + "TABLE{border-width:1px;border-style:solid;border-color:black;border-collapse:collapse;}"
+$a = $a + "TH{border-width:1px;padding:4px;border-style:solid;border-color:black;background-color:thistle}"
+$a = $a + "TD{border-width:1px;padding:4px;border-style:solid;border-color:black;background-color:PaleGoldenrod}"
 $a = $a + "</style>"
-################################################################################################
-###### Global variables ####
-$vUserName = (Get-Item env:\username).Value         ## This will get username using environment variable
-$vComputerName = (Get-Item env:\Computername).Value     ## this is computer name using environment variable
-$filepath = (Get-ChildItem env:\userprofile).value    ## this is user profile  using environment variable
 
-ConvertTo-Html -Title "System Information for $vComputerName" -Body "<h1> Computer Name : $vComputerName </h1>" >  "$filepath\$vComputerName.html" 
+###### Global variables ####
+$vUserName     = $env:USERNAME
+$vComputerName = $env:COMPUTERNAME
+$filepath      = $env:USERPROFILE
+$reportFile    = "$filepath\$vComputerName.html"
+
+ConvertTo-Html -Title "System Information for $vComputerName" `
+    -Body "<h1>Computer Name: $vComputerName</h1>" > $reportFile
+
 ################################################
 #  Hardware Information
-#################################################
-ConvertTo-Html -Body "<H1>HARDWARE INFORMATION </H1>" >> "$filepath\$vComputerName.html"
-
-Get-WmiObject win32_bios -ComputerName $vComputerName | 
-  Select-Object Status,Version,PrimaryBIOS,Manufacturer,ReleaseDate,SerialNumber | 
-  ConvertTo-html -Body "<H2> BIOS Information</H2>" >>  "$filepath\$vComputerName.html"
-                      
-Get-WmiObject win32_DiskDrive -ComputerName $vComputerName | 
-  Select-Object Model,SerialNumber,Description,MediaType,FirmwareRevision |
-  ConvertTo-html -Body "<H2> Physical DISK Drives </H2>" >>  "$filepath\$vComputerName.html"
-get-WmiObject win32_networkadapter -ComputerName $vComputerName | 
-  Select-Object Name,Manufacturer,Description ,AdapterType,Speed,MACAddress,NetConnectionID | 
-  ConvertTo-html -Body "<H2> Network Adapters</H2>" >>  "$filepath\$vComputerName.html"
-                      
 ################################################
-#  OS Information
-#################################################
-ConvertTo-Html -Body "<H1>OS INFORMATION </H1>" >> "$filepath\$name.html" 
-get-WmiObject win32_operatingsystem -ComputerName $vComputerName | 
-  Select-Object Caption,Organization,InstallDate,OSArchitecture,Version,SerialNumber,BootDevice,WindowsDirectory,CountryCode | 
-  ConvertTo-html -Body "<H2> Operating System Information</H2>" >>  "$filepath\$vComputerName.html"
-                      
-Get-WmiObject win32_logicalDisk -ComputerName $vComputerName | 
-  Select-Object DeviceID,VolumeName,@{Expression={$_.Size /1Gb -as [int]};Label="Total Size(GB)"}, @{Expression={$_.Freespace / 1Gb -as [int]};Label="Free Size (GB)"} | 
-  ConvertTo-html -Body "<H2> Logical DISK Drives </H2>" >>  "$filepath\$vComputerName.html"
-                     
-Get-WmiObject Win32_NetworkAdapterConfiguration -ComputerName $vComputerName |
-    Select-Object Description, 
-        DHCPServer, 
-        @{Name='IpAddress';Expression={$_.IpAddress -join '; '}}, 
-        @{Name='IpSubnet';Expression={$_.IpSubnet -join '; '}}, 
-        @{Name='DefaultIPgateway';Expression={$_.DefaultIPgateway -join '; '}}, 
-        @{Name='DNSServerSearchOrder';Expression={$_.DNSServerSearchOrder -join '; '}}, 
-        WinsPrimaryServer, 
-        WINSSecondaryServer | 
-    ConvertTo-html -Body "<H2>IP Address </H2>" >>  "$filepath\$vComputerName.html"                      
+ConvertTo-Html -Body "<h1>HARDWARE INFORMATION</h1>" >> $reportFile
 
+# BIOS (Get-CimInstance ersetzt Get-WmiObject)
+Get-CimInstance -ClassName Win32_BIOS |
+    Select-Object Status, Version, Manufacturer, ReleaseDate, SerialNumber |
+    ConvertTo-Html -Body "<h2>BIOS Information</h2>" >> $reportFile
+
+# Festplatten
+Get-CimInstance -ClassName Win32_DiskDrive |
+    Select-Object Model, SerialNumber, MediaType, FirmwareRevision |
+    ConvertTo-Html -Body "<h2>Physical Disk Drives</h2>" >> $reportFile
+
+# Netzwerkadapter
+Get-CimInstance -ClassName Win32_NetworkAdapter |
+    Select-Object Name, Manufacturer, AdapterType, MACAddress, NetConnectionID |
+    ConvertTo-Html -Body "<h2>Network Adapters</h2>" >> $reportFile
 
 ################################################
 #  OS Information
-#################################################
-ConvertTo-Html -Body "<H1>SOFTWARE INFORMATION </H1>" >> "$filepath\$vComputerName.html"
-Get-WmiObject win32_startupCommand -ComputerName $vComputerName | 
-  Select-Object Name,Location,Command,User,caption | 
-  ConvertTo-html  -Body "<H2>Startup Softwares</H2>" >>  "$filepath\$vComputerName.html"
-Get-WmiObject win32_process -ComputerName $vComputerName | 
-  Select-Object Caption,ProcessId,@{Expression={$_.Vm /1mb -as [Int]};Label="VM (MB)"},@{Expression={$_.Ws /1Mb -as [Int]};Label="WS (MB)"} |
-  Sort-Object "Vm (MB)" -Descending | 
-  ConvertTo-html -Head $a -Body "<H2> Running Processes</H2>" >>  "$filepath\$vComputerName.html"
-                     
-Get-WmiObject win32_Service  | 
-  Where-Object {$_.StartMode -eq "Auto" -and $_.State -eq "stopped"} |  
-  Select-Object Name,StartMode,State | 
-  ConvertTo-html  -Head $a -Body "<H2> Services </H2>" >>  "$filepath\$vComputerName.html"                     
-                     
-$Report = "The Report is generated On  $(get-date) by $((Get-Item env:\username).Value) on computer $((Get-Item env:\Computername).Value)"
-$Report  >> "$filepath\$vComputerName.html" 
-invoke-Expression "$filepath\$vComputerName.html"  
+################################################
+ConvertTo-Html -Body "<h1>OS INFORMATION</h1>" >> $reportFile
+
+Get-CimInstance -ClassName Win32_OperatingSystem |
+    Select-Object Caption, Organization, InstallDate, OSArchitecture, Version, BootDevice, WindowsDirectory |
+    ConvertTo-Html -Body "<h2>Operating System</h2>" >> $reportFile
+
+Get-CimInstance -ClassName Win32_LogicalDisk |
+    Select-Object DeviceID, VolumeName,
+        @{Name="Total Size (GB)"; Expression={ [int]($_.Size / 1GB) }},
+        @{Name="Free Size (GB)";  Expression={ [int]($_.FreeSpace / 1GB) }} |
+    ConvertTo-Html -Body "<h2>Logical Disk Drives</h2>" >> $reportFile
+
+Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration |
+    Select-Object Description, DHCPServer,
+        @{Name="IpAddress";           Expression={ $_.IpAddress -join '; ' }},
+        @{Name="IpSubnet";            Expression={ $_.IpSubnet -join '; ' }},
+        @{Name="DefaultIPGateway";    Expression={ $_.DefaultIPGateway -join '; ' }},
+        @{Name="DNSServerSearchOrder";Expression={ $_.DNSServerSearchOrder -join '; ' }} |
+    ConvertTo-Html -Body "<h2>IP Address</h2>" >> $reportFile
+
+################################################
+#  Software Information
+################################################
+ConvertTo-Html -Body "<h1>SOFTWARE INFORMATION</h1>" >> $reportFile
+
+Get-CimInstance -ClassName Win32_StartupCommand |
+    Select-Object Name, Location, Command, User |
+    ConvertTo-Html -Body "<h2>Startup Software</h2>" >> $reportFile
+
+Get-CimInstance -ClassName Win32_Process |
+    Select-Object Caption, ProcessId,
+        @{Name="VM (MB)"; Expression={ [int]($_.VirtualSize / 1MB) }},
+        @{Name="WS (MB)"; Expression={ [int]($_.WorkingSetSize / 1MB) }} |
+    Sort-Object "VM (MB)" -Descending |
+    ConvertTo-Html -Head $a -Body "<h2>Running Processes</h2>" >> $reportFile
+
+Get-CimInstance -ClassName Win32_Service |
+    Where-Object { $_.StartMode -eq "Auto" -and $_.State -eq "Stopped" } |
+    Select-Object Name, StartMode, State |
+    ConvertTo-Html -Head $a -Body "<h2>Services (Auto/Stopped)</h2>" >> $reportFile
+
+$report = "Report erstellt am $(Get-Date) von $vUserName auf $vComputerName"
+$report >> $reportFile
+
+# HTML-Datei im Standardbrowser öffnen
+Invoke-Item $reportFile
 #################### END of SCRIPT ####################################
 ```
 
@@ -535,4 +542,4 @@ Ein IT-Administrator möchte einen `Log-Aufräumprozess` automatisieren:
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

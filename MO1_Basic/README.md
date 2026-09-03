@@ -34,9 +34,9 @@
 
 In einem Tag:
 
-- führt Walmart **24 Millionen** Transaktionen aus
-- werden 100 TB Daten bei Facebook hochgeladen
-- 175 Millionen Tweets werden auf Twitter gemacht
+- führt Walmart täglich **~38 Millionen** Transaktionen aus (270 Mio. Kundenbesuche/Woche)
+- generiert Meta (Facebook) täglich **~4 Petabyte** an Daten
+- werden auf X täglich **~500 Millionen** Posts veröffentlicht (~6.000/Sekunde)
 
 [MongoDB](https://www.mongodb.com/)
 
@@ -306,4 +306,4 @@ Links
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

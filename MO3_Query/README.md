@@ -9,7 +9,7 @@
   - [2.1. Einleitung](#21-einleitung)
   - [2.2. Was ist die Aggregations-Pipeline?](#22-was-ist-die-aggregations-pipeline)
   - [2.3. Wichtige Stages des Aggregation Frameworks](#23-wichtige-stages-des-aggregation-frameworks)
-  - [2.4. Beispiele mit Aggragtion Framework](#24-beispiele-mit-aggragtion-framework)
+  - [2.4. Beispiele mit Aggregation Framework](#24-beispiele-mit-aggregation-framework)
   - [2.5. Aggregation - Terminologie](#25-aggregation---terminologie)
   - [2.6. $lookup - Aggregation Framework](#26-lookup---aggregation-framework)
   - [2.7. Vorteile](#27-vorteile)
@@ -114,7 +114,7 @@ Die Aggregations-Pipeline ist eine Sequenz von Stufen (Stages), die nacheinander
 
 Eine Aggregationspipeline kann Ergebnisse für Gruppen von Dokumenten zurückgeben. – z.B. Gesamt-, Durchschnitts-, Höchst- und Mindestwerte.
 
-![Aggregate Pipleline](./x_gitres/mogodb-aggregate-pipeline.png)
+![Aggregate Pipleline](./x_gitres/mongodb-aggregate-pipeline.png)
 
 ```javascript
 db.kunden.aggregate([
@@ -140,7 +140,7 @@ db.kunden.aggregate([
 - `$lookup`
   - Führt einen Join mit einer anderen Sammlung durch.
 
-## 2.4. Beispiele mit Aggragtion Framework
+## 2.4. Beispiele mit Aggregation Framework
 
 ```javascript
 db.kunden.aggregate([
@@ -159,12 +159,12 @@ db.orders.aggregate([
 ]);
 ```
 
-![Beispiel mit match und group](./x_gitres/mogodb-aggregate-example.png)
+![Beispiel mit match und group](./x_gitres/mongodb-aggregate-example.png)
 
 ## 2.5. Aggregation - Terminologie
 
-![Terminologie](./x_gitres/mogodb-aggregate-terminologie.png)
-![Aggregation SQL](./x_gitres/mogodb-aggregate-sql.png)
+![Terminologie](./x_gitres/mongodb-aggregate-terminologie.png)
+![Aggregation SQL](./x_gitres/mongodb-aggregate-sql.png)
 
 ## 2.6. $lookup - Aggregation Framework
 
@@ -174,7 +174,7 @@ Der `$lookup`-Operator ist ein mächtiges Tool, um Daten aus mehreren Sammlungen
 Er eignet sich besonders gut für 1:n- und n:1-Beziehungen, wie z. B. Kunden und ihre Bestellungen.
 Für komplexere Abfragen oder grössere Datenmengen ist eine sorgfältige Indexierung entscheidend.
 
-![lookup](./x_gitres/mogodb-aggregate-lookup.png)
+![lookup](./x_gitres/mongodb-aggregate-lookup.png)
 
 Beispiel
 
@@ -594,4 +594,4 @@ In der Datei [launches.json](./x_gitres/launches.json) findest du die Raketensta
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

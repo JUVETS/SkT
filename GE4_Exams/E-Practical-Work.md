@@ -32,7 +32,7 @@
 |                     |                                                           |
 | :------------------ | :-------------------------------------------------------- |
 | **Lernziele**       | Skripting / BigData Projekt realisieren                   |
-| **Sozialform**      | Partner-/Gruppenarbeit (max. 2-3 Mitglieder)              |
+| **Sozialform**      | Partnerarbeit (max. 2 Personen)                           |
 | **Auftrag**         | siehe unten                                               |
 | **Hilfsmittel**     | Internet                                                  |
 | **Zeitbedarf**      | Total ca. 8-12h                                           |
@@ -232,10 +232,10 @@ Die Live-Demo muss auf der eigenen Maschine lauffähig sein und folgende Punkte 
 
 ## 1.10. Termine
 
-Termin für Konzeptabgabe: **21.06.2026, 14:00 Uhr, OpenOLAT (Ordner Studierende)**
-Termin für Projektabgabe: **25.06.2026, 23:59 Uhr, OpenOLAT (Ordner Studierende)**
+Termin für Konzeptabgabe: **10.12.2026, 14:00 Uhr, OpenOLAT (Ordner Studierende)**
+Termin für Projektabgabe: **20.01.2027, 23:59 Uhr, OpenOLAT (Ordner Studierende)**
 
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

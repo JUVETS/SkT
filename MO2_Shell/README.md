@@ -10,7 +10,7 @@
   - [2.2. Dokument einfügen - insertOne()](#22-dokument-einfügen---insertone)
   - [2.3. Mehrere Dokument einfügen - insertMany()](#23-mehrere-dokument-einfügen---insertmany)
   - [2.4. Daten ersetzen - replaceOne()](#24-daten-ersetzen---replaceone)
-  - [2.5. Daten ersetzen updateOne()](#25-daten-ersetzen-updateone)
+  - [2.5. Daten aktualisieren updateOne()](#25-daten-aktualisieren-updateone)
   - [2.6. Daten aktualisieren updateMany()](#26-daten-aktualisieren-updatemany)
   - [2.7. Dokumente löschen - deleteOne, deleteMany](#27-dokumente-löschen---deleteone-deletemany)
   - [2.8. CRUD-Operationen](#28-crud-operationen)
@@ -192,7 +192,7 @@ db.kunden.replaceOne(
 );
 ```
 
-## 2.5. Daten ersetzen updateOne()
+## 2.5. Daten aktualisieren updateOne()
 
 Der Befehl updateOne() wird verwendet, um das erste Dokument in einer Sammlung zu aktualisieren, das den angegebenen Filterkriterien entspricht.
 
@@ -370,4 +370,4 @@ Recherchiere die der Gruppe zugeteilten Methoden und erstelle eine kurze Befehls
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

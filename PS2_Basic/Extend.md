@@ -49,9 +49,9 @@ Die Pipeline kann in 4 grundlegende Phasen unterteilt werden:
 4. Ausgabe / Aktion (z.B. Out-File, Export-CSV, Remove-Item, Set-Service)
 
 ```powershell
-Get-EventLog -LogName System | 
-  Where-Object { $_.EntryType -eq 'Error' } | 
-  Select-Object TimeGenerated, Source, Message | 
+Get-WinEvent -LogName System | 
+  Where-Object { $_.LevelDisplayName -eq 'Error' } | 
+  Select-Object TimeCreated, ProviderName, Message | 
   Out-File C:\Errors.txt
 ```
 
@@ -59,18 +59,18 @@ Die Pipeline kann beliebig lang sein, d.h., die Anzahl der Cmdlets in einer einz
 Cmdlets müssen mit Pipeline-Operator getrennt werden
 
 ```powershell
-Get-EventLog -LogName System -After (Get-Date).AddDays(-7) | 
-  Where-Object { $_.EntryType -eq "Error" } | 
-  Sort-Object TimeGenerated -Descending | 
-  Select-Object TimeGenerated, Source, EventID, Message -First 5 | 
-  ConvertTo-Html -Title "Error Report" ` | 
+Get-WinEvent -LogName System -MaxEvents 500 | 
+  Where-Object { $_.LevelDisplayName -eq "Error" -and $_.TimeCreated -ge (Get-Date).AddDays(-7) } | 
+  Sort-Object TimeCreated -Descending | 
+  Select-Object TimeCreated, ProviderName, Id, Message -First 5 | 
+  ConvertTo-Html -Title "Error Report" | 
   Out-File C:\errorreport.html
 ```
 
-- `Get-EventLog`  - ermittelt alle System-Ereigniseinträge der letzten Woche
-- `Where-Object`  - Restriktion der Datenmenge mit Type = Error
+- `Get-WinEvent`  - ermittelt System-Ereigniseinträge (PS7-kompatibler Ersatz für `Get-EventLog`)
+- `Where-Object`  - filtert auf Fehlereinträge der letzten Woche
 - `Sort-Object`   - Elemente werden nach der Zeit sortiert
-- `Select-Object` - Attribute Zeit, Quelle, Ereignis und Meldung werden ausgewählt
+- `Select-Object` - Attribute Zeit, Quelle, Ereignis-ID und Meldung werden ausgewählt
 - `Out-File`      - Ausgabe in errorreport.html Datei
 
 ## 1.1. Pipeline-Variablen
@@ -163,7 +163,7 @@ Beim Aufruf von Methoden müssen zwingend die runden Klammern angegeben werden.
 Hier wird die Kill()-Methode aufgerufen.
 
 ```powershell
-Get-Process iexplore | 
+Get-Process notepad | 
   Foreach-Object { $_.Kill() } 
 ```
 
@@ -257,13 +257,19 @@ Sortiere die Prozesse, die das Wort **„chrome“** im Namen tragen, gemäss ih
 Gib die **Summe** der Speichernutzung aller **Prozesse** aus.
 
 **A4:**
-**Gruppiere** die Einträge im **System-Ereignisprotokoll** nach **Benutzernamen**.
+**Gruppiere** die Einträge im **System-Ereignisprotokoll** nach **Ereignis-Level** (`LevelDisplayName`).
+
+> Hinweis: Verwende `Get-WinEvent -LogName System` (PS7). `Get-EventLog` steht in PowerShell 7 nicht mehr zur Verfügung.
 
 **A5:**
 Zeige die letzten zehn Einträge im **System-Ereignisprotokoll**.
 
+> Hinweis: Verwende `Get-WinEvent -LogName System -MaxEvents 10`.
+
 **A6:**
-Zeige für die letzten **zehn Einträge im System-Ereignisprotokoll** die Quelle an.
+Zeige für die letzten **zehn Einträge im System-Ereignisprotokoll** den Anbieter (`ProviderName`) an.
+
+> Hinweis: `Get-WinEvent` verwendet `ProviderName` statt `Source` und `TimeCreated` statt `TimeGenerated`.
 
 **A7:**
 Importiere die Textdatei `test.csv`, wobei die Textdatei als eine CSV-Datei mit dem **Semikolon** als Trennzeichen zu interpretieren ist und die erste Zeile die Spaltennamen enthalten muss.
@@ -337,4 +343,4 @@ Ergänzen Sie Ihr Beispiel mit ausführlichen Kommentaren im Code, sodass die Fu
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.

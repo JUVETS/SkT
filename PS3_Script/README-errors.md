@@ -8,6 +8,8 @@
   - [1.3. $ErrorActionPreference \& -ErrorAction](#13-erroractionpreference---erroraction)
   - [1.4. Fehler abfangen: try/catch/finally](#14-fehler-abfangen-trycatchfinally)
   - [1.5. Prozess-/Exit‑Signale: $?, $LASTEXITCODE, Exitcodes](#15-prozess-exitsignale--lastexitcode-exitcodes)
+  - [1.5b. Die `$Error`-Variable](#15b-die-error-variable)
+  - [1.5c. Fehler selbst auslösen: throw \& Write-Error](#15c-fehler-selbst-auslösen-throw--write-error)
   - [1.6. Error Handling + Logging = Beobachtbarkeit](#16-error-handling--logging--beobachtbarkeit)
 - [2. Aufgaben](#2-aufgaben)
   - [2.1. PowerShell Fehler erkennen und behandeln](#21-powershell-fehler-erkennen-und-behandeln)
@@ -109,62 +111,118 @@ catch {
 }
 ```
 
-## 1.6. Error Handling + Logging = Beobachtbarkeit
+## 1.5b. Die `$Error`-Variable
 
-Ein einfacher Logger mit Level hilft beim Debuggen:
+PowerShell speichert alle aufgetretenen Fehler der laufenden Sitzung im automatischen Array `$Error`.
 
 ```powershell
-function New-Logger {
+$Error[0]           # letzter Fehler
+$Error[0].Exception # die eigentliche .NET-Exception
+$Error.Count        # Anzahl gesammelter Fehler
+$Error.Clear()      # Liste leeren
+```
+
+> **Hinweis:** `$Error` sammelt sitzungsweit – nicht nur aus dem aktuellen Skript. Im `catch`-Block ist `$_` (das aktuelle Exception-Objekt) zuverlässiger als `$Error[0]`.
+
+---
+
+## 1.5c. Fehler selbst auslösen: throw & Write-Error
+
+Manchmal muss ein Skript selbst einen Fehler signalisieren:
+
+```powershell
+# throw – löst terminierenden Fehler aus, landet im catch-Block
+function Get-Config {
+    param([string]$Path)
+    if (-not (Test-Path $Path)) {
+        throw "Konfigurationsdatei nicht gefunden: $Path"
+    }
+    Get-Content $Path
+}
+
+# Write-Error – nicht-terminierend (wie ein Cmdlet-Fehler)
+function Test-Value {
+    param([int]$Value)
+    if ($Value -lt 0) {
+        Write-Error "Wert darf nicht negativ sein: $Value"
+        return
+    }
+    "Wert OK: $Value"
+}
+```
+
+> **Faustregel:** `throw` in Funktionen, die von `try/catch` umschlossen werden sollen. `Write-Error` für Warnungen, bei denen der Aufrufer selbst entscheidet, ob er abbricht.
+
+---
+
+## 1.6. Error Handling + Logging = Beobachtbarkeit
+
+Ein einfacher Logger mit Level hilft beim Debuggen.
+
+> **PS7-Stil:** Statt `New-Object PSObject` + `Add-Member` (PS2-Muster) wird eine einfache Funktion mit `script:`-Scope-Variable für den Log-Pfad verwendet – lesbarer und wartbarer.
+
+```powershell
+# Logger initialisieren
+$script:LogPath = ".\script.log"
+
+function Write-Log {
     param(
-        [string]$Path = ".\script.log",
+        [string]$Message,
+        [ValidateSet('INFO','WARN','ERROR','DEBUG')]
+        [string]$Level = 'INFO',
         [switch]$DebugMode
     )
 
-    # Ordner erstellen falls nötig
-    $dir = Split-Path -Path $Path -Parent
-    if (-not (Test-Path $dir)) {
-        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    # DEBUG-Meldungen nur ausgeben wenn explizit aktiviert
+    if ($Level -eq 'DEBUG' -and -not $DebugMode) { return }
+
+    $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+    $line      = "[$Level] $timestamp $Message"
+
+    # In Datei schreiben
+    $line | Out-File -FilePath $script:LogPath -Append -Encoding UTF8
+
+    # Passende PS-Ausgabefunktion wählen
+    switch ($Level) {
+        'ERROR' { Write-Error   $Message }
+        'WARN'  { Write-Warning $Message }
+        'DEBUG' { Write-Debug   $Message }
+        default { Write-Verbose $Message }
     }
-
-    # Logger-Objekt definieren
-    $logger = New-Object PSObject -Property @{
-        Path      = $Path
-        DebugMode = $DebugMode.IsPresent
-    }
-
-    # Methode Log hinzufügen
-    $logger | Add-Member -MemberType ScriptMethod -Name Log -Value {
-        param(
-            [string]$Message,
-            [ValidateSet('INFO','WARN','ERROR','DEBUG')]
-            [string]$Level = 'INFO'
-        )
-
-        $p = $this.Path
-        $debug = $this.DebugMode
-
-        # Debug unterdrücken wenn nicht aktiviert
-        if ($Level -eq 'DEBUG' -and -not $debug) { return }
-
-        $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
-        $line = "[{0}] {1} {2}" -f $Level, $timestamp, $Message
-
-        $line | Out-File -FilePath $p -Append -Encoding UTF8
-
-        switch ($Level) {
-            'ERROR' { Write-Error   $Message }
-            'WARN'  { Write-Warning $Message }
-            'DEBUG' { Write-Debug   $Message }
-            default { Write-Verbose $Message }
-        }
-    }
-
-    return $logger
 }
 
 # Verwendung:
-# $log = New-Logger -Path '.\script.log' -DebugMode
-# $log.Invoke("Start", "INFO")
+$script:LogPath = "C:\Logs\backup.log"
+
+Write-Log "Skript gestartet"                     # INFO
+Write-Log "Datei fehlt: x.txt" -Level WARN
+Write-Log "DB nicht erreichbar" -Level ERROR
+Write-Log "Schleife i=3" -Level DEBUG -DebugMode  # nur mit -DebugMode sichtbar
+```
+
+**Vollständiges Beispiel mit try/catch + Logging:**
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$script:LogPath = ".\cleanup.log"
+
+try {
+    Write-Log "Starte Aufräumprozess"
+    $files = Get-ChildItem -Path "C:\Logs\*.log" -ErrorAction Stop
+    Write-Log "Gefundene Dateien: $($files.Count)"
+
+    foreach ($file in $files) {
+        Remove-Item $file.FullName -ErrorAction Stop
+        Write-Log "Gelöscht: $($file.Name)"
+    }
+
+    Write-Log "Fertig."
+    exit 0
+}
+catch {
+    Write-Log "FEHLER: $($_.Exception.Message)" -Level ERROR
+    exit 1
+}
 ```
 
 </br>
@@ -200,9 +258,11 @@ Untersuchen Sie die Programmausführung und Fehlermeldung (Standardverhalten) be
 **Tipp:**
 
 ```powershell
-# Fehler kann mit Division durch $null ausgelöst werden
-Write-Host (1 / $null) 
+# Stabiles Beispiel: Zugriff auf nicht vorhandene Datei
+Get-Item "C:\existiert_nicht.txt"
 ```
+
+> **Hinweis:** `1 / $null` ist kein verlässlicher Fehlerauslöser – in PS7 ergibt `$null` den Wert 0 und löst eine DivisionByZeroException aus, in manchen Kontexten aber keinen Fehler. `Get-Item` auf einen nicht vorhandenen Pfad ist stabiler und praxisnäher.
 
 **A2:**
 
@@ -239,4 +299,4 @@ Schreibe ein Skript `Read-ImportantFile.ps1`, das eine Textdatei einliest (Pfad 
 ---
 
 © 2026 Lukas Müller – Licensed under CC BY-NC-ND 4.0
-See [LICENSE](..\license.md) file for details.
+See [LICENSE](../license.md) file for details.
