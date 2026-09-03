@@ -32,9 +32,23 @@
 
 ## 1.1. PowerShell
 
+Die PowerShell 7 lässt sich parallel zur Version 5.1 installieren (sie überschreiben sich nicht!).
+
+**Der schnellste Weg (Windows):**
+
+- Nutze den „Windows Package Manager“ (`winget`), der in Windows 10 und 11 eingebaut ist.
+- Gib das hier in deine CMD oder PowerShell ein:
+  - `winget install --id Microsoft.PowerShell --source winget`
+- PowerShell auch kann auch einfach wie eine App aus dem Microsoft Store geladen werden (suchen nach "PowerShell")
+
 - [Installing PowerShell on Windows](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)
 - [Install PowerShell on Linux](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.5)
 - [Installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.5)
+
+**Nach der Installation existieren zwei verschiedene Programme:**
+
+- **Blaues Icon**: Das klassische Windows PowerShell 5.1.
+- **Schwarzes Icon**: Das neue, schnelle PowerShell 7.
 
 ### 1.1.1. PowerShell-Konsole
 
