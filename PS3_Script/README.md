@@ -483,18 +483,20 @@ Invoke-Item $reportFile
 | **Vorgabe**             | **Beschreibung**                                      |
 | :---------------------- | :---------------------------------------------------- |
 | **Lernziele**           | komplexe Abläufe nachvollziehbar grafisch darstellen. |
-|                         | Ablaufdiagramm erstellen (Text und PAP)               |
+|                         | Skript programmieren und testen                       |
 | **Sozialform**          | Einzelarbeit                                          |
 | **Hilfsmittel**         |                                                       |
 | **Erwartete Resultate** |                                                       |
-| **Zeitbedarf**          | 30 min                                                |
-| **Lösungselemente**     | Programmablaufplan als draw.io Datei                  |
+| **Zeitbedarf**          | 20 min                                                |
+| **Lösungselemente**     | Skriptdatei .ps1                                      |
 
 **Erstelle einen Skript für:**
 
-- Eingabe eines Pfades
+- Eingabe eines Pfades als Kommandozeilenparameter
 - Prüfung ob Pfad existiert
-- Ausgabe "Pfad existiert" bzw. "Pfad existiert nicht"
+- Ausgabe "**Pfad existiert**" bzw. "**Pfad existiert nicht**"
+
+- Optional: Falls der Kommandozeilenparameter beim Aufruf nicht mitgegeben wird, soll dieser über eine Benuztereingabeaufforderung eingelesen werden.
 
 ---
 
