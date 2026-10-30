@@ -9,8 +9,11 @@
 Eine kurze Theorieprüfung mit allgemeinen Fragen zu PowerShell.
 
 - Theorie, Closed Book
+  - Grundlagen & Architektur
+  - Variablen, Datentypen & EBNF
+  - Kontrollstrukturen & Funktionen
+  - ohne vollständige Skript Programmierung
 - ca. 16-20 Fragen zu PowerShell
-- ohne Skript Programmierung
 - Dauer ca. 35min
 
 ---
